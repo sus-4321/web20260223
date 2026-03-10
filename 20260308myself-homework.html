@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riize RISE & REALIZE Archive</title>
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .body {
+            background-color: var(--rz-orange-main);
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        .wrapper {
+            width: 1024px;
+            margin: 30px auto;
+            box-shadow: 4px 4px 8px 4px var(--shd-hover);
+            background-color: var(--rz-orange-main);
+        }
+
+        .logo {
+            background-image: url(img/riize團.jpg);
+            height: 240px;
+            background-position: center 20%;
+            background-size: cover;
+        }
+
+        .header nav {
+            background-color: var(--rz-coral);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header nav ul {
+            display: inline-block;
+        }
+
+        .header nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        .header nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            background-color: var(--rz-sunset);
+            color: var(--rz-navy);
+            font-size: 24px;
+            font-weight: 900;
+            margin-left: 20px;
+            border-radius: 50px;
+            margin: 20px 10px;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .hero h1 {
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero p {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .hero .btn-join {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: var(--rz-sunset);
+            color: var(--rz-navy);
+            font-size: 24px;
+            font-weight: 900;
+            margin-left: 20px;
+            border-radius: 50px;
+            margin: 20px 10px;
+            box-shadow: 4px 4px 8px 4px var(--rz-slate);
+        }
+
+        .about {
+            background-color: var(--rz-coral);
+
+        }
+
+        .about h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+        .about p {
+            font-size: 20px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .highlights {
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .discography {
+            background-color: white;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 25px;
+            text-align: left;
+        }
+
+        .member-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .member-link:hover .member-photo img {
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
+
+        .member-link:hover .member-photo img {
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
+
+        .member-link:hover h4 {
+            color: var(--rz-sunset);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 20px;
+            width: 90%;
+            margin: 50px auto;
+        }
+
+        .member-card {
+            width: 100%;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .member-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            background-color: #eee;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-card h4 {
+            font-size: 24px;
+            color: var(--rz-navy);
+            margin-bottom: 10px;
+        }
+
+        .member-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .fan-support {
+            font-size: 24px;
+            margin: 20px auto;
+        }
+
+        .fan-support p {
+            width: 600px;
+            height: 100px;
+            margin-left: 200px;
+            line-height: 40px;
+
+        }
+
+        .fan-support a {
+            padding: 10px 20px;
+            background-color: var(--rz-link-blue);
+            color: var(--rz-navy);
+            font-size: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            margin-left: 20px;
+            border-radius: 50px;
+            margin: 20px 10px;
+            box-shadow: 4px 4px 8px 4px var(--rz-slate);
+            display: inline-block;
+        }
+
+        .new {
+            background-color: var(--rz-orange-bright);
+            margin: 40px auto;
+            padding: 30px;
+            width: 85%;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .new h2 {
+            text-align: center;
+            color: var(--rz-navy);
+            font-size: 30px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--rz-sunset);
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        .new ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .new li {
+            border-bottom: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .new li:last-child {
+            border-bottom: none;
+        }
+
+        .new li a {
+            display: block;
+            padding: 15px 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .new li span {
+            background-color: var(--rz-orange-main);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-right: 14px;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .new li:hover {
+            background-color: #fff9f5;
+            transform: translateX(10px);
+        }
+
+        .new li a:hover {
+            color: var(--rz-orange-main);
+        }
+
+        .footer {
+            padding: 40px 70px;
+        }
+
+        .footer h2 {
+            margin-left: 10%;
+            margin-bottom: 15px;
+        }
+
+        .footer ul {
+            margin-top: 20px;
+            padding-left: 10%;
+        }
+
+        .footer ul li {
+            font-size: 18px;
+            line-height: 2rem;
+            letter-spacing: 1.5px;
+            color: var(--rz-sunset);
+        }
+
+        @media screen and (max-width:768px) {
+            .wrapper {
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            .logo {
+                background-image: url(img/riize團.jpg);
+                height: 140px;
+            }
+
+            .header nav {
+                background-color: var(--rz-orange-main);
+            }
+
+            .header nav ul {
+                display: block;
+                padding-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .header nav ul li {
+                float: none;
+            }
+
+            .header nav ul li a {
+                display: block;
+                padding: 10px 10px;
+                font-size: 20px;
+                margin-right: 0px;
+                margin-top: 5px;
+                border-radius: 0px;
+            }
+
+            .header nav ul li a:hover {
+                transform: none;
+            }
+
+            .hero {
+                padding: 10px 10px;
+            }
+
+            .hero h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .hero .btn-join {
+                display: inline-block;
+                padding: 12px 20px;
+                background-color: var(--rz-sunset);
+                color: var(--rz-navy);
+                font-size: 24px;
+                font-weight: 900;
+                margin-left: 20px;
+                border-radius: 50px;
+                margin: 20px 10px;
+                box-shadow: 4px 4px 8px 4px var(--rz-slate);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo"></div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">成員介紹</a></li>
+                    <li><a href="#">作品集</a></li>
+                    <li><a href="#">最新動態</a></li>
+                    <li><a href="#">加入我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h1>打造屬於BRIIZE的夢想空間</h1>
+            <P>
+                power gym陪你強壯,RIIZE陪你成長,在這裡記錄與RIIZE共同前進的每一個瞬間
+            </P>
+            <a href="#" class="btn-join">立即加入粉絲團</a>
+        </div>
+        <div class="about">
+            <h2>關於RIIZE</h2>
+            <P>
+                介紹團名含意（Rise & Realize），強調成員們共同成長、實現夢想的過程。可以寫：「我們相信，音樂不只是旋律，更是情感的共鳴。從出道的那天起，每一次舞台都在累積更閃耀的自己。」
+            </P>
+        </div>
+        <div class="highlights">
+            <section class="discography">
+                <h2 class="section-title">作品集</h2>
+                <h3>音樂作品</h3>
+                <ul class="content-list">
+                    <li><span>2023.09.04</span> 第一張單曲專輯《Get A Guitar》（正式出道）</li>
+                    <li><span>2023.10.27</span> 數位單曲〈Talk Saxy〉</li>
+                    <li><span>2024.01.05</span> 數位單曲〈Love 119〉（首個音樂節目一位）</li>
+                    <li><span>2024.04.03</span> 性能單曲〈Siren〉</li>
+                    <li><span>2024.04.18</span> 序幕單曲〈Impossible〉</li>
+                    <li><span>2024.06.17</span> 第一張迷你專輯《RIIZING》（主打歌：〈Boom Boom Bass〉）</li>
+                    <li><span>2024.07.29</span> 日本出道單曲《Lucky》</li>
+                    <li><span>2024.09.19</span> 迷你專輯後記《RIIZING : Epilogue》</li>
+                    <li><span>2025.05.19</span> 第二張正規專輯《Odyssey》</li>
+                    <li><span>2026.01.08</span> 數位單曲〈All of you〉</li>
+                </ul>
+            </section>
+            <section class="members">
+                <h3>成員介紹 / members</h3>
+                <div class="member-grid">
+
+                    <div class="member-card">
+                        <a href="member-shotaro.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/SHOTARO.jpg" alt="SHOTARO">
+                            </div>
+                            <h4>SHOTARO (將太郎)</h4>
+                            <p>2000.11.25 | 日本男歌手，為 RIIZE 成員...</p>
+                        </a>
+                    </div>
+                    <div class="member-card">
+                        <a href="member-eunseok.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/eunseok.jpg" alt="EUNSEOK">
+                            </div>
+                            <h4>EUNSEOK (恩奭)</h4>
+                            <p>2001.03.19 | 韓國歌手，以獨特的「石頭」魅力深受喜愛...</p>
+                        </a>
+                    </div>
+
+                    <div class="member-card">
+                        <a href="member-sungchan.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/sungchan.jpg" alt="SUNGCHAN">
+                            </div>
+                            <h4>SUNGCHAN (成燦)</h4>
+                            <p>2001.09.13 | 擁有出色的饒舌實力與陽光帥氣的形象。</p>
+                        </a>
+                    </div>
+
+                    <div class="member-card">
+                        <a href="member-wonbin.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/wonbin.jpg" alt="WONBIN">
+                            </div>
+                            <h4>WONBIN (元彬)</h4>
+                            <p>2002.03.02 | 舞蹈實力、吉他演奏與迷人的視覺中心。</p>
+                        </a>
+                    </div>
+
+                    <div class="member-card">
+                        <a href="member-sohee.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/sohee.jpg" alt="SOHEE">
+                            </div>
+                            <h4>SOHEE (炤熙)</h4>
+                            <p>2003.11.21 | RIIZE 的主唱擔當，擁有清亮音色。</p>
+                        </a>
+                    </div>
+
+                    <div class="member-card">
+                        <a href="member-anton.html" class="member-link">
+                            <div class="member-photo">
+                                <img src="img/anton03.jpg" alt="anton">
+                            </div>
+                            <h4>ANTON (李燦榮)</h4>
+                            <p>2004.03.21 | 作為隊內的忙內，擁有大提琴演奏背景。</p>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+            <section class="fan-support">
+                <h3>應援活動 / Fan Support</h3>
+                <p>這裡記錄了每一份屬於 BRIIZE 的心意。無論是為成員慶祝生日，還是在音樂節目上全力投票，每一次的參與都是 RIIZE 前進的動力。</p>
+                <a href="#" class="btn-action">查看目前應援任務</a>
+            </section>
+
+        </div>
+        <div class="new">
+            <h2>最新消息 / NEWS</h2>
+            <ul>
+                <li><a href="#"><span>公告</span> 三月回歸預告與時程表</a></li>
+                <li><a href="#"><span>活動</span> 成員生日應援活動（例如：Anton 生日咖啡廳資訊）</a></li>
+                <li><a href="#"><span>商城</span> 官方周邊購買連結</a></li>
+                <li><a href="#"><span>投票</span> 粉絲投票指南（MAMA、音樂銀行等）</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            <h2>聯絡我們</h2>
+            <ul>
+                <li>
+                    <a href="#"><span>地址</span>可以寫應援看板的位置，或虛擬的「BRIIZE 宇宙」。</a>
+                </li>
+                <li>
+                    <a href="電話"><span>粉絲團官方聯絡窗口（建議虛擬）。</span></a>
+                </li>
+                <li>
+                    <a href="按鈕"><span>加入官方 Fanclub。</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="disclaimer">
+            <p>Disclaimer: This website is a fan-made project for learning purposes only. All official images and logos
+                are property of SM Entertainment.</p>
+            <p>免責聲明：本站為粉絲自發性架設之學習作品，站內所有官方圖片、商標及影音素材版權均屬 SM Entertainment 所有。</p>
+        </div>
+
+</body>
+
+</html>

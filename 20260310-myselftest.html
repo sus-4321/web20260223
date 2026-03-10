@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生活會館</title>
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--rz-neon-green);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .logo {
+            background-image: url(img/house.avif);
+            height: 240px;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .header nav {
+            background-color: var(--clr-mint-glaze);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header nav ul {
+            display: inline-block;
+        }
+
+        .header nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        .header nav ul li a {
+            background-color: var(--clr-leaf-moss);
+            box-shadow: 4px 4px 8px 4px var(-clr-stem-deep);
+            font-size: 20px;
+            margin: 10px 20px;
+            width: 100px;
+            text-decoration: none;
+            font-weight: 900;
+            color: var(--clr-earth-bark);
+            line-height: normal;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .header nav ul li a:hover {
+            transform: rotate(10deg);
+        }
+
+        .Hero-Section {
+            margin: 0 auto;
+        }
+
+        .Hero-Section h3 {
+            font-size: 26px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        .Hero-Section p {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 auto;
+            font-weight: 900;
+        }
+
+        .Hero-Section a {
+            background-color: var(--clr-leaf-moss);
+            box-shadow: 4px 4px 8px 4px var(-clr-stem-deep);
+            font-size: 20px;
+            margin: 20px auto;
+            text-decoration: none;
+            font-weight: 900;
+            color: var(--clr-earth-bark);
+            display: block;
+            padding: 10px 20px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .about-us {
+            background-color: var(--clr-mint-glaze);
+            text-align: left;
+            overflow: hidden;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        .course-item {
+            background-color: var(--clr-water-drop);
+            text-align: justify;
+            overflow: hidden;
+            font-size: 20px;
+            width: 810px;
+            margin: 25px auto;
+            box-shadow: 4px 4px 10px 4px var(--rz-slate);
+            border-radius: 20px;
+            line-height: 2.1rem;
+            letter-spacing: 1px;
+            padding: 20px 20px;
+        }
+
+        .courses h3 {
+            color: var(--text-main-bark);
+        }
+
+        .courses p {
+            color: var(--text-header-main);
+        }
+
+        .notice {
+            background-color: var(--clr-mint-glaze);
+            text-align: left;
+            overflow: hidden;
+            font-size: 20px;
+        }
+        .contact p{
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <nav>
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">關於沐光</a></li>
+                    <li><a href="#">生活提案</a></li>
+                    <li><a href="#">最新消息</a></li>
+                    <li><a href="#">預約諮詢</a></li>
+                </ul>
+            </nav>
+            <div class="Hero-Section">
+                <h3>找回生活最純粹的節奏</h3>
+                <p> 在繁忙的城市中，我們為你留了一個安靜的角落。從一杯茶、一場手作、到一次深呼吸，重新定義你的日常。</p>
+                <a href="#">預約體驗</a>
+            </div>
+
+            <div class="about-us">
+                <h2 class="section-title">關於沐光生活會館</h2>
+                <p>我們相信，生活不該只是生存，更是一種美學的實踐。沐光提供寬敞明亮的空間，結合了藝術、放鬆與身心平衡，讓每一位到訪的朋友都能在這裡卸下疲憊，儲備能量。</p>
+            </div>
+
+            <div class="courses">
+                <h2 class="section-title">生活提案 (課程/服務介紹)</h2>
+                <div class="course-item">
+                    <h3>方案一：靜心瑜珈</h3>
+                    <p>透過緩慢的肢體流動與呼吸練習，舒緩長期緊繃的身心壓力，適合想找回內心平靜的你。</p>
+                </div>
+                <div class="course-item">
+                    <h3>方案二：生活美學手作</h3>
+                    <p>從花藝、陶藝到香氛蠟燭，在專注創作的過程中，發現生活中的微小幸福。</p>
+                </div>
+                <div class="course-item">
+                    <h3>方案三：舒活茶飲空間</h3>
+                    <p>提供嚴選有機花草茶與職人手作點心，是個人閱讀或好友小聚的最佳去處。</p>
+                </div>
+
+                <div class="notice">
+                    <h2 class="section-title">最新消息 </h2>
+                    <p>春季限時優惠：新會員入會即贈「舒壓香氛組」。
+                        ​本月工作坊：週六「療癒多肉植物組盆」開放報名。
+                        ​營業時間調整：清明連假期間照常營業。
+                        ​防疫公告：場館每日定時清消，請安心入館</p>
+                </div>
+                <div class="contact">
+                    <h2 class="section-title">聯絡我們</h2>
+                    <p>地址： 台中市西屯區 (可填寫你的虛擬地址)</p>
+                    <p>電話： 04-2345-6789</p>
+                    <p>營業時間： 週一至週日 10:00 - 21:00</p>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & RWD練習</title>
+    <link rel="stylesheet" href="CSS/themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* 設置所有元素的盒模型為 border-box，讓元素的寬高包含內外距和邊框 */
+        }
+
+        .wrapper {
+            max-width: 80%;
+            /* 設定最大寬度為80% */
+            margin: 50px auto 0;
+            /* 設定上外距為50px，左右外距為auto，讓元素水平置中 */
+        }
+
+        .logo {
+            background-image: url(images/paris01.avif);
+            height: 220px;
+            background-size: cover;
+            /* 設置背景圖片的大小為覆蓋整個元素 */
+            background-position: center center;
+            /* 設置背景圖片的大小為覆蓋整個元素 */
+
+        }
+
+        /* 設置 nav 的背景顏色和文字對齊方式 */
+        .header nav {
+            background-color: var(--t14-primary);
+            text-align: center;
+            /* 設置 nav 的文字對齊方式為居中 */
+
+        }
+
+        /* 將 ul 設置為 inline-block，讓它們在同一行顯示 */
+        .header nav ul {
+            /* 設置 ul 的內外距 */
+            display: inline-block;
+            /* 設置 ul 為行內塊元素，讓它們在同一行顯示 */
+        }
+
+        /* 將 li 設置為 float: left，讓它們在同一行顯示 */
+        .header nav ul li {
+            /* 設置 li 的內外距 */
+            float: left;
+            /* 設置 li 為左浮動，讓它們在同一行顯示 */
+            list-style-type: none;
+            /* 去除 li 的默認列表樣式 */
+
+        }
+
+        .header nav ul li a {
+            /* 設置 a 的顏色、字體大小和內外距 */
+            color: var(--t14-text);
+            /* 設置 a 的文字顏色 */
+            font-size: 18px;
+            /* 設置 a 的字體大小 */
+            padding: 15px 20px;
+            /* 設置 a 的內距，讓它們有足夠的點擊區域 */
+            display: block;
+            /* 設置 a 為塊級元素，讓它們佔滿整個 li 的區域 */
+            background-color: var(--t14-muted);
+            /* 設置 a 的背景顏色 */
+            text-decoration: none;
+            /* 去除 a 的下劃線 */
+            font-weight: 900;
+            /* 設置 a 的字體加粗 */
+            margin: 0 5px;
+            /* 設置 a 的左右外距 */
+            border-radius: 8px;
+            /* 設置 a 的圓角 */
+            box-shadow: 3px 3px 5px 3px var(--t14-border);
+            /* 設置 a 的陰影效果 */
+            transition: transform 0.3s ease;
+            /* 設置 a 的過渡效果，讓懸停效果更平滑 */
+        }
+
+        .header nav ul li a:hover {
+            /* 設置 a 的懸停效果 */
+            background-color: var(--t14-primary);
+            /* 設置 a 的背景顏色為主色調 */
+            color: var(--t14-background);
+            /* 設置 a 的文字顏色為背景色 */
+            box-shadow: 5px 5px 7px 5px var(--t14-border);
+            /* 設置 a 的陰影效果為更明顯的陰影 */
+            transform: scale(1.1);
+            /* 設置 a 的懸停效果為放大 */
+        }
+
+        .content {
+            padding: 30px 70px;
+            /* 設置 content 的內距，讓內容有足夠的空間 */
+            text-align: center;
+            /* 設置 content 的文字對齊方式為居中 */
+            background-color: var(--t14-text);
+            /* 設置 content 的背景顏色 */
+            margin: 10px 0;
+            /* 設置 content 的上下外距 */
+            border-radius: 8px;
+            /* 設置 content 的圓角 */
+            box-shadow: 3px 3px 5px 3px var(--t14-border);
+            /* 設置 content 的陰影效果 */
+            transition: transform 0.3s ease;
+            /* 設置 a 的過渡效果，讓懸停效果更平滑 */
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            /* 設置 h1 的下外距 */
+            font-size: 24px;
+            /* 設置 h1 的字體大小 */
+            font-weight: 900;
+            /* 設置 h1 的字體加粗 */
+            color: var(--t14-border);
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            /* 設置 p 的下外距 */
+            font-size: 16px;
+            /* 設置 p 的字體大小 */
+            color: var(--t14-primary);
+            /* 設置 p 的文字顏色 */
+            font-weight: 900;
+            /* 設置 p 的字體粗細 */
+            line-height: 2.5;
+            /* 設置 p 的行高 */
+        }
+
+        .content a {
+            display: block;
+            /* 設置 a 為行內塊元素，讓它們在同一行顯示 */
+            padding: 10px 20px;
+            /* 設置 a 的內距，讓它們有足夠的點擊區域 */
+            background-color: var(--t14-primary);
+            /* 設置 a 的背景顏色 */
+            color: var(--t14-background);
+            /* 設置 a 的文字顏色 */
+            text-decoration: none;
+            /* 去除 a 的下劃線 */
+            font-weight: 900;
+            /* 設置 a 的字體加粗 */
+            border-radius: 8px;
+            /* 設置 a 的圓角 */
+            box-shadow: 3px 3px 5px 3px var(--t14-border);
+            /* 設置 a 的陰影效果 */
+        }
+
+        .content a:hover {
+            background-color: var(--t14-muted);
+            /* 設置 a 的背景顏色為次要色調 */
+            color: var(--t14-primary);
+            /* 設置 a 的文字顏色為主色調 */
+            box-shadow: 5px 5px 7px 5px var(--t14-border);
+            /* 設置 a 的陰影效果為更明顯的陰影 */
+            transform: scale(1.1);
+            /* 設置 a 的懸停效果為放大 */
+        }
+
+        .footer {
+            background-color: var(--t14-muted);
+            padding: 10px 0;
+            /* 設置 footer 的內距，讓內容有足夠的空間 */
+            color: var(--t14-primary);
+            text-align: center;
+            /* 設置 footer 的文字對齊方式為居中 */
+            margin-top: 5px;
+            border-radius: 8px;
+            /* 設置 footer 的圓角 */
+            box-shadow: 3px 3px 5px 3px var(--t14-border);
+            /* 設置 footer 的陰影效果 */
+        }
+
+        .footer p {
+            font-size: 20px;
+            /* 設置 p 的字體大小 */
+            font-weight: 700;
+            /* 設置 p 的字體粗細 */
+            line-height: 2.5;
+            /* 設置 p 的行高 */
+        }
+
+        @media screen and (max-width: 768px) {
+            .wrapper {
+                max-width: 100%;
+                /* 設定最大寬度為100% */
+                max-height: 100%;
+                margin: 0px auto 0;
+
+
+            }
+
+            .logo {
+            background-image: url(images/paris02.avif);
+            height: 160px;
+            margin-bottom: 0px;
+             /* 設置 logo 的下外距 */
+             background-size: cover;
+            
+
+        }
+
+            .header nav {
+                background-color: var(--t15-bg);
+
+            }
+
+            /* 將 ul 設置為 inline-block，讓它們在同一行顯示 */
+            .header nav ul {
+                /* 設置 ul 的內外距 */
+                display: block;
+                /* 設置 ul 為塊級元素，讓它們在同一行顯示 */
+                padding: 0;
+                margin: 0;
+            }
+
+            /* 將 li 設置為 float: left，讓它們在同一行顯示 */
+            .header nav ul li {
+                /* 設置 li 的內外距 */
+                float: none;
+                /* 設置 li 為左浮動，讓它們在同一行顯示 */
+                
+
+            }
+
+            .header nav ul li a {
+                font-size: 16px;
+                /* 設置 a 的字體大小 */
+                padding: 8px 16px;
+                /* 設置 a 的內距，讓它們有足夠的點擊區域 */
+                font-weight: 900;
+                /* 設置 a 的字體加粗 */
+                margin: 0 0;
+                /* 設置 a 的左右外距 */
+                transition: transform none;
+                /* 設置 a 的過渡效果，讓懸停效果更平滑 */
+                color: var(--t15-muted);
+                /* 設置 a 的文字顏色 */
+                background-color: var(--t15-primary);
+                box-shadow: 3px 3px 5px 3px var(--t15-bg);
+
+            }
+
+            .header nav ul li a:hover {
+                /* 設置 a 的懸停效果 */
+                background-color: var(--t14-primary);
+                /* 設置 a 的背景顏色為主色調 */
+                color: var(--t15-surface);
+                /* 設置 a 的文字顏色為背景色 */
+                box-shadow: 5px 5px 7px 5px var(--t15-text);
+                /* 設置 a 的陰影效果為更明顯的陰影 */
+                transform: none;
+                /* 設置 a 的懸停效果為放大 */
+            }
+
+            .content {
+            padding: 10px 15px; 
+            /* 設置 content 的內距，讓內容有足夠的空間 */
+            background-color: var(--t15-surface);
+            /* 設置 content 的背景顏色 */
+            margin: 0;
+            /* 設置 content 的上下外距 */
+            transition: transform none;
+            /* 設置 a 的過渡效果，讓懸停效果更平滑 */
+        }
+
+        .content h1 {
+            margin-bottom: 10px;
+            /* 設置 h1 的下外距 */
+            font-size: 20px;
+            /* 設置 h1 的字體大小 */
+            font-weight: 700;
+            /* 設置 h1 的字體加粗 */
+            color: var(--t15-text);
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            /* 設置 p 的下外距 */
+            font-size: 16px;
+            /* 設置 p 的字體大小 */
+            color: var(--t15-muted);
+            /* 設置 p 的文字顏色 */
+            font-weight: 700;
+            /* 設置 p 的字體粗細 */
+            line-height: 1.6;
+            /* 設置 p 的行高 */
+        }
+
+        .content a {
+            background-color: var(--t15-primary);
+            /* 設置 a 的背景顏色 */
+            color: var(--t15-muted);
+        }
+
+        .content a:hover {
+            background-color: var(--t15-surface);
+            /* 設置 a 的背景顏色為次要色調 */
+            color: var(--t15-text);
+            /* 設置 a 的文字顏色為主色調 */
+            box-shadow: 5px 5px 7px 5px var(--t15-bg);
+            /* 設置 a 的陰影效果為更明顯的陰影 */
+            transform: none;
+            /* 設置 a 的懸停效果為放大 */
+        }
+
+        .footer {
+            background-color: var(--t15-secondary);
+            border-radius: 6px;
+            /* 設置 footer 的圓角 */
+            box-shadow: 3px 3px 5px 3px var(--t15-border);
+            /* 設置 footer 的陰影效果 */
+            color: var(--t15-muted);
+        }
+
+        .footer p {
+            font-size: 16px;
+            /* 設置 p 的字體大小 */
+            line-height: 2.0;
+            /* 設置 p 的行高 */
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <nav>
+                <ul>
+                    <li><a href="#" target="_blank">首頁</a></li>
+                    <li><a href="#" target="_blank">最新消息</a></li>
+                    <li><a href="#" target="_blank">合作店家</a></li>
+                    <li><a href="#" target="_blank">關於我們</a></li>
+                    <li><a href="#" target="_blank">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>歡迎光臨</h1>
+            <p>儘快下載地址違反內置要在會在，答應大約唯一如何模樣進口堅決玩具文明，利用而言對比一流一款，來的哪裡贏得主管完了辦公室一定會會員價，投入將其好激動大幅教師輔助編號新手周圍阿摩斯有的，表面技能新年成立上帝，蘋果性能招生，距離全面，熱門人口你還黑暗也有按照，等。
+            </p>
+            <p>微軟理由，接下來包裝先進英國一遍觀念空。</p>
+            <p>看來給予地球最好細胞正常恐怕汽車不可訪問農村很有，房地產是指軟體工人寶貝青草湖基礎上就是氣息消除瞬間，無比成果，屬性某種也有國產地位說過塑膠運輸先進只有那個關鍵夫人，萬華一些適用，終於暴力網頁班，鼓勵專家傳播長沙，參加位置角度家裡，最終給我們，逐漸去年電。</p>
+            <a href="#" target="_blank">了解更多</a>
+        </div>
+        <div class="footer">
+            <p>power by 跨平台班 2026.03.06</p>
+        </div>
+    </div>
+</body>
+
+</html>

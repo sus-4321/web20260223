@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+body{
+    font-family: "Zen Maru Gothic", sans-serif;}
+:root {
+    /* ============================================================
+       第一部分：原始 15 色定義 (依據你的資料重命名)
+       命名邏輯：自然意象 + 原始色素感
+       ============================================================ */
+    
+    /* 螢光與強對比系列 */
+    --clr-neon-orchid:    #a006cf; /* 原 01: 螢光蘭紫 - 適合高級點綴 */
+    --clr-moss-acid:      #78cf06; /* 原 02: 濃酸苔蘚 - 強烈視覺導向 */
+    --clr-leaf-pigment:   #8ed607; /* 原 03: 葉綠色素 - 核心動態色 */
+    --clr-night-electric: #0b1aee; /* 原 05: 電子午夜 - 深層陰影基底 */
+    --clr-berry-punch:    #FE5858; /* 原 09: 漿果濃紅 - 警告與強調 */
+    --clr-ocean-deep:     #0384BD; /* 原 15: 深海靛藍 - 專業商業標籤 */
+
+    /* 森林與水氣系列 */
+    --clr-mint-glaze:     #91D4C2; /* 原 04: 薄荷糖衣 - 柔和背景 */
+    --clr-emerald-silk:   #45BB89; /* 原 06: 絲絨翡翠 - 次要功能色 */
+    --clr-lake-glimmer:   #3D82AB; /* 原 07: 湖光冷藍 - 平靜元件色 */
+    --clr-mist-spruce:    #B2D6CA; /* 原 08: 雲霧雲杉 - 分隔線條 */
+    --clr-forest-abyss:   #024B40; /* 原 10: 森林深淵 - 穩定卡片底色 */
+
+    /* 大地與暖陽系列 */
+    --clr-bark-rose:      #5D353E; /* 原 11: 玫瑰木皮 - 標題文字 */
+    --clr-alpine-mist:    #E5EDF8; /* 原 12: 高山晨霧 - 網頁主背景 */
+    --clr-clay-terracotta:#E29E93; /* 原 13: 陶土粉紅 - 溫潤裝飾 */
+    --clr-amber-glow:     #EDBC7A; /* 原 14: 琥珀餘暉 - 提示與星等 */
+
+
+    /* ============================================================
+       第二部分：延伸 15 色 (Pure & Pigmented 補充)
+       命名邏輯：補齊網頁所需的極深、極淺與中性過渡色
+       ============================================================ */
+
+    /* 深層色素 (深色模式與排版文字) */
+    --clr-black-soil:     #050805; /* 極深泥土黑 - 網頁主文字 */
+    --clr-deep-peat:      #121A13; /* 泥炭深綠 - 專業背景疊層 */
+    --clr-ink-spruce:     #1E352F; /* 墨色雲杉 - 區塊邊界 */
+    --clr-charcoal-rock:  #2C3333; /* 岩石炭灰 - 次要說明文字 */
+
+    /* 天然色素強調 (中性色彩補完) */
+    --clr-raw-matcha:     #527853; /* 原味抹茶 - 永續感按鈕 */
+    --clr-dried-sage:     #A3B18A; /* 乾燥鼠尾草 - 柔和標籤 */
+    --clr-wasabi-light:   #E9F5DB; /* 哇沙米淺綠 - Hover 容器底色 */
+    --clr-sand-linen:     #F5EBE0; /* 亞麻細沙 - 暖調區塊分隔 */
+    --clr-petal-shell:    #FFF1E6; /* 花瓣貝殼 - 高光區域背景 */
+
+    /* 水系與礦物延伸 */
+    --clr-glacier-ice:    #F8FBFF; /* 冰河純白 - 潔淨呼吸空間 */
+    --clr-slate-blue:     #495E77; /* 板岩藍灰 - 資訊圖表色 */
+    --clr-petrol-teal:    #005F73; /* 石油翠藍 - 連結高亮 */
+    --clr-rust-earth:     #9B2226; /* 地底鐵鏽 - 強烈錯誤提示 */
+    --clr-gold-pollen:    #EE9B00; /* 黃金花粉 - 行動呼籲(CTA) */
+    --clr-pure-white:     #FFFFFF; /* 絕對純白 - 頂層覆蓋與反白 */
+
+
+    /* ============================================================
+       第三部分：語意化角色定義 (這才是商業開發的精髓)
+       當你想換風格時，只需改這裡的對應關係
+       ============================================================ */
+    
+    --bg-page:            var(--clr-alpine-mist);
+    --bg-card:            var(--clr-forest-abyss);
+    --text-main:          var(--clr-black-soil);
+    --text-on-dark:       var(--clr-alpine-mist);
+    --accent-primary:     var(--clr-leaf-pigment);
+    --accent-hover:       var(--clr-moss-acid);
+    --border-soft:        var(--clr-mist-spruce);
+    --shadow-commercial:  rgba(5, 8, 5, 0.2);
+
+    /* --- 花瓣與花蜜 (Floral Pigments) --- */
+    --clr-petal-cranberry: #db5a9a; /* 蔓越莓紅 (來自您提供的參考圖) */
+    --clr-petal-rose:      #fe5858; /* 玫瑰紅 */
+    --clr-petal-orchid:    #a006cf; /* 蘭花紫 */
+    --clr-petal-melon:     #e5a46e; /* 甜瓜橘 (來自您提供的參考圖) */
+    --clr-nectar-amber:    #edbc7a; /* 琥珀蜜 */
+    --clr-nectar-pollen:   #f9d423; /* 花粉黃 */
+    --clr-blossom-clay:    #e29e93; /* 陶土粉 */
+    --clr-blossom-soft:    #ffb5a7; /* 輕柔粉 */
+
+    /* --- 葉片與枝幹 (Greenery & Stems) --- */
+    --clr-leaf-jade:       #0a5b54; /* 翠玉綠 (來自您提供的參考圖) */
+    --clr-leaf-emerald:    #45bb89; /* 翡翠綠 */
+    --clr-leaf-neon:       #8ed607; /* 螢光嫩葉 */
+    --clr-leaf-moss:       #78cf06; /* 苔蘚綠 */
+    --clr-stem-deep:       #024b40; /* 深淵綠 */
+    --clr-stem-teal:       #125669; /* 深青色 (來自您提供的參考圖) */
+    --clr-mint-glaze:      #91d4c2; /* 薄荷綠 */
+    --clr-sage-mist:       #b2d6ca; /* 鼠尾草綠 */
+
+    /* --- 大氣、山澗與湖泊 (Atmosphere & Water) --- */
+    --clr-lake-serene:     #3d82ab; /* 靜謐湖藍 */
+    --clr-ocean-logic:     #0384bd; /* 專業邏輯藍 */
+    --clr-sky-clear:       #ade8f4; /* 晴空藍 */
+    --clr-water-drop:      #caf0f8; /* 純淨水滴 */
+    --clr-night-electric:  #0b1aee; /* 電子午夜 */
+    --clr-glacier-snow:    #e5edf8; /* 高山雪白 */
+
+    /* --- 大地與陰影 (Earth & Depth) --- */
+    --clr-earth-bark:      #5d353e; /* 樹皮棕 */
+    --clr-earth-root:      #352208; /* 根部褐 */
+    --clr-earth-soil:      #1a1c19; /* 肥沃土 */
+    --clr-earth-dust:      #d5bdaf; /* 大地灰 */
+    --clr-stone-basalt:    #495057; /* 玄武岩 */
+    --clr-sand-linen:      #f5ebe0; /* 亞麻沙 */
+    --clr-shadow-soft:     rgba(0, 0, 0, 0.1); /* 輕柔陰影 */
+    --clr-pure-white:      #ffffff; /* 絕對純白 */
+    /* 文字相關 */
+   
+    /* --- 深色標題文字 (Deep & Strong) --- */
+    --text-header-main:    #1A1C19; /* 肥沃土：最深色，用於大標題 */
+    --text-header-forest:  #024B40; /* 森林深淵：帶綠調的深色，非常高雅 */
+    --text-header-berry:   #9B2226; /* 地底鐵鏽：深紅色標題，有權威感 */
+    --text-header-night:   #0B1AEE; /* 電子午夜：強烈的深藍色標題 */
+
+    /* --- 標準內文文字 (Readable Content) --- */
+    --text-main-charcoal:  #2C3333; /* 岩石炭灰：最推薦的內文色，比純黑柔和 */
+    --text-main-slate:     #495E77; /* 板岩藍灰：帶有專業感的灰色內文 */
+    --text-main-bark:      #5D353E; /* 玫瑰木皮：溫暖的深啡色，適合溫馨內容 */
+
+    /* --- 裝飾與強調文字 (Accents & Fun) --- */
+    --text-accent-pink:    #DB5A9A; /* 蔓越莓紅：適合關鍵字強調 */
+    --text-accent-teal:    #125669; /* 深青色：適合超連結或小標籤 */
+    --text-accent-orchid:  #A006CF; /* 螢光蘭紫：用於最吸睛的重點 */
+    --text-accent-jade:    #0A5B54; /* 翠玉綠：穩定且高級的強調色 */
+
+    /* --- 反白文字 (On Dark Backgrounds) --- */
+    --text-on-dark:        #F8FBFF; /* 冰河純白：當背景很深時用的文字色 */
+    --text-white-soft:     #F3EFEF; /* 霧面雪白：最舒服的白色文字 */
+
+    /* --- 文字遮罩層 (Overlay Backgrounds) --- */
+    --text-mask-01: rgba(0, 0, 0, 0.2); /* 輕薄遮罩 */
+    --text-mask-02: rgba(0, 0, 0, 0.3); /* 半透遮罩 */
+    --text-mask-03: rgba(0, 0, 0, 0.4); /* 深沉遮罩 */
+
+     /* 主題橘色 - 代表 RIIZE 的活力 */
+  --riize-orange: #FF6B00; 
+  
+  /* 深背景色 - 用於導覽列 (Navbar) */
+  --nav-bg: #121212; 
+  
+  /* 淺背景色 - 用於區塊切換 (Section) */
+  --light-gray: #F8F9FA; 
+  
+  /* 文字顏色 */
+  --text-dark: #333333;
+  --text-light: #FFFFFF;
+  
+  /* 點擊後的連結顏色 (深橘色) */
+  --link-hover: #E65A00;
+   /* --- 主打核心色 (RIIZE 能量) --- */
+  --rz-orange-main: #FF6B00;    /* 經典 RIIZE 橘 */
+  --rz-orange-bright: #FF8E3C;  /* 亮橘色 (用於高亮) */
+  --rz-orange-deep: #D45900;    /* 深橘色 (用於按下按鈕) */
+  --rz-coral: #FFB085;          /* 暖珊瑚色 (Love 119 感) */
+
+  /* --- 深色系 (導覽列與標題) --- */
+  --rz-black: #0F0F0F;          /* 極致黑 */
+  --rz-navy: #1A202C;           /* 深藍黑 (質感底色) */
+  --rz-slate: #4A5568;          /* 灰色 (副標題用) */
+
+  /* --- 淺色與背景系 (區塊分層) --- */
+  --rz-bg-light: #F7FAFC;       /* 淺灰底 (像圖片中的區塊切換) */
+  --rz-bg-white: #FFFFFF;       /* 純白 */
+  --rz-border: #E2E8F0;         /* 邊框淡灰色 */
+
+  /* --- 點綴與情境色 --- */
+  --rz-neon-green: #CCFF00;     /* 霓虹綠 (MV 常用點綴色) */
+  --rz-soft-blue: #A0CED9;      /* 粉藍色 (清新感) */
+  --rz-sunset: #FF4E50;         /* 夕陽紅 */
+  --rz-gold: #D4AF37;           /* 金色 (獲獎紀錄用) */
+  --rz-link-blue: #3182CE;      /* 標準連結藍 */
+/* 1. 微弱陰影 (用於一般區塊，看起來很乾淨) */
+--shd-soft: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+/* 2. 標準卡片陰影 (圖片中課程介紹卡片的感覺) */
+--shd-card: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+/* 3. 強烈懸浮陰影 (滑鼠移上去時，讓卡片「跳出來」) */
+--shd-hover: 0 12px 30px rgba(0, 0, 0, 0.15);
+
+/* 4. 內凹陰影 (用於搜尋框或輸入框) */
+--shd-inset: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+/* 5. RIIZE 橘色發光陰影 (用於強調按鈕) */
+--shd-orange-glow: 0 0 15px rgba(255, 107, 0, 0.4);
+
+}
+

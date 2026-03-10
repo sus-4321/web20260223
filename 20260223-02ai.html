@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高質感商業森林設計</title>
+    <style>
+        body {
+            background-color: #0a0f0b; /* 深沉的黑森林底色 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .box01 {
+            /* 寛高 */
+            width: 320px;
+            height: 320px;
+
+            /* 背景：深綠到黑的漸層，像森林深處 */
+            background: linear-gradient(135deg, #1a2e1a 0%, #050a05 100%);
+
+            /* 內外距 */
+            margin: 20px;
+            padding: 40px 30px;
+            box-sizing: border-box;
+
+            /* 外觀：微調圓角更顯精緻 */
+            border-radius: 40px;
+            
+            /* 關鍵：細緻的綠色發光邊框 (商業設計的高級感來源) */
+            border: 1px solid rgba(120, 207, 6, 0.3);
+
+            /* 專業層次陰影：融合你原本的強烈感，但更深邃 */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                        inset 0 0 20px rgba(120, 207, 6, 0.05);
+
+            /* 文字相關：使用螢光嫩綠，極具視覺衝擊 */
+            color: #b9f900;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.6;
+            letter-spacing: 1.5px;
+            text-align: justify;
+
+            /* 過渡動畫：保留你的多參數變化，但優化曲線 */
+            transition: 
+                transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.5s ease,
+                border 0.5s ease,
+                letter-spacing 0.5s ease;
+            
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 增加一個森林光暈效果 */
+        .box01::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(120, 207, 6, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .box01:hover {
+            /* 懸停變化：背景微微發亮 */
+            background: linear-gradient(135deg, #223a22 0%, #0a140a 100%);
+            border: 1px solid rgba(142, 214, 7, 1);
+
+            /* 位移：保留你原本的大幅動作，這讓元件很有生命力 */
+            transform: translateX(20px) translateY(-10px) scale(1.1) rotate(2deg);
+
+            /* 強烈螢光陰影：將你原本的亮色陰影提升為「環境光」感 */
+            box-shadow: -10px 20px 40px rgba(120, 207, 6, 0.3), 
+                        0 0 20px rgba(120, 207, 6, 0.2);
+
+            /* 字體間距加寬 */
+            letter-spacing: 2.5px;
+            
+            /* 文字發光感 */
+            text-shadow: 0 0 8px rgba(185, 249, 0, 0.5);
+        }
+
+        .box01:hover::before {
+            opacity: 1;
+        }
+
+        p {
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box01">
+        <p>打了探索一生一定要協助到了對待，反正標題曝光詳細訊息大眾沒想到，成績期間推薦使用過來圖像化推廣手裡站長篇文章工作人員，青草湖反正百姓高中工程版本主流缺乏高校階段評價，都是再說離線增長。
+        </p>
+    </div>
+</body>
+
+</html>
