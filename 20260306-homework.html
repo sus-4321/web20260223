@@ -251,100 +251,84 @@
         }
 
         @media screen and (max-width:768px) {
-            .course-item {
-                width: 100%;
-                margin: 0;
-                box-shadow: none;
-            }
-
             .wrapper {
                 width: 100%;
                 margin: 0;
-                box-shadow: none;
+                box-shadow:none ;
+            }
+        }
+        body{
+            overflow: hidden;
+        }
+
+        .logo {
+            background-image: url(img/premium_photo-1719418812861-1580598361e7.avif);
+            height: 140px;
+        }
+
+        .header nav {
+            background-color: var(--main-700);
+        }
+
+        .header nav ul {
+            display: block;            
+        }
+
+        .header nav ul li {
+            float: none;
+        }
+
+        .header nav ul li a {
+            line-height: normal;
+            margin: 0;
+            border-radius: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header nav ul li a:hover {
+            transform: none;
+            width: 100%;
+
+        }
+
+        .hero,.about,.courses, .notice,.contact {
+            margin: 0;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero h1,.about h2,.courses h2,.notice h2,.contact h2 {
+            font-size: 28px;
+            text-align: center;            
+        }
+            .hero p,.about p,.notice li {               
+                font-size: 18px;
+                line-height: 1.6rem;
             }
 
-            .logo {
-                background-image: url(img/premium_photo-1719418812861-1580598361e7.avif);
-                height: 140px;
-            }
-
-            .header nav {
-                background-color: var(--main-700);
-            }
-
-            .header nav ul {
-                display: block;
-                padding-top: 5px;
-                padding-bottom: 5px;
-            }
-
-            .header nav ul li {
-                float: none;
-            }
-
-            .header nav ul li a {
-                line-height: normal;
-                margin: 0;
-                border-radius: 0;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .header nav ul li a:hover {
-                transform: none;
-                width: 100%;
-
-            }
-
-            .hero,
-            .about,
-            .courses,
-            .notice,
-            .contact {
-                margin: 0;
-                padding: 40px 20px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .hero h1,
-            .about h2,
-            .courses h2,
-            .notice h2,
-            .contact h2 {
-                font-size: 28px;
-                text-align: center;
-                margin-left: 0;
-                margin-right: 0;
-
-                .hero p,
-                .about p,
-                .notice li {
-                    margin-left: 0;
-                    margin-right: 0;
-                    font-size: 18px;
-                    line-height: 1.6rem;
-                }                
-                .course-item {
-                width: 100%; 
+            .course-item {                
                 margin: 20px 0;
                 padding: 20px;
-                box-sizing: border-box;
-                border-radius: 10px;}
+                box-shadow: none;
+                border-radius: 10px;
+            }
 
-                .hero a, .contact a {
+            .hero a,
+            .contact a {
                 width: 100%;
                 margin: 20px 0;
                 padding: 15px;
                 box-sizing: border-box;
                 font-size: 20px;
             }
+
             .footer {
                 width: 100%;
                 margin: 0;
                 padding: 20px 0;
             }
-        
     </style>
 </head>
 
