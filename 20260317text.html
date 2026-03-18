@@ -12,21 +12,110 @@
             padding: 0;
         }
 
-        .wrapper{
+        .wrapper {
             width: 1024px;
-            background-color: var(--clr-lake-glimmer);            
+            background-color: var(--clr-lake-glimmer);
             margin: 30px auto;
         }
-        .logo{
-            background-image:url(img/riize團.jpg);
-            background-position: center;
-            background-size: cover;
+
+        .wrapper h2 {
+            text-align: center;
         }
-        .heard nav{
+
+        .logo {
+            background-image: url(img/riize團.jpg);
+            background-position: center center;
+            background-size: cover;
+            height: 400px;
+        }
+
+        .heard nav {
             background-color: var(--clr-amber-glow);
             text-align: center;
             overflow: hidden;
+            padding: 30px 70px;
         }
+
+        .heard nav ul {
+            display: inline-block;
+        }
+
+        .heard nav ul li {
+            float: left;
+            list-style-type: none;
+            margin: 20px 30px;
+        }
+
+        .heard nav ul li a {
+            font-size: 20px;
+            font: 900px;
+            background-color: var(--clr-clay-terracotta);
+            box-shadow: 4px 4px 8px 4px var(--clr-berry-punch);
+            text-decoration: none;
+            border-radius: 10px;
+            line-height: 1.5;
+            color: var(--aurora-indigo);
+            padding: 10px;
+        }
+
+        .Hero {
+            text-align: center;
+            background-color: var(--neon-acid);
+            width: 1024px;            
+            overflow: hidden;
+            padding-bottom: 30px;
+            padding-top: 30px;
+            margin: -30px auto 0 auto ;
+        }
+
+        .Hero h1 {
+            letter-spacing: normal;
+            line-height: 60px;
+            letter-spacing: 20px;
+        }
+
+        .Hero p {
+            font-size: 20px;
+            line-height: 2;
+            letter-spacing: 15px;
+        }
+
+        .Hero a {
+            font-size: 20px;
+            font: 900px;
+            background-color: var(--clr-clay-terracotta);
+            box-shadow: 4px 4px 8px 4px var(--clr-berry-punch);
+            text-decoration: none;
+            border-radius: 10px;
+            line-height: 3;
+            color: var(--aurora-indigo);
+            padding: 10px;
+        }
+
+        .Admission {                 
+            text-align: center;
+            background-color: var(--clr-amber-glow);
+            width: 1024px;            
+            overflow: hidden;
+            padding-bottom: 30px;
+            padding-top: 30px;
+            margin: -30px auto 0 auto ;            
+        }
+        .Admission h3{
+            letter-spacing: normal;
+            line-height: 60px;
+            letter-spacing: 20px;
+            font-size: 30px;
+        }
+        .Admission p{
+            background-color: var(--star-amber);
+            box-shadow: 4px 4px 8px 4px var(--star-rust);
+            border-radius: 2px;
+            font-size: 30px;
+            line-height: 2;
+            letter-spacing: 15px;
+            margin: 20px auto;                   
+        } 
     </style>
 </head>
 
@@ -37,18 +126,18 @@
             <div class="logo"></div>
             <nav>
                 <ul>
-                    <li>招生資訊</li>
-                    <li>升學榜單</li>
-                    <li>師資介紹</li>
-                    <li>課程時間</li>
-                    <li>校區資訊</li>
+                    <li><a href="#">招生資訊</a></li>
+                    <li><a href="#">升學榜單</a></li>
+                    <li><a href="#">師資介紹</a></li>
+                    <li><a href="#">課程時間</a></li>
+                    <li><a href="#">校區資訊</a></li>
                 </ul>
             </nav>
         </div>
     </div>
     <div class="Hero">
         <h1>國中．高中升學輔導</h1>
-        </p>小班制教學 × 專業師資 × 升學規劃</p>
+        <p>小班制教學 × 專業師資 × 升學規劃</p>
         <p>讓孩子在穩定的學習節奏中持續進步</p>
         <a href="#">預約試聽</a>
     </div>
