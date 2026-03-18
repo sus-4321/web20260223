@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 body{
     font-family: "Zen Maru Gothic", sans-serif;}
-:root {
-    /* ============================================================
-       第一部分：原始 15 色定義 (依據你的資料重命名)
-       命名邏輯：自然意象 + 原始色素感
-       ============================================================ */
+:root {  
     
     /* 螢光與強對比系列 */
     --clr-neon-orchid:    #a006cf; /* 原 01: 螢光蘭紫 - 適合高級點綴 */
@@ -186,6 +182,173 @@ body{
 
 /* 5. RIIZE 橘色發光陰影 (用於強調按鈕) */
 --shd-orange-glow: 0 0 15px rgba(255, 107, 0, 0.4);
+
+/* --- 基礎「維他命海」系列 (從圖片提取) --- */
+  --sea-endeavor: #0359AE;   /* 深海藍 */
+  --sea-tropics: #14B09B;    /* 熱帶綠藍 */
+  --sea-sand: #EBE5D9;       /* 淺沙色 */
+  --sea-cabana: #CC8A56;     /* 陽光木質 */
+
+  /* --- 深藍與海洋層次 (Deep Ocean) --- */
+  --blue-navy: #012A4A;      /* 深海軍藍 */
+  --blue-royal: #013A63;     /* 皇家海藍 */
+  --blue-sapphire: #014F86;  /* 藍寶石色 */
+  --blue-azure: #2A6F97;     /* 蔚藍 */
+  --blue-pacific: #468FAF;   /* 太平洋藍 */
+  --blue-morning: #89C2D9;   /* 清晨海面 */
+
+  /* --- 淺灘與水花 (Shallow Waters) --- */
+  --aqua-teal: #007F5F;      /* 深翠綠 */
+  --aqua-mint: #2D936C;      /* 薄荷水色 */
+  --aqua-crystal: #52B788;   /* 水晶綠 */
+  --aqua-foam: #B7E4C7;      /* 浪花白綠 */
+  --aqua-ice: #D8F3DC;       /* 冰透綠 */
+
+  /* --- 沙灘與中性色 (Beach & Neutrals) --- */
+  --sand-warm: #D9AE94;      /* 暖沙色 */
+  --sand-driftwood: #967259;  /* 漂流木 */
+  --sand-shell: #F5EBE0;     /* 貝殼粉白 */
+  --sand-pearl: #E3D5CA;     /* 珍珠色 */
+  --sand-taupe: #D5BDAF;     /* 灰褐色 */
+
+  /* --- 陽光與夕陽點綴 (Sun & Sunset) --- */
+  --sun-gold: #FFB703;       /* 金色陽光 */
+  --sun-amber: #FB8500;      /* 琥珀橘 */
+  --sun-coral: #FFB4A2;      /* 珊瑚粉 */
+  --sun-peach: #FFCDB2;      /* 蜜桃粉 */
+  --sun-blush: #E5989B;      /* 晚霞紅 */
+
+  /* --- 熱帶島嶼與陰影 (Tropical Island) --- */
+  --leaf-forest: #2D6A4F;    /* 森林綠 */
+  --leaf-palm: #40916C;      /* 棕櫚綠 */
+  --shadow-deep: #1B263B;    /* 深邃陰影 */
+  --shadow-cool: #415A77;    /* 冷調灰藍 */
+  --sky-pale: #E0E1DD;       /* 蒼天天色 */
+
+  /* --- 基礎「和平寧靜」系列 (從圖片提取) --- */
+  --peace-sand: #DCC1B0;      /* 沙漠沙色 - 溫潤底色 */
+  --peace-bali: #869DAB;      /* 峇里海藍 - 靜謐灰藍 */
+  --peace-wenge: #847072;     /* 雞翅木色 - 灰調棕紅 */
+  --peace-bastille: #3D313F;  /* 巴士底色 - 深沉紫色 */
+
+  /* --- 晨霧與書頁 (Misty Mornings & Pages) --- */
+  --mist-white: #F8F9FA;      /* 純淨霧白 */
+  --mist-linen: #EAE2D6;      /* 亞麻書頁 */
+  --mist-stone: #D1D5DB;      /* 靜謐石灰 */
+  --mist-smoke: #ADB5BD;      /* 輕煙灰 */
+  --mist-dust: #9A8C98;       /* 塵埃紫灰 */
+  --mist-clay: #B7B7A4;       /* 灰泥綠 */
+
+  /* --- 咖啡與閱讀時光 (Coffee & Reading Time) --- */
+  --cafe-latte: #C6AC8F;      /* 拿鐵色 */
+  --cafe-mocha: #5E503F;      /* 摩卡棕 */
+  --cafe-cream: #F2E9E4;      /* 奶油泡 */
+  --cafe-wood: #A98467;       /* 溫暖木質 */
+  --cafe-espresso: #22223B;   /* 深焙濃縮 */
+
+  /* --- 靜謐森林與花卉 (Silent Nature) --- */
+  --nature-sage: #A3B18A;     /* 鼠尾草綠 */
+  --nature-moss: #588157;     /* 苔蘚深綠 */
+  --nature-petal: #E6BEAE;    /* 乾枯粉紅 */
+  --nature-lavender: #9F86C0; /* 灰調薰衣草 */
+  --nature-olive: #344E41;    /* 沉穩橄欖綠 */
+
+  /* --- 暮色與深夜 (Twilight & Midnight) --- */
+  --dusk-sky: #4A4E69;        /* 暮色藍 */
+  --dusk-purple: #22223B;     /* 夜空紫 */
+  --dusk-shadow: #353535;     /* 灰黑陰影 */
+  --dusk-ink: #1B263B;        /* 墨水藍 */
+  --dusk-coal: #2B2D42;       /* 煤炭色 */
+
+  /* --- 柔和點綴色 (Soft Accents) --- */
+  --accent-gold: #BC8A5F;     /* 復古金 */
+  --accent-clay: #8D99AE;     /* 黏土藍 */
+  --accent-rose: #B5838D;     /* 復古玫瑰 */
+  --accent-tea: #D4A373;      /* 琥珀茶色 */
+  --accent-mint: #CB997E;     /* 暖調肉桂 */
+
+
+  /* --- 核心星系色彩 (Core Galaxy) --- */
+  --galaxy-deep-void: #0B0E14;  /* 深淵黑 - 宇宙背景 */
+  --galaxy-nebula-blue: #00A8E8; /* 星雲藍 - 亮部發光 */
+  --galaxy-cosmic-green: #2D5A27;/* 宇宙綠 - 星球地表 */
+  --galaxy-flare-orange: #FF4D00;/* 恆星橘 - 雲氣邊緣 */
+
+  /* --- 深空與虛無 (Deep Space) --- */
+  --space-obsidian: #141824;    /* 黑曜石 */
+  --space-midnight: #1B263B;    /* 午夜藍 */
+  --space-stardust: #415A77;    /* 星塵灰藍 */
+  --space-abyss: #0D1B2A;       /* 深海溝藍 */
+  --space-charcoal: #232931;    /* 碳灰色 */
+
+  /* --- 霓虹發光系列 (Neon Glow) --- */
+  --neon-electric: #00D4FF;     /* 電子藍 */
+  --neon-cyan: #00F5D4;         /* 青綠光 */
+  --neon-violet: #9B5DE5;       /* 霓虹紫 */
+  --neon-magenta: #F15BB5;      /* 洋紅光 */
+  --neon-acid: #EEFF00;         /* 螢光黃 */
+
+  /* --- 恆星與超新星 (Star & Supernova) --- */
+  --star-gold: #FEE440;         /* 恆星金 */
+  --star-white: #FFFFFF;        /* 璀璨白 */
+  --star-ruby: #D00000;         /* 爆炸紅 */
+  --star-amber: #FF9F1C;        /* 琥珀光 */
+  --star-rust: #9A031E;         /* 鏽蝕紅 */
+
+  /* --- 極光與迷幻雲氣 (Aurora & Gas) --- */
+  --aurora-teal: #1B4332;       /* 深極光綠 */
+  --aurora-mint: #95D5B2;       /* 淺極光綠 */
+  --aurora-indigo: #3C096C;     /* 靛紫雲氣 */
+  --aurora-plum: #5A189A;       /* 深李紫 */
+  --aurora-emerald: #081C15;    /* 祖母綠黑 */
+
+  /* --- 中性裝飾與陰影 (Accents & Shadows) --- */
+  --accent-silver: #E0E1DD;     /* 銀河灰 */
+  --accent-sky: #778DA9;        /* 蒼穹藍 */
+  --accent-copper: #A63C06;     /* 銅礦色 */
+  --accent-wine: #5F0F40;       /* 深酒紅 */
+  --accent-shadow: #121212;     /* 極致黑 */
+
+  /* --- 希臘核心系列 (Greek Core) --- */
+  --greece-aegean: #2E5A88;    /* 愛琴海藍 - 深邃海面 */
+  --greece-santorini: #5D8DBE; /* 聖托里尼藍 - 標誌性屋頂 */
+  --greece-ivory: #F8F9FB;     /* 象牙白 - 潔淨牆面 */
+  --greece-sunset: #E4A0B7;    /* 夕陽粉 - 餘暉雲霞 */
+
+  /* --- 晨曦與薄霧 (Morning Mist) --- */
+  --dawn-lavender: #D8BFD8;    /* 薰衣草紫 */
+  --dawn-periwinkle: #C5D3E8;  /* 長春花藍 */
+  --dawn-blush: #F7D1CD;       /* 晨曦粉 */
+  --dawn-sky: #B9D1EA;         /* 蒼穹藍 */
+  --dawn-pearl: #EDF2FB;       /* 珍珠白 */
+
+  /* --- 愛琴海深度 (Deep Aegean) --- */
+  --sea-navy: #1A3C5A;         /* 深海藍 */
+  --sea-cobalt: #0047AB;       /* 鈷藍 */
+  --sea-indigo: #3F51B5;       /* 靛藍 */
+  --sea-shadow: #212F3C;       /* 海面陰影 */
+  --sea-bottom: #1B2631;       /* 深水黑藍 */
+
+  /* --- 地中海植被與光影 (Med Nature) --- */
+  --nature-olive: #6B705C;     /* 橄欖綠 */
+  --nature-agave: #A5A58D;     /* 龍舌蘭綠 */
+  --nature-terracotta: #B07D62;/* 陶土色 */
+  --nature-sand: #DDB892;      /* 暖沙色 */
+  --nature-stone: #6D6875;     /* 石質灰 */
+
+  /* --- 夕陽餘暉與燈火 (Afterglow & Lights) --- */
+  --glow-warm: #FFD29D;        /* 溫暖燈火 */
+  --glow-coral: #E5989B;       /* 珊瑚橙 */
+  --glow-rose: #B5838D;        /* 復古玫瑰 */
+  --glow-violet: #6D597A;      /* 暮色紫 */
+  --glow-berry: #A44A3F;       /* 漿果紅 */
+
+  /* --- 中性裝飾色 (Soft Accents) --- */
+  --accent-ice: #E0FBFC;       /* 冰藍白 */
+  --accent-slate: #98C1D9;     /* 石板藍 */
+  --accent-clay: #BC8A5F;      /* 黏土棕 */
+  --accent-concrete: #D3D3D3;  /* 水泥灰 */
+  --accent-linen: #FAF9F6;     /* 亞麻白 */
 
 }
 
