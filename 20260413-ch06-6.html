@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch6-切版練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+
+    <style>
+        body {
+            background-color: var(--nature-lavender);
+        }
+
+        .box01 {
+            background-image: url(img/anton03.jpg);
+            height: 220px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: 20px;
+        }
+
+        .box02 {
+            height: 140px;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 28px;
+            color: var(--cafe-mocha);
+            font-weight: 900;
+            border-radius: 20px;
+            box-shadow: 4px 4px 8px 4px var(--dusk-shadow);
+            background-color: var(--rz-neon-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box02 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-bottom: 40px;
+        }
+
+        .Wonbin-bg {
+            background-image: url('img/wonbin.jpg');
+            background-size: cover;
+            /* 讓圖片填滿整個框 */
+            background-position: center;
+            /* 讓 Anton 的臉維持在中央 */
+            height: 250px;
+            /* 記得設定高度，不然框會縮起來 */
+            display: flex;
+            align-items: flex-end;
+            /* 讓文字對齊底部 */
+            justify-content: center;
+            /* 文字水平置中 */
+            padding-bottom: 10px;
+            border-radius: 15px;
+            /* 配合你原本的圓角 */
+            overflow: hidden;
+        }
+
+        .menu-text {
+            background: rgba(255, 255, 255, 0.7);
+            /* 給文字一個半透明底色，才看得清楚 */
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .box03 {
+            margin-top: 20px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px 4px var(--shd-orange-glow);
+        }
+
+        .box03 {
+            height: 220px;
+        }
+
+        .box03 .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .box03 .h2{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .box03 p{
+            font-size: 16px;
+        }
+
+        @media screen and (min-width:992px) {
+            .box02 {
+                border-radius: 50%;
+                height: 200px;
+                line-height: 150px;
+                background-color: var(--galaxy-flare-orange);
+            }
+        }
+
+        @media screen and (min-width:1220px) {
+            .box02 {
+                border-radius: 50%;
+                height: 260px;
+                line-height: 260px;
+                font-size: 40px;
+                background-color: var(--neon-magenta);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 d-none d-sm-block">
+                <div class="box01"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="box02"
+                    style="border: 2px solid greenyellow; border-radius: 15px; padding: 10px; box-shadow: 5px 5px 10px rgba(0,0,0,0.5); ">
+                    <img src="img/anton01.jpg" class="img-fluid" alt="李燦榮 (Anton)">
+                    選單01
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 Wonbin-bg">
+                    <span class="menu-text"></span>朴元彬
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單03</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單04</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="box03">
+                    <div class="photo">
+                        <img src="img/sungchan.jpg" alt="">
+                    </div>
+                    <div class="h2">鄭成燦 (Sungchan)。</div>
+                    <div class="p">身材高挑、比例優越。Rap 實力出眾且充滿力量感，性格純粹真誠，深受成員與粉絲喜愛</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03">
+                    <div class="photo">
+                        <img src="img/sohee.jpg" alt="">
+                    </div>
+                    <div class="h2">李昭熙 (Sohee)。</div>
+                    <div class="p">隊內主唱，擁有清爽且爆發力十足的高音。笑容治癒，是團體中不可或缺的音樂靈魂。</div>
+                </div>
+            </div>
+            <div class="box03">
+                    <div class="photo">
+                        <img src="img/wonbin.jpg" alt="">
+                    </div>
+                    <div class="h2">朴元彬 (Wonbin)。</div>
+                    <div class="p">全能中心擔當。精通吉他與編舞，精緻如雕刻般的五官搭配全方位的歌舞實力，舞台焦點。</div>
+            </div>        
+        </div>
+        <div class="box03">
+                    <div class="photo">
+                        <img src="img/eunseok.jpg" alt="">
+                    </div>
+                    <div class="h2">宋恩奭 (Eunseok)。</div>
+                    <div class="p">擁有冷靜穩重的魅力，外表冷酷內心幽默。歌聲低沉迷人，是隊內的視覺與氣氛製造者。</div>
+            </div>        
+        </div>
+        <div class="box03">
+                    <div class="photo">
+                        <img src="img/shotaro.jpg" alt="">
+                    </div>
+                    <div class="h2">將太郎 (Shotaro)。</div>
+                    <div class="p">隊內舞力擔當，曾是專業舞者。性格開朗陽光，擁有頂級的舞台表現力與超強親和力。</div>
+            </div>        
+        </div>
+        <div class="box03">
+                    <div class="photo">
+                        <img src="img/wonbin.jpg" alt="">
+                    </div>
+                    <div class="h2">李燦榮 (Anton)。</div>
+                    <div class="p">忙內擔當，音樂製作背景出身。具備獨特的藝術氣息，擅長大提琴與創作，氣質憂鬱溫柔。</div>
+            </div>        
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch7.Flex</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        body {
+            background-color: var(--rz-bg-white);
+        }
+
+        .box01 {
+            height: 200px;
+            margin-top: 15px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="continaer">
+        <div class="display-2 text-bg-primary">1.flex-row</div>
+        <div class="row flex-row">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+
+        <div class="display-2 text-bg-primary">2.flex-row</div>
+        <div class="row flex-row-reverse">
+            <div class="col-3">
+                <div class="box01 bg-info">04</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">05</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">06</div>
+            </div>
+        </div>
+        <div class="display-2 text-bg-primary">3.flex-column</div>
+        <div class="row flex-column">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 text-bg-primary">4.flex-column-reverse</div>
+        <div class="row flex-column-reverse">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 text-bg-primary">5.flex-row justify-content-start</div>
+        <div class="row justify-content-start">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 text-bg-primary">6.flex-row justify-content-center</div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 text-bg-primary">7.flex-row justify-content-between</div>
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <div class="box01 bg-info">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+            <div class="display-2 text-bg-primary">8.flex-row justify-content-around</div>
+            <div class="row justify-content-around">
+                <div class="col-3">
+                    <div class="box01 bg-info">01</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-danger">02</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-success">03</div>
+                </div>
+            </div>
+
+            <div class="display-2 text-bg-primary">9.flex-row justify-content-evenly</div>
+            <div class="row justify-content-evenly">
+                <div class="col-3">
+                    <div class="box01 bg-info">01</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-danger">02</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-success">03</div>
+                </div>
+            </div>
+            <div class="display-2 text-bg-primary">10.align-items-*-start.center,end</div>
+            <div class="row flex-column align-items-center">
+                <div class="col-3">
+                    <div class="box01 bg-info">01</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-danger">02</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-success">03</div>
+                </div>
+            </div>
+            <div class="display-2 text-bg-primary">11.align-self-斷點-start.center,end</div>
+            <div class="row flex-column align-items-center">
+                <div class="col-3 align-self-start">
+                    <div class="box01 bg-info">01</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-danger">02</div>
+                </div>
+                <div class="col-3">
+                    <div class="box01 bg-success">03</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">04</div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box01 bg-success">05</div>
+        </div>
+    </div>
+    <div class="display-2 text-bg-primary">12.align-items-*-start.center,end</div>
+    <div class="row flex-lg-column align-items-xl-center">
+        <div class="col-3 align-self-start"
+            style="background-image: url(img/anton.jpg);height: 150px;background-position: center center ; background-size: cover;margin-top: 10px;width: 100%;height: 100%;object-fit: cover;">
+
+            <div class="box01 bg-info">01</div>
+        </div>
+        <div class="col-3">
+            <div class="box01 bg-danger">02</div>
+        </div>
+        <div class="col-3">
+            <div class="box01 bg-success">03</div>
+        </div>
+    </div>
+    <div class="display-2 text-bg-primary">12.order(排序)</div>
+    <div class="row flex-row">
+        <div class="col-2 order-xl-2">
+            <div class="box01 bg-info">01</div>
+        </div>
+        <div class="col-2 order-xl-1">
+            <div class="box01 bg-danger">02</div>
+        </div>
+        <div class="col-2 order-xl-0">
+            <div class="box01 bg-success">03</div>
+        </div>
+        <div class="col-2 order-xl-3">
+            <div class="box01 bg-info">04</div>
+        </div>
+        <div class="col-2 order-xl-4">
+            <div class="box01 bg-info">05</div>
+        </div>
+    </div>
+    <div class="display-2 text-bg-primary">13. ms-auto,me-auto</div>
+    <div class="row flex-row">
+        <div class="col-3 ms-auto">
+            <div class="box01 bg-info">01</div>
+        </div>
+        <div class="col-3 me-auto">
+            <div class="box01 bg-danger">02</div>
+        </div>
+        <div class="col-3">
+            <div class="box01 bg-success">03</div>
+        </div>
+    </div>
+    <div class="display-2 text-bg-primary">14. ms-auto,me-auto</div>
+    <div class="row flex-column" style="height: 80vh;">
+        <div class="col-3 mt-auto">
+            <div class="box01 bg-info">01</div>
+        </div>
+        <div class="col-3 me-auto">
+            <div class="box01 bg-danger">02</div>
+        </div>
+        <div class="col-3">
+            <div class="box01 bg-success">03</div>
+        </div>
+    </div>
+    <div class="display-2 text-primary">15. offset</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box01 bg-success">01</div>
+        </div>
+        <div class="col-md-4 d-none d-xl-block">
+            <div class="box01 bg-warning"
+                style="background-image: url(img/eunseok.jpg); background-position: center center; background-size: cover;">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="box01 bg-success">02</div>
+        </div>
+        <div class="col-md-4 d-none d-xl-block">
+            <div class="box01 bg-warning"
+                style="background-image: url(img/sohee.jpg); background-position: center center; background-size: cover;">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-8">
+            <div class="box01 bg-success">03</div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
