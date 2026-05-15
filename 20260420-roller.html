@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roller(卷軸)</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/mycss-ai.css">
+    <style>
+        /* 設定底層容器的高度 */
+        .box {
+            height: 220px;
+        }
+
+        /* 這是最外層容器：設定為相對定位，並隱藏超出範圍的內容 */
+        /*從上方滑入*/
+        .roller-box-top {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-top .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translateY(-100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-top:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+        /*從下方滑入*/
+        .roller-box-bottom {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-bottom .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translateY(100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-bottom:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+        /*從左方滑入*/
+        .roller-box-left {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-left .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translateX(-100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-left:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+        /*從右方滑入*/
+        .roller-box-right {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-right .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translateX(100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-right:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+
+        /*從左上方滑入*/
+        .roller-box-lefttop {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-lefttop .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translate(-100%,-100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-lefttop:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+
+        /*從右上方滑入*/
+        .roller-box-righttop {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-righttop .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translate(100%,-100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-righttop:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+
+        /*從左下方滑入*/
+        .roller-box-leftbottom {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-leftbottom .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translate(-100%,100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-leftbottom:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+
+        /*從右下方滑入*/
+        .roller-box-rightbottom {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-rightbottom .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translate(100%,100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .roller-box-rightbottom:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mt-5">
+                <div class="roller-box-top">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">上方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-bottom">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">下方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-left">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">左方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-right">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">右方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-lefttop">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">左上方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-righttop">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">右上方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-leftbottom">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">左下方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="roller-box-rightbottom">
+                    <div class="roller">
+                        <a href="#" class="btn btn-primary">右下方划入</a>
+                    </div>
+                    <div class="box bg-warning"></div>
+                </div>
+            </div>
+
+
+            <script src="js/jquery-4.0.0.js"></script>
+
+</body>
+
+</html>

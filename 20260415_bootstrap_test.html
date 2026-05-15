@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch7.Flex</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        body {
+            background-color: var(--rz-bg-white);
+        }
+        .box01 {
+            height: 200px;
+            margin-top: 15px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+
+<body>
+    	
+	<div class="display-2 text-primary">15. offset</div>
+	<div class="row">
+	    <div class="col-md-4">
+	        <div class="box01 bg-success">01</div>
+	    </div>
+	    <div class="col-md-4 d-none d-xl-block">
+	        <div class="box01 bg-warning" style="background-image: url(img/anton11.jpg); background-position: center center; background-size: cover;"></div>
+	    </div>
+	</div>
+	
+	<div class="row">
+	    <div class="col-md-4 offset-md-4">
+	        <div class="box01 bg-success">02</div>
+	    </div>
+	    <div class="col-md-4 d-none d-xl-block">
+	        <div class="box01 bg-warning" style="background-image: url(img/anton12.jpg); background-position: center center; background-size: cover;"></div>
+	    </div>
+	</div>
+	
+	<div class="row">
+	    <div class="col-md-4 offset-md-8">
+	        <div class="box01 bg-success">03</div>
+	    </div>
+	</div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

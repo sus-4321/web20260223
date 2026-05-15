@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIIZE 品牌官方簡介：跨越世代的成長動能</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        /* 自定義時間軸樣式 */
+        .timeline-section {
+            position: relative;
+            padding: 50px 0;
+            overflow: hidden;
+        }
+
+        /* 桌機版中間垂直線 */
+        @media (min-width: 768px) {
+            .timeline-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                background-color: #dee2e6;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+        }
+
+        /* 內容區塊設定 */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            z-index: 2;
+        }
+
+        /* 圖片容器 */
+        .timeline-img {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 時間軸節點圖點 */
+        @media (min-width: 768px) {
+            .timeline-pointer {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                border: 4px solid #000;
+                border-radius: 50%;
+                transform: translateX(-50%);
+                z-index: 3;
+            }
+        }
+
+        /* 手機版隱藏線條與節點 */
+        @media (max-width: 767.98px) {
+            .timeline-section::before,
+            .timeline-pointer {
+                display: none;
+            }
+            .timeline-item {
+                margin-bottom: 40px;
+            }
+            .timeline-img {
+                height: 200px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* 背景圖片指定 */
+        .img-01 { background-image: url(img/riize-9-days.jpg);}
+        .img-02 { background-image: url(img/riize01.jpg); }
+        .img-03 { background-image: url(img/riize團.jpg); }
+        .img-04 { background-image: url(img/riize團.jpg); }
+
+        /* 文字排版微調 */
+        .content-box {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container timeline-section">
+    <h1 class="text-center mb-5 fw-bold">RIIZE 品牌官方簡介</h1>
+
+    <div class="row timeline-item align-items-center flex-row-reverse">
+        <div class="timeline-pointer"></div>
+        <div class="col-md-6">
+            <div class="timeline-img img-01"></div>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <div class="content-box">
+                <h3 class="text-danger fw-bold">核心定位：Emotional Pop 的服務價值</h3>
+                <p class="lead fw-bold">引領感官共鳴，定義新型態音樂服務。</p>
+                <p>RIIZE 拋棄了傳統偶像的過度包裝，以「Emotional Pop」作為品牌核心服務價值。我們專注於將日常情感轉化為音軌，透過非線性的敘事風格，為全球受眾提供更具共感、更透明的藝術體驗。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row timeline-item align-items-center">
+        <div class="timeline-pointer"></div>
+        <div class="col-md-6">
+            <div class="timeline-img img-02"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="content-box">
+                <h3 class="text-warning fw-bold">營運升級：SM 3.0 時代的戰略實踐</h3>
+                <p class="lead fw-bold">架構優化，實現演藝資源的精準投放。</p>
+                <p>作為 SM 3.0 戰略佈局下的領航團隊，RIIZE 代表了經紀營運系統的全面升級。透過更靈活的製作體系與全球一體化的營運模式，我們優化了從練習生培訓到市場營銷的每一環節。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row timeline-item align-items-center flex-row-reverse">
+        <div class="timeline-pointer"></div>
+        <div class="col-md-6">
+            <div class="timeline-img img-03"></div>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <div class="content-box">
+                <h3 class="text-secondary fw-bold">品牌專業感：多元成員的協作綜效</h3>
+                <p class="lead fw-bold">頂尖人才匯聚，鑄就無可取代的專業堡壘。</p>
+                <p>RIIZE 的七位成員代表了不同領域的專業尖端。團隊強調「協作綜效 (Synergy)」，每一位成員皆是獨立的子品牌，透過跨專業的技術交織，確保在舞台表現與品牌合作上輸出國際精品等級的專業質感。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row timeline-item align-items-center">
+        <div class="timeline-pointer"></div>
+        <div class="col-md-6">
+            <div class="timeline-img img-04"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="content-box">
+                <h3 class="text-info fw-bold">會員體驗：互動式粉絲經營與社群聯結</h3>
+                <p class="lead fw-bold">以用戶為中心，升級沈浸式的會員生態系統。</p>
+                <p>我們深知「BRIIZE (官方粉絲名)」是品牌發展的核心動力。透過數位轉型與社群媒體的高頻互動，RIIZE 重新定義了會員體驗，建立了一個參與式生態，讓每一位支持者都能見證並參與品牌的成長節點。</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h3 class="text-dark fw-bold">未來展望：全球佈局與可持續發展</h3>
+            <p>展望未來，RIIZE 將持續深化全球化佈局，透過跨國合作擴張品牌邊界，實現品牌價值的長效增長與永續經營。</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <h5 class="fw-bold">數位極簡主義</h5>
+            <p class="small text-muted">我們的設計體系追求高度機能性，透過大量留白與俐落線性結構，確保在各種終端螢幕上皆能保持一致的專業質感。</p>
+        </div>
+        <div class="col-md-4">
+            <h5 class="fw-bold">色彩戰略</h5>
+            <p class="small text-muted">高對比色彩策略強化了視覺層次感，傳遞出品牌的動態能量與未來感，提升全球市場辨識度。</p>
+        </div>
+        <div class="col-md-4">
+            <h5 class="fw-bold">影像敘事</h5>
+            <p class="small text-muted">追求具備紀實質感的視覺風格，透過專業光影將成長過程轉化為電影級影像資產，建立品牌權威性。</p>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="display-5 fw-bolder mb-4 text-primary">01. 數位資產管理與會員驗證系統</div>
+    
+    <div class="row">
+        <div class="col-md-8 col-lg-6"> <form action="#" method="POST">
+                
+                <div class="mb-4">
+                    <label for="userAccount" class="form-label fw-bold">官方授權帳號 (ID)</label>
+                    <input type="text" class="form-control form-control-sm" id="userAccount" placeholder="請輸入註冊之電子郵件或代碼">
+                    <div class="form-text">請輸入與 BRIIZE 會員資格綁定之原始憑證。</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="userPassword" class="form-label fw-bold">安全驗證密碼 (Security Key)</label>
+                    <input type="password" class="form-control form-control-sm" id="userPassword" placeholder="輸入 8-16 位元複合密碼">
+                </div>
+
+                <div class="mb-4">
+                    <label for="assetQuantity" class="form-label fw-bold">授權裝置數量配置</label>
+                    <input type="number" class="form-control" id="assetQuantity" min="1" max="10" value="5">
+                    <div class="form-text text-danger">單一帳號最大授權額度上限為 10 組裝置。</div>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">確認身分並啟動系統</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="mb-4">
+    <label for="assetUpload" class="form-label fw-bold">多媒體資產提交 (Media Asset Submission)</label>
+    
+    <input type="file" class="form-control form-control-sm" id="assetUpload" multiple>
+    
+    <div class="form-text mt-2">
+        * 支援格式：JPG, PNG, MP4。單一檔案上限為 50MB。<br>
+        * 提交之內容將進入品牌審核流程，確保符合官方視覺識別規範。
+    </div>
+</div>
+
+<div class="mb-4">
+    <label for="eventSearch" class="form-label fw-bold">活動場次快速索引 (Event Indexing)</label>
+    
+    <input type="text" class="form-control form-control-lg" id="eventSearch" 
+           list="dataList" placeholder="請輸入欲查詢的巡迴城市或場次編號...">
+
+    <datalist id="dataList">
+        <option value="2026 RIIZE FAN-CON [RIIZING DAY] - SEOUL"></option>
+        <option value="2026 RIIZE FAN-CON [RIIZING DAY] - TOKYO"></option>
+        <option value="2026 RIIZE FAN-CON [RIIZING DAY] - TAIPEI"></option>
+        <option value="2026 RIIZE FAN-CON [RIIZING DAY] - BANGKOK"></option>
+        <option value="2026 RIIZE FAN-CON [RIIZING DAY] - HONG KONG"></option>
+    </datalist>
+
+    <div class="form-text mt-2 text-muted">
+        提示：系統將根據您的輸入自動過濾全球巡迴資產庫。
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="display-2 fw-bolder mb-3 text-success">全球服務據點</div>
+    
+    <div class="row">
+        <div class="col-md-6"> <div class="mb-3">
+                <label for="citySelect" class="form-label fw-bold">請選擇您所在的縣巿名稱</label>
+                <select name="city" id="citySelect" class="form-select form-select-lg">
+                    <option value="台中巿" selected>台中巿</option>
+                    <option value="台北巿">台北巿</option>
+                    <option value="高雄巿">高雄巿</option>
+                </select>
+                <div id="cityHelp" class="form-text">選擇後，系統將為您顯示該地區的品牌活動。</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container py-5">
+    <div class="display-5 fw-bolder mb-4 text-success">03. 品牌互動偏好與訂閱服務配置</div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <p class="fs-5 fw-bold mb-3">請勾選您感興趣的資產更新類別：</p>
+            
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="checkMusic">
+                <label for="checkMusic" class="form-check-label">全球同步數位音源發佈資訊 (Digital Releases)</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="checkVideo">
+                <label for="checkVideo" class="form-check-label">獨家紀錄片與幕後影像資產 (Exclusive BTS)</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="checkEvent">
+                <label for="checkEvent" class="form-check-label">全球巡迴場次優先認購權 (Pre-sale Access)</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="checkCollab">
+                <label for="checkCollab" class="form-check-label">品牌跨界聯名與實體周邊情報 (Collaborations)</label>
+            </div>
+
+            <div class="mt-4">
+                <button class="btn btn-outline-success">儲存偏好設定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">開啟電子報即時推播</label>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p class="fs-5 fw-bold mb-3">請選擇您的主要營運服務區域 (Primary Service Region)：</p>
+
+        <div class="form-check mb-2">
+            <input type="radio" class="form-check-input" name="regionGroup" id="regionKR" checked>
+            <label for="regionKR" class="form-check-label">大韓民國 - 首爾總部 (HQ - SEOUL)</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="radio" class="form-check-input" name="regionGroup" id="regionJP">
+            <label for="regionJP" class="form-check-label">日本地區營運中心 (JAPAN REGION)</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="radio" class="form-check-input" name="regionGroup" id="regionCN">
+            <label for="regionCN" class="form-check-label">大中華區戰略基地 (GREATER CHINA REGION)</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="radio" class="form-check-input" name="regionGroup" id="regionUS">
+            <label for="regionUS" class="form-check-label">北美及全球戰略市場 (GLOBAL / NORTH AMERICA)</label>
+        </div>
+
+        <div class="form-text mt-3">
+            * 系統將根據選定的區域，自動優化數位資產的傳輸路徑與內容語系。
+        </div>
+    </div>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switchPush">
+  <label class="form-check-label" for="switchPush">開啟 24/7 全球戰略情報即時推播</label>
+</div>
+<input type="radio" class="btn-check" name="options" id="opt1" autocomplete="off" checked>
+<label class="btn btn-outline-primary" for="opt1">核心會員 (Core)</label>
+
+<input type="radio" class="btn-check" name="options" id="opt2" autocomplete="off">
+<label class="btn btn-outline-primary" for="opt2">精英會員 (Elite)</label>
+
+<div class="form-check form-check-reverse">
+  <input class="form-check-input" type="checkbox" id="reverseCheck">
+  <label class="form-check-label" for="reverseCheck">
+    我已詳閱並同意 RIIZE 全球品牌資產授權協議
+  </label>
+</div>
+<div class="form-check">
+  <input type="checkbox" class="form-check-input is-invalid" required>
+  <label class="form-check-label text-danger">必須同意個資保護聲明始可繼續</label>
+  <div class="invalid-feedback">請確認此項以優化您的資產安全。</div>
+</div>
+
+<div class="form-check text-muted">
+  <input class="form-check-input" type="radio" disabled>
+  <label class="form-check-label">全球巡迴優先認購權 (僅限 Elite 等級)</label>
+</div>
+
+<div class="container py-5">
+    <div class="display-5 fw-bolder mb-4 text-success">05. 全球數位通訊與身分憑證配置</div>
+
+    <div class="row">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="input-group mb-4">
+                <span class="input-group-text bg-dark text-white" id="basic-addon1">UID</span>
+                <input type="text" class="form-control" placeholder="請輸入官方會員唯一識別碼" aria-label="Username">
+            </div>
+
+            <div class="input-group mb-4">
+                <input type="text" class="form-control" placeholder="請輸入自定義通訊代號" aria-label="Recipient's username">
+                <span class="input-group-text">@riize-official.com</span>
+            </div>
+
+            <div class="input-group mb-4">
+                <span class="input-group-text">+886</span>
+                <input type="tel" class="form-control" placeholder="輸入行動終端聯絡號碼">
+                <button class="btn btn-outline-secondary" type="button">發送驗證碼</button>
+            </div>
+
+            <div class="form-text">
+                * 系統將透過加密隧道（SSL）傳輸您的通訊資料，確保全球資產鏈的安全性。
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="display-5 fw-bolder mb-4 text-success">06. 互動式個人資產驗證系統</div>
+
+    <div class="row">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="mb-4 form-floating">
+                <input type="text" class="form-control" id="floatingName" placeholder="Full Name">
+                <label for="floatingName">合法持有人姓名 (Legal Full Name)</label>
+                <div class="form-text">請輸入與身分證件一致之姓名，以利資產歸屬驗證。</div>
+            </div>
+
+            <div class="mb-4 form-floating">
+                <textarea class="form-control" placeholder="Address" id="floatingAddress" style="height: 100px"></textarea>
+                <label for="floatingAddress">官方商品配送地址 (Shipping Address)</label>
+            </div>
+
+            <div class="mt-4">
+                <button class="btn btn-success btn-lg px-5">更新身分資料</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="display-5 fw-bolder mb-4 text-primary">01. 官方帳號身分資產校驗系統</div>
+
+    <div class="row">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="mb-3">
+                <label for="idVerify" class="form-label fw-bold">身分識別代碼 (Unique ID Verification)</label>
+                
+                <input type="text" class="form-control form-control-sm is-invalid" id="idVerify" placeholder="輸入官方發送之 12 位元代碼">
+                
+                <div class="valid-feedback">
+                    身分識別碼已通過系統安全性校驗，准予存取資產。
+                </div>
+                <div class="invalid-feedback">
+                    無效的身分識別代碼，請確認格式或聯繫品牌安全部門。
+                </div>
+                
+                <div class="form-text mt-2 text-muted">提示：識別碼通常由 4 位英文字母與 8 位數字組成。</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<body>
+    <div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 shadow-lg p-4 rounded-4 bg-white">
+            
+            <h4 class="fw-bolder mb-4 text-dark border-bottom pb-2">資產配置終端</h4>
+
+            <div class="mb-4">
+                <label for="pname" class="form-label fw-bold">官方產品名稱 (Asset Designation)</label>
+                <input type="text" class="form-control" id="pname" placeholder="輸入產品型號或名稱">
+            </div>
+
+            <div class="mb-4">
+                <label for="pqty" class="form-label fw-bold">入庫配置數量 (Allocation Quantity)</label>
+                <input type="number" id="pqty" min="1" max="100" class="form-control" value="1">
+            </div>
+
+            <div class="text-end border-top pt-3">
+                <button class="btn btn-info text-white me-2" id="Cancel_btn">取消作業</button>
+                <button class="btn btn-primary px-4" id="Yes_btn">執行同步</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 shadow p-4 rounded-3 bg-light">
+        
+        <div class="h2 text-bg-success py-3 text-center rounded-4 fw-bolder mb-4">
+            資產同步：確認憑證
+        </div>
+
+        <div class="p-3 bg-white rounded-3 border">
+            <div class="h4 text-secondary mb-3">
+                <i class="bi bi-tag-fill me-2"></i>官方產品名稱：
+                <br class="d-md-none"> <span id="show_pname" class="h2 fw-black text-danger ms-md-2">---</span>
+            </div>
+
+            <div class="h4 text-secondary">
+                <i class="bi bi-box-seam-fill me-2"></i>核定配置數量：
+                <br class="d-md-none">
+                <span id="show_pqty" class="h2 fw-black text-danger ms-md-2">0</span>
+                <small class="text-muted ms-1">Units</small>
+            </div>
+        </div>
+
+        <div class="text-center mt-3 text-muted small">
+            系統時間：2026-04-27 | 執行節點：Taichung HQ
+        </div>
+    </div>
+</div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        $(function() {
+    // 當用戶點擊「執行同步」按鈕時
+    $("#Yes_btn").click(function() {
+        // 獲取輸入的數據（模擬資產檢索）
+        let productName = $("#pname").val();
+        let productQty = $("#pqty").val();
+
+        if (productName === "") {
+            alert("錯誤：請輸入官方產品名稱以進行身分識別。");
+            return;
+        }
+
+        // 模擬企業系統的「處理中」狀態
+        let btn = $(this);
+        btn.prop("disabled", true).html('<span class="spinner-border spinner-border-sm"></span> 數據同步中...');
+
+        setTimeout(function() {
+            // 模擬同步成功後的反饋
+            alert("資產同步成功：[" + productName + "] 已配置 " + productQty + " 單位至全球庫存庫。");
+            
+            // 恢復按鈕狀態
+            btn.prop("disabled", false).text("執行同步");
+            // 清空輸入框（可選）
+            // $("#pname").val("");
+        }, 1500);
+    });
+
+    // 取消按鈕邏輯
+    $("#Cancel_btn").click(function() {
+        if (confirm("確認撤回本次配置作業？未儲存的數據將消失。")) {
+            $("#pname").val("");
+            $("#pqty").val(1);
+        }
+        
+    });
+});
+    </script>
+
+
+<!-- 另一個 -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 shadow-lg p-4 rounded-4 bg-white border-top border-5 border-primary">
+                <div class="h2 text-bg-primary py-3 text-center rounded-4 fw-bolder mb-4">
+                    數位資產建檔
+                </div>
+                
+                <div class="mb-4">
+                    <label for="pname" class="form-label fw-bold text-secondary">官方產品名稱 (Designation)</label>
+                    <input type="text" class="form-control form-control-lg" id="pname" placeholder="請輸入產品識別代碼">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="pnum" class="form-label fw-bold text-secondary">入庫配置數量 (Volume)</label>
+                    <input type="number" min="1" max="100" class="form-control form-control-lg" id="pnum" value="1">
+                </div>
+                
+                <div class="text-end pt-2">
+                    <button class="btn btn-outline-secondary px-4 me-2" id="Reset_btn">重置</button>
+                    <button class="btn btn-primary px-5 fw-bold" id="Yes_btn">執行同步</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 shadow p-4 rounded-4 bg-light border">
+                <div class="h2 text-bg-success py-3 text-center rounded-4 fw-bolder mb-4">
+                    系統同步：確認憑證
+                </div>
+                
+                <div class="p-3 bg-white rounded-3 shadow-sm">
+                    <div class="h4 text-muted mb-3 border-bottom pb-2">
+                        產品識別名稱：
+                        <span class="h2 fw-black text-danger d-block mt-2" id="pname_text">---</span>
+                    </div>
+                    <div class="h4 text-muted">
+                        核定入庫總量：
+                        <span class="h2 fw-black text-danger d-block mt-2" id="pnum_text">0</span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3 text-muted small">
+                    <i class="bi bi-shield-check"></i> 安全加密傳輸已啟動 | RIIZE Global HQ
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        $(function(){
+            // 監聽「執行同步」按鈕
+            $("#Yes_btn").click(function(){
+                // 1. 取得輸入值並進行初步驗證
+                const nameValue = $("#pname").val().trim();
+                const numValue = $("#pnum").val();
+
+                if (nameValue === "") {
+                    alert("⚠️ 系統警告：請輸入有效資產名稱以執行建檔。");
+                    return;
+                }
+
+                // 2. 模擬後端同步動畫
+                $(this).prop("disabled", true).html('<span class="spinner-border spinner-border-sm"></span> 同步中...');
+
+                setTimeout(() => {
+                    // 3. 更新顯示區域內容
+                    $("#pname_text").text(nameValue);
+                    $("#pnum_text").text(numValue + " Units");
+
+                    // 4. 恢復按鈕狀態
+                    $(this).prop("disabled", false).text("執行同步");
+
+                    // 5. 自動捲動至結果區，優化使用者體驗
+                    $('html, body').animate({
+                        scrollTop: $("#pname_text").offset().top - 200
+                    }, 500);
+                }, 800);
+            });
+
+            // 重置按鈕邏輯
+            $("#Reset_btn").click(function(){
+                $("#pname").val("");
+                $("#pnum").val(1);
+                $("#pname_text").text("---");
+                $("#pnum_text").text("0");
+            });
+        });
+    </script>
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-4.0.0.js"></script>
+</body>
+</html>

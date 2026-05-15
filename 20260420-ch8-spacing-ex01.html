@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch8. Spacing間隔-練習02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+    <style>
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+        .roller-box-top {
+            position: relative; /* 作為內部絕對定位元素的基準 */
+            overflow: hidden;    /* 關鍵：隱藏位移到容器外的 .roller */
+        }
+
+        /* 這是滑動遮罩層 */
+        .roller-box-top .roller {
+            position: absolute;  /* 絕對定位，重疊在 .box 之上 */
+            top: 0;
+            left: 0;
+            width: 100%;         /* 撐滿父容器寬度 */
+            height: 100%;        /* 撐滿父容器高度 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            display: flex;       /* 使用彈性佈局讓內容置中 */
+            align-items: center; 
+            text-align: center;
+            left: 0;
+            top: 0;
+            
+            /* 關鍵語法：將遮罩位移 100%  */
+            transform: translateY(-100%); 
+            /* 動態過渡：設定 transform 屬性改變時，需耗時 1.5 秒的平滑動畫 */
+            transition: transform 1500ms;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 當滑鼠懸停在 .roller-box 上時，改變內部 .roller 的狀態 */
+        .bg-cover .roller-box-top:hover .roller {
+            /* 將位移恢復到 0，遮罩就會滑回原位 */
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="bg-secondary">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 bg-cover roller-box-top" style="background-image: url(img/Dinosaur01.avif); height: 220px;"></div>
+                <div class="col-md-4 bg-cover roller-box-top" style="background-image: url(img/Dinosaur02.avif); height: 220px;"></div>
+                <div class="col-md-4 bg-cover roller-box-top" style="background-image: url(img/Dinosaur03.avif); height: 220px;">
+                    <div class="roller">
+                        <a href="#" class="btn btn-danger">詳細內容</a>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row vh-100">
+                <div class="col-md-3 bg-cover roller-box-top" style="background-image: url(img/Dinosaur\ Comic.avif);"></div>
+                <div class="col-md-6 bg-cover roller-box-top" style="background-image: url(img/sky03.avif);"></div>
+                <div class="col-md-3 bg-cover roller-box-top">
+                    <div class="d-flex flex-column h-100 row">
+                        <div class="h-50 bg-cover" style="background-image: url(img/Lunar01.avif);"></div>
+                        <div class="h-50 bg-cover" style="background-image: url(img/Lunar02.avif);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="js/jquery-4.0.0.js"></script>
+
+</body>
+
+</html>

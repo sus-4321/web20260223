@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch8練習03</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+</head>
+<style>
+    body{
+        background-color: aliceblue;
+    }
+    .timeloine-section{
+        position: relative;
+    }
+    .timeline-section::before{
+        position: absolute;
+        content:"";
+        left: 50%;
+        bottom: 0;
+        top: 0;
+        width: 5px;
+        background-color: blue;
+        transform: translateX(-50%);
+    }
+    .timeline-section-pointer{
+        position: relative;
+    }
+    .timeline-section-pointer::before{
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-color: rgb(239, 241, 239);
+        top: 0;
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: solid 8px #ee0606;           
+    }
+    .timeline-section-pointer:hover::before{
+        width: 40px;
+        height: 40px;
+    }
+
+    /* @media screen and (max-width:768px) {
+        .timeline-section::before,
+        .timeline-section-pointer::before{
+        display: none;}
+            /* .timeline-section::before{
+                left: -2px;
+            }
+            .timeline-section-pointer::before{
+                left: -2px;
+            } */
+
+            @media screen and (max-width: 768px) {
+    /* 將線條移到最左邊 */
+    .timeline-section::before {
+        left: 20px; 
+        display: block; /* 確保它顯示 */
+    }
+
+    /* 將圓圈也移到最左邊對齊線條 */
+    .timeline-section-pointer::before {
+        left: 20px;
+        display: block;
+        width: 20px; /* 手機版可以稍微縮小點 */
+        height: 20px;
+    }
+
+    /* 調整文字容器的內距，以免擋到左側的線 */
+    .timeline-section-pointer {
+        padding-left: 50px;
+    }
+}
+    
+
+
+</style>
+<body>
+    
+    <div class="container py-4 mt-4">
+        <div class="timeline-section">
+        <div class="row align-items-center timeline-section-pointer">
+            <div class="col-md-6">
+                <div class="text">
+                    <div class="h2 text-center text-danger">2020：品牌創立</div>
+                    <p class="fs-5">終於一把把它姓名每日但是台北很久環境聽到智能僅僅，答案交流是以上班加油沒什麼，管理系統專門練習之類</p>
+                    <p class="fs-5">夏天透露，不能工資，魔法點頭級別參數吸收，你知道，設置則是，輸出一遍加油測試家長多年一下得知要在打造辦公室幹什麼，呼吸還在效果最高每一個協助天然加工表達享受日記，</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="bg-cover" style="background-image: url(img/cake01.avif); height: 280px;"></div> 
+            </div>
+        </div>
+        <div class="row align-items-center flex-row-reverse  timeline-section-pointer">
+            <div class="col-md-6">
+                <div class="text">
+                    <div class="h2 text-center text-warning">2022：海外分店</div>
+                    <p class="fs-5">終於一把把它姓名每日但是台北很久環境聽到智能僅僅，答案交流是以上班加油沒什麼，管理系統專門練習之類</p>
+                    <p class="fs-5">夏天透露，不能工資，魔法點頭級別參數吸收，你知道，設置則是，輸出一遍加油測試家長多年一下得知要在打造辦公室幹什麼，呼吸還在效果最高每一個協助天然加工表達享受日記，</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="bg-cover" style="background-image: url(img/cake02.avif); height: 280px;"></div> 
+            </div>
+        </div>
+        <div class="row align-items-center  timeline-section-pointer">
+            <div class="col-md-6">
+                <div class="text">
+                    <div class="h2 text-center text-secondary">2026：海外分店</div>
+                    <p class="fs-5">終於一把把它姓名每日但是台北很久環境聽到智能僅僅，答案交流是以上班加油沒什麼，管理系統專門練習之類</p>
+                    <p class="fs-5">夏天透露，不能工資，魔法點頭級別參數吸收，你知道，設置則是，輸出一遍加油測試家長多年一下得知要在打造辦公室幹什麼，呼吸還在效果最高每一個協助天然加工表達享受日記，</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="bg-cover" style="background-image: url(img/cake03.avif); height: 280px;"></div> 
+            </div>
+        </div>
+        <div class="row align-items-center flex-row-reverse  timeline-section-pointer">
+            <div class="col-md-6">
+                <div class="text">
+                    <div class="h2 text-center text-info">2024：網站通路</div>
+                    <p class="fs-5">終於一把把它姓名每日但是台北很久環境聽到智能僅僅，答案交流是以上班加油沒什麼，管理系統專門練習之類</p>
+                    <p class="fs-5">夏天透露，不能工資，魔法點頭級別參數吸收，你知道，設置則是，輸出一遍加油測試家長多年一下得知要在打造辦公室幹什麼，呼吸還在效果最高每一個協助天然加工表達享受日記，</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="bg-cover" style="background-image: url(img/cake04.avif); height: 280px;"></div> 
+            </div>
+        </div>
+    </div>  
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <!-- 編碼：避免中文亂碼 -->
+    <meta charset="UTF-8">
+
+    <!-- 響應式：手機也能正常顯示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>健身房會員方案管理系統</title>
+
+    <!-- Bootstrap 樣式 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- 自訂樣式 -->
+    <link rel="stylesheet" href="css/mycss-ai.css">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- 外層容器（Bootstrap排版用） -->
+    <!-- ========================= -->
+    <div class="container">
+
+        <!-- 水平置中 -->
+        <div class="row justify-content-center">
+
+            <!-- 表單區 -->
+            <div class="col-md-6 mt-5 shadow-lg p-3 rounded-2">
+
+                <!-- 🔴 大標題 -->
+                <div class="h1 text-bg-danger text-center fw-bold py-3 rounded-3">
+                    會員方案建檔頁
+                </div>
+
+                <!-- ========================= -->
+                <!-- 1️⃣ 方案名稱 -->
+                <!-- ========================= -->
+                <div class="mb-3">
+
+                    <label for="pname" class="form-label">
+                        方案名稱
+                    </label>
+
+                    <!-- 輸入框 -->
+                    <input type="text"
+                        class="form-control is-invalid"
+                        id="pname"
+                        list="planName"
+                        placeholder="字數限制1-10!">
+
+                    <!-- 建議選項 -->
+                    <datalist id="planName">
+                        <option value="燃脂入門"></option>
+                        <option value="肌力養成"></option>
+                        <option value="私人教練"></option>
+                        <option value="銀髮健康"></option>
+                        <option value="企業團課"></option>
+                    </datalist>
+
+                    <!-- 驗證提示 -->
+                    <div class="valid-feedback">
+                        方案名稱符合規定
+                    </div>
+
+                    <div class="invalid-feedback">
+                        方案名稱不符合規定
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- 2️⃣ 可招收名額 -->
+                <!-- ========================= -->
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        可招收名額
+                    </label>
+
+                    <!-- number：只能輸入數字 -->
+                    <input type="number"
+                        class="form-control form-control-lg is-invalid"
+                        min="1"
+                        max="30"
+                        placeholder="名額限制1-30!"
+                        id="quota">
+
+                    <div class="valid-feedback">
+                        可招收名額符合規定
+                    </div>
+
+                    <div class="invalid-feedback">
+                        可招收名額不符合規定
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- 3️⃣ 上課時段 -->
+                <!-- ========================= -->
+                <div class="mb-3">
+
+                    <label for="select" class="form-label">
+                        上課時段
+                    </label>
+
+                    <select id="period"
+                        class="form-select form-select-lg is-invalid">
+
+                        <!-- 預設選項 -->
+                        <option value=""
+                            selected
+                            disabled
+                            class="text-center fw-bold text-primary">
+
+                            ---請選擇上課時段---
+
+                        </option>
+
+                        <!-- 選項 -->
+                        <option value="早上時段">早上時段</option>
+                        <option value="下午時段">下午時段</option>
+                        <option value="晚上時段">晚上時段</option>
+                        <option value="假日時段">假日時段</option>
+
+                    </select>
+
+                    <div class="valid-feedback">
+                        上課時段選擇符合規定
+                    </div>
+
+                    <div class="invalid-feedback">
+                        請選擇上課時段
+                    </div>
+
+                </div>
+
+                
+                <!-- ========================= -->
+                <!-- 4️⃣ 可使用館別 -->
+                <!-- ========================= -->
+                <div>
+
+                    <label class="form-label fw-bold">
+                        可使用館別
+                    </label>
+
+                    <!-- checkbox：可多選 -->
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-valid"
+                            name="checkbox"
+                            value="台中館"
+                            checked>
+
+                        <label class="form-check-label">
+                            台中館
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-valid"
+                            name="chk01"
+                            value="北屯館"
+                            checked>
+
+                        <label class="form-check-label">
+                            北屯館
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input"
+                            name="chk01"
+                            value="西屯館">
+
+                        <label class="form-check-label">
+                            西屯館
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input"
+                            name="chk01"
+                            value="南屯館">
+
+                        <label class="form-check-label">
+                            南屯館
+                        </label>
+
+                    </div>
+
+                    <!-- 提示 -->
+                    <div id="branch01_feedback"
+                        class="text-success small mt-1">
+
+                        至少選 1 個
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- 5️⃣ 課程內容 -->
+                <!-- ========================= -->
+                <div>
+
+                    <label class="form-label fw-bold mt-3 h5">
+                        課程內容
+                    </label>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-invalid"
+                            name="chk02"
+                            value="重訓">
+
+                        <label class="form-check-label">
+                            重訓
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-invalid"
+                            name="chk02"
+                            value="有氧">
+
+                        <label class="form-check-label">
+                            有氧
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-invalid"
+                            name="chk02"
+                            value="瑜珈">
+
+                        <label class="form-check-label">
+                            瑜珈
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-invalid"
+                            name="chk02"
+                            value="飛輪">
+
+                        <label class="form-check-label">
+                            飛輪
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input type="checkbox"
+                            class="form-check-input is-invalid"
+                            name="chk02"
+                            value="拳擊">
+
+                        <label class="form-check-label">
+                            拳擊
+                        </label>
+
+                    </div>
+
+                    <!-- 提示 -->
+                    <div id="course01_feedback"
+                        class="text-danger small mt-1">
+
+                        至少選 1 個
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- 6️⃣ 會員等級 -->
+                <!-- ========================= -->
+                <div>
+
+                    <div class="form-label fw-bold mt-3 h5">
+                        會員等級
+                    </div>
+
+                    <!-- radio：只能選一個 -->
+                    <div class="form-check form-check-inline">
+
+                        <input type="radio"
+                            class="form-check-input is-invalid"
+                            name="radio01"
+                            value="一般會員">
+
+                        <label class="form-check-label">
+                            一般會員
+                        </label>
+
+                    </div>
+
+                    <div class="form-check form-check-inline">
+
+                        <input type="radio"
+                            class="form-check-input is-invalid"
+                            name="radio01"
+                            value="白金會員">
+
+                        <label class="form-check-label">
+                            白金會員
+                        </label>
+
+                    </div>
+
+                    <div class="form-check form-check-inline">
+
+                        <input type="radio"
+                            class="form-check-input is-invalid"
+                            name="radio01"
+                            value="VIP會員">
+
+                        <label class="form-check-label">
+                            VIP會員
+                        </label>
+
+                    </div>
+
+                    <div class="form-check form-check-inline">
+
+                        <input type="radio"
+                            class="form-check-input is-invalid"
+                            name="radio01"
+                            value="企業會員">
+
+                        <label class="form-check-label">
+                            企業會員
+                        </label>
+
+                    </div>
+
+                    <!-- 提示 -->
+                    <div id="level01_feedback"
+                        class="text-danger small mt-1">
+
+                        請選擇會員等級
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- 按鈕 -->
+                <!-- ========================= -->
+                <div class="text-center mt-4">
+
+                    <button type="button"
+                        class="btn btn-secondary">
+
+                        取消
+
+                    </button>
+
+                    <button type="button"
+                        class="btn btn-primary"
+                        id="ok_btn">
+
+                        確認
+
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 結果顯示區 -->
+        <!-- ========================= -->
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 mt-5 shadow-lg p-3 rounded-2">
+
+                <!-- 綠色標題 -->
+                <div class="h1 text-bg-success text-center fw-bold py-3 rounded-3">
+                    結果確認
+                </div>
+
+                <!-- JS顯示結果 -->
+                <div id="showmsg"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- JS 載入 -->
+    <!-- ========================= -->
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+    <script>
+
+        // ===== 驗證狀態 =====
+        let flag_planName = false;
+        let flag_quota = false;
+        let flag_period = false;
+        let flag_branch01 = true;
+        let flag_course01 = false;
+        let flag_level01 = false;
+
+
+        $(function () {
+
+            // =========================
+            // 1️⃣ 方案名稱 datalist
+            // =========================
+            $("#planName").blur(function () {
+
+                if ($(this).val().length >= 1 &&
+                    $(this).val().length <= 6) {
+
+                    $(this)
+                        .removeClass('is-invalid')
+                        .addClass('is-valid');
+
+                    flag_planName = true;
+
+                } else {
+
+                    $(this)
+                        .removeClass('is-valid')
+                        .addClass('is-invalid');
+
+                    flag_planName = false;
+                }
+
+            });
+
+
+            // =========================
+            // 2️⃣ 可招收名額
+            // =========================
+            $("#quota").blur(function () {
+
+                if ($(this).val() >= 1 &&
+                    $(this).val() <= 10) {
+
+                    $(this)
+                        .removeClass('is-invalid')
+                        .addClass('is-valid');
+
+                    flag_quota = true;
+
+                } else {
+
+                    $(this)
+                        .removeClass('is-valid')
+                        .addClass('is-invalid');
+
+                    flag_quota = false;
+                }
+
+            });
+
+
+            // =========================
+            // 3️⃣ 上課時段
+            // =========================
+            $("#period").change(function () {
+
+                $(this)
+                    .removeClass('is-invalid')
+                    .addClass('is-valid');
+
+                flag_period = true;
+
+            });
+
+
+            // =========================
+            // 4️⃣ 可使用館別
+            // =========================
+            $("input[name='branch01']").change(function () {
+
+                if ($("input[name='branch01']:checked").length > 0) {
+
+                    $("input[name='branch01']")
+                        .removeClass('is-invalid')
+                        .addClass('is-valid');
+
+                    $("#branch01branch01_feedback")
+                        .removeClass("text-danger")
+                        .addClass("text-success")
+                        .text("館別符合規定");
+
+                    flag_chk01 = true;
+
+                } else {
+
+                    $("input[name='branch01']")
+                        .removeClass('is-valid')
+                        .addClass('is-invalid');
+
+                    $("#branch01_feedback")
+                        .removeClass("text-success")
+                        .addClass("text-danger")
+                        .text("別館不符合規定");
+
+                    flag_branch01 = false;
+                }
+
+            });
+
+
+            // =========================
+            // 5️⃣ 課程內容
+            // =========================
+            $("input[name='course01']").change(function () {
+
+                if ($("input[name='course01']:checked").length > 0) {
+
+                    $("input[name='course01']")
+                        .removeClass('is-invalid')
+                        .addClass('is-valid');
+
+                    $("#course01_feedback")
+                        .removeClass("text-danger")
+                        .addClass("text-success")
+                        .text("已選擇課程內容");
+
+                    flag_course01 = true;
+
+                } else {
+
+                    $("input[name='course01']")
+                        .removeClass('is-valid')
+                        .addClass('is-invalid');
+
+                    $("#course01_feedback")
+                        .removeClass("text-success")
+                        .addClass("text-danger")
+                        .text("未選擇課程內容");
+
+                    flag_course01 = false;
+                }
+
+            });
+
+
+            // =========================
+            // 6️⃣ 會員等級
+            // =========================
+            $("input[name='level01']").change(function () {
+
+                if ($("input[name='level01']:checked").val().length > 0) {
+
+                    $("input[name='level01']")
+                        .removeClass('is-invalid')
+                        .addClass('is-valid');
+
+                    $("#level01_feedback")
+                        .removeClass("text-danger")
+                        .addClass("text-success")
+                        .text("已經選擇會員等級");
+
+                    flag_level011 = true;
+                }
+
+            });
+
+
+            // =========================
+            // 7️⃣ 確認按鈕
+            // =========================
+            $("#ok_btn").click(function () {
+
+                // 全部驗證成功
+                if (flag_planName &&
+                    flag_quot &&
+                    flag_period &&
+                    flag_branch01 &&
+                    flag_course01 &&
+                    flag_level01) {
+
+                    // ===== 可使用館別 =====
+                    let branch01ary = [];
+
+                    $("input[name='branch01']:checked").each(function () {
+
+                        branch01ary.push($(this).val());
+
+                    });
+
+
+                    // ===== 課程內容 =====
+                    let course01ary = [];
+
+                    $("input[name='course01']:checked").each(function () {
+
+                        course01ary.push($(this).val());
+
+                    });
+
+
+                    // ===== 會員等級 =====
+                    let level01 =
+                        $("input[name='level01']:checked").val();
+
+
+                    // ===== 顯示結果 =====
+                    const strHTML = `
+
+                        <div class="h2">
+                            方案名稱：
+                            ${$("#planName").val()}
+                        </div>
+
+                        <div class="h2">
+                            可招收名額：
+                            ${$("#pnum").val()}
+                        </div>
+
+                        <div class="h2">
+                            上課時段：
+                            ${$("#period").val()}
+                        </div>
+
+                        <div class="h2">
+                            可使用館別：
+                            ${branch01ary.join('、')}
+                        </div>
+
+                        <div class="h2">
+                            課程內容：
+                            ${course01ary.join('、')}
+                        </div>
+
+                        <div class="h2">
+                            會員等級：
+                            ${level01}
+                        </div>
+
+                    `;
+
+                    $("#showmsg").html(strHTML);
+
+                } else {
+
+                    // 驗證失敗
+                    Swal.fire({
+                        title: "欄位錯誤",
+                        text: "欄位錯誤請修正!",
+                        icon: "error",
+                        allowOutsideClick: false
+                    });
+
+                    $("#showmsg").html(``);
+                }
+
+            });
+
+        });
+
+    </script>
+    <script src="jquery-4.0.0.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

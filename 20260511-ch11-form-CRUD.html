@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 練習0202</title>
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss-ai.css">
+</head>
+<style>
+    @media screen and (max-width:768px) {
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                border: 2px solid var(--text-header-forest);
+                margin-top: 15px;
+                border-radius: 8px;
+                box-shadow: 3px 3px 6px 3px var(--text-header-main);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                font-size: 20px;
+                font-weight: 900;
+                color: var(--text-header-night);
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 10px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+
+            .disclaimer {
+                display: flex;
+                flex-direction: column;
+                /* 垂直排列 */
+                align-items: center;
+                /* 水平置中 */
+                justify-content: center;
+                /* 垂直置中 */
+                padding: 20px;
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 pt-5">
+                <div class="display-5 text-bg-success text-center fw-bold my-3 rounded-2 py-3">產品列表</div>
+                <table class="table shadow-lg table-rwd">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>產品編號</th>
+                            <th>產品名稱</th>
+                            <th>產品數量</th>
+                            <th>擺放地點</th>
+                            <th>產品尺寸</th>
+                            <th>產品配料</th>
+                            <th>產品甜度</th>
+                        </tr>
+                    </thead>
+                    <tbody id="plist">
+                        <tr>
+                            <td data-th="產品編號">xxx</td>
+                            <td data-th="產品名稱">xxx</td>
+                            <td data-th="產品數量">xxx</td>
+                            <td data-th="擺放地點">xxx</td>
+                            <td data-th="產品尺寸">xxx</td>
+                            <td data-th="產品配料">xxx</td>
+                            <td data-th="產品甜度">xxx</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // 取得產品列表
+        axios
+  .get('http://localhost:3000/products')    
+  .then(function (response) {
+    console.log(response);
+    response.data.forEach(function(item){
+        console.log(item.pname);
+        console.log(item.pnum);
+        const strHTML = '<tr></tr>'
+  });
+})
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+    </script>
+    
+</body>
+</html>

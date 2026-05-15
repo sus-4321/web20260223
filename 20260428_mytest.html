@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RIIZE 品牌介紹</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/mycss-ai.css">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* ===== 時間軸中線 ===== */
+.timeline{
+    position: relative;
+}
+
+.timeline::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #ccc;
+    transform: translateX(-50%);
+}
+
+/* ===== 每個區塊 ===== */
+.timeline-section{
+    position: relative;
+    padding: 50px 0;
+}
+
+/* ===== 節點 ===== */
+.timeline-section::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ===== 圖片區塊 ===== */
+.bg-img{
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* ===== hover效果 ===== */
+.timeline-section:hover{
+    background-color: #f8f9fa;
+    transition: 0.3s;
+}
+
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+.carousel-item img:hover{
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 768px){
+
+    .timeline::before{
+        display: none;
+    }
+
+    .timeline-section::before{
+        display: none;
+    }
+    .carousel-item img{height: 200px;}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container timeline">
+
+    <!-- 1 -->
+    <div class="row timeline-section align-items-center">
+        <div class="col-md-6 order-md-2">
+            <div class="bg-img" style="background-image:url(img/riize001.jpg);"></div>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h3 class="text-danger">核心定位：Emotional Pop 的服務價值</h3>
+            <p>
+            引領感官共鳴，定義新型態音樂服務。  
+            RIIZE 拋棄傳統偶像過度包裝，以 Emotional Pop 為核心，
+            將日常情感轉化為音軌，透過非線性敘事，
+            提供更透明、更具共感的藝術體驗，
+            打造「真實成長」的品牌旅程。
+            </p>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="row timeline-section align-items-center flex-row-reverse">
+        <div class="col-md-6">
+            <div class="bg-img" style="background-image:url(img/riize002.jpg);"></div>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-warning">營運升級：SM 3.0 時代的戰略實踐</h3>
+            <p>
+            架構優化，實現資源精準投放。  
+            在 SM 3.0 架構下，RIIZE 採用靈活製作體系與全球營運模式，
+            優化培訓與行銷流程，
+            確保高頻率與高品質輸出，
+            保持市場競爭力。
+            </p>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="row timeline-section align-items-center">
+        <div class="col-md-6 order-md-2">
+            <div class="bg-img" style="background-image:url(img/riize003.jpg);"></div>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h3 class="text-secondary">品牌專業感：多元成員的協作綜效</h3>
+            <p>
+            頂尖人才匯聚，打造專業堡壘。  
+            七位成員各具專長，
+            透過 Synergy 協作，
+            在舞台、視覺與品牌合作中，
+            呈現國際級質感。
+            </p>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="row timeline-section align-items-center flex-row-reverse">
+        <div class="col-md-6">
+            <div class="bg-img" style="background-image:url(img/anton11.jpg); height: 360px;"></div>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-info">會員體驗：互動式粉絲經營</h3>
+            <p>
+            以用戶為中心的會員生態。  
+            BRIIZE 作為核心，
+            透過高頻互動與數位平台，
+            建立參與式社群，
+            強化品牌忠誠度與情感連結。
+            </p>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="display-5"></div>
+    </div>
+
+
+<!-- ===== 底部區塊 ===== -->
+<div id="riizecarouse" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-indicators">
+    <button type="button" data-bs-target="#riizecarouse" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#riizecarouse" data-bs-slide-to="1" class="active"></button>
+    <button type="button" data-bs-target="#riizecarouse" data-bs-slide-to="2" class="active"></button>
+</div>
+<div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="img/riize01.jpg" alt="地理品牌合作">
+    </div>
+    <div class="carousel-item active">
+        <img src="img/riize團.jpg" alt="專輯封面">
+    </div>
+    <div class="carousel-item active">
+        <img src="img/anton13.jpg" alt="Anton雜誌">
+    </div>
+
+
+<button class="carousel-control-prev" type="button" data-bs-target="#riizecarouse" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#riizecarouse" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+</button>
+</div></div>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

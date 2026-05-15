@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <!-- 編碼：避免中文亂碼 -->
+    <meta charset="UTF-8">
+
+    <!-- 響應式：手機也能正常顯示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ch11 練習02</title>
+
+    <!-- Bootstrap 樣式 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- 自訂樣式 -->
+    <link rel="stylesheet" href="css/mycss-ai.css">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- 外層容器（Bootstrap排版用） -->
+    <!-- ========================= -->
+    <div class="container">
+
+        <!-- 水平置中 -->
+        <div class="row justify-content-center">
+
+            <!-- 表單區 -->
+            <div class="col-md-6 mt-5 shadow-lg p-3 rounded-2">
+
+                <!-- 🔴 大標題 -->
+                <!-- h1 = 字體大小樣式（不是語意） -->
+                <div class="h1 text-bg-danger text-center fw-bold py-3 rounded-3">
+                    產品建檔(飲料)
+                </div>
+
+                <!-- ========================= -->
+                <!-- 1️⃣ 產品名稱 -->
+                <!-- ========================= -->
+                <div class="mb-3">
+                    <label for="pname" class="form-label">產品名稱</label>
+
+                    <!-- 輸入框 -->
+                    <!-- is-invalid：一開始預設紅色（未通過） -->
+                    <input type="text"
+                        class="form-control is-invalid"
+                        id="pname"
+                        list="plist"
+                        placeholder="字數限制1-6!">
+
+                    <!-- 建議選項 -->
+                    <datalist id="plist">
+                        <option value="美式咖啡"></option>
+                        <option value="拿鐵咖啡"></option>
+                        <option value="精品咖啡"></option>
+                        <option value="手沖咖啡"></option>
+                    </datalist>
+
+                    <!-- 驗證提示 -->
+                    <div class="valid-feedback">產品名稱符合規定</div>
+                    <div class="invalid-feedback">產品名稱不符合規定</div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 2️⃣ 數量 -->
+                <!-- ========================= -->
+                <div class="mb-3">
+                    <label class="form-label">數量</label>
+
+                    <!-- number：只能輸入數字 -->
+                    <input type="number"
+                        class="form-control form-control-lg is-invalid"
+                        min="1" max="10"
+                        placeholder="數量限制1-10!"
+                        id="pnum">
+
+                    <div class="valid-feedback">產品數量符合規定</div>
+                    <div class="invalid-feedback">產品數量不符合規定</div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 3️⃣ 貨架（下拉選單） -->
+                <!-- ========================= -->
+                <div class="mb-3">
+                    <label for="place" class="form-label">擺放地點</label>
+
+                    <select id="place" class="form-select form-select-lg is-invalid">
+
+                        <!-- 預設選項（不能選） -->
+                        <option value="" selected disabled class="text-center fw-bold text-primary">
+                            ---請選擇貨架編號---
+                        </option>
+
+                        <!-- 選項 -->
+                        <option value="貨架編號01">貨架編號01</option>
+                        <option value="貨架編號02">貨架編號02</option>
+                        <option value="貨架編號03">貨架編號03</option>
+                        <option value="貨架編號04">貨架編號04</option>
+                    </select>
+
+                    <div class="valid-feedback">產品數量符合規定</div>
+                    <div class="invalid-feedback">產品數量不符合規定</div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 4️⃣ 尺寸（checkbox） -->
+                <!-- ========================= -->
+                <div>
+                    <label class="form-label fw-bold">產品可提供的尺寸</label>
+
+                    <!-- checkbox：可多選 -->
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input is-valid" name="chk01" value="特大" checked>
+                        <label class="form-check-label">特大</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input is-valid" name="chk01" value="大" checked>
+                        <label class="form-check-label">大</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="chk01" value="中">
+                        <label class="form-check-label">中</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="chk01" value="小">
+                        <label class="form-check-label">小</label>
+                    </div>
+
+                    <!-- 提示訊息 -->
+                    <div id="chk01_feedback" class="text-success small mt-1">
+                        產品尺寸符合規定
+                    </div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 5️⃣ 配料（checkbox） -->
+                <!-- ========================= -->
+                <div>
+                    <label class="form-label fw-bold mt-3 h5">產品可加的配料</label>
+
+                    <!-- 一開始設 is-invalid（還沒選） -->
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input is-invalid" name="chk02" value="珍珠">
+                        <label class="form-check-label">珍珠</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input is-invalid" name="chk02" value="寒天">
+                        <label class="form-check-label">寒天</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input is-invalid" name="chk02" value="椰果">
+                        <label class="form-check-label">椰果</label>
+                    </div>
+
+                    <!-- 提示 -->
+                    <div id="chk02_feedback" class="text-danger small mt-1">
+                        請至少選擇一種配料
+                    </div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 6️⃣ 甜度（radio） -->
+                <!-- ========================= -->
+                <div>
+                    <div class="form-label fw-bold mt-3 h5">產品甜度</div>
+
+                    <!-- radio：只能選一個 -->
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="radio01" value="全糖">
+                        <label class="form-check-label">全糖</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="radio01" value="半糖">
+                        <label class="form-check-label">半糖</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="radio01" value="微糖">
+                        <label class="form-check-label">微糖</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="radio01" value="無糖">
+                        <label class="form-check-label">無糖</label>
+                    </div>
+
+                    <!-- 提示 -->
+                    <div id="radio01_feedback" class="text-danger small mt-1">
+                        請選擇產品甜度
+                    </div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- 按鈕 -->
+                <!-- ========================= -->
+                <div class="text-center">
+                    <button class="btn btn-secondary">取消</button>
+                    <button class="btn btn-primary" id="ok_btn">確認</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- 結果顯示區 -->
+        <!-- ========================= -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5 shadow-lg p-3 rounded-2">
+
+                <!-- 綠色標題 -->
+                <div class="h1 text-bg-success text-center fw-bold py-3 rounded-3">
+                    結果確認
+                </div>
+
+                <!-- JS會把結果放這 -->
+                <div id="showmsg"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    // ===== 每個欄位的驗證狀態（true=通過 / false=未通過）=====
+    let flag_pname = false;   // 產品名稱
+    let flag_pnum = false;    // 數量
+    let flag_place = false;   // 貨架
+    let flag_chk01 = true;    // 尺寸（預設有勾）
+    let flag_chk2 = false;    // ❗這裡等等有BUG（下面用的是 chk02）
+    let flag_radio01 = false; // 甜度
+
+    $(function () {
+
+        // =========================
+        // 1️⃣ 產品名稱（blur：離開輸入框才檢查）
+        // =========================
+        $("#pname").blur(function () {
+
+            // 判斷字數 1~6
+            if ($(this).val().length >= 1 && $(this).val().length <= 6) {
+
+                // 正確 → 綠色
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_pname = true;
+
+            } else {
+
+                // 錯誤 → 紅色
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_pname = false;
+            }
+        });
+
+
+        // =========================
+        // 2️⃣ 數量（1~10）
+        // =========================
+        $("#pnum").blur(function () {
+
+            if ($(this).val() >= 1 && $(this).val() <= 10) {
+
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_pnum = true;
+
+            } else {
+
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_pnum = false;
+            }
+        });
+
+
+        // =========================
+        // 3️⃣ 貨架（select）
+        // =========================
+        $("#place").change(function () {
+
+            // 有選就算過
+            $(this).removeClass('is-invalid').addClass('is-valid');
+            flag_place = true;
+        });
+
+
+        // =========================
+        // 4️⃣ 尺寸（checkbox）
+        // =========================
+        $("input[name='chk01']").change(function () {
+
+            // 計算「被勾選的數量」
+            if ($("input[name='chk01']:checked").length > 0) {
+
+                // 至少一個 → OK
+                $("input[name='chk01']").removeClass('is-invalid').addClass('is-valid');
+
+                $("#chk01_feedback")
+                    .removeClass("text-danger")
+                    .addClass("text-success")
+                    .text("產品尺寸符合規定");
+
+                flag_chk01 = true;
+
+            } else {
+
+                // 一個都沒選 → 錯誤
+                $("input[name='chk01']").removeClass('is-valid').addClass('is-invalid');
+
+                $("#chk01_feedback")
+                    .removeClass("text-success")
+                    .addClass("text-danger")
+                    .text("產品尺寸不符合規定");
+
+                flag_chk01 = false;
+            }
+        });
+
+
+        // =========================
+        // 5️⃣ 配料（checkbox）
+        // =========================
+        $("input[name='chk02']").change(function () {
+
+            if ($("input[name='chk02']:checked").length > 0) {
+
+                $("input[name='chk02']").removeClass('is-invalid').addClass('is-valid');
+
+                $("#chk02_feedback")
+                    .removeClass("text-danger")
+                    .addClass("text-success")
+                    .text("產品已選擇配料");
+
+                flag_chk02 = true;   // ⚠️ 注意這裡
+
+            } else {
+
+                $("input[name='chk02']").removeClass('is-valid').addClass('is-invalid');
+
+                $("#chk02_feedback")
+                    .removeClass("text-success")
+                    .addClass("text-danger")
+                    .text("產品未選擇配料");
+
+                flag_chk02 = false;
+            }
+        });
+
+
+        // =========================
+        // 6️⃣ 甜度（radio）
+        // =========================
+        $("input[name='radio01']").change(function () {
+
+            // 取得被選的值
+            if ($("input[name='radio01']:checked").val().length > 0) {
+
+                $("input[name='radio01']").removeClass('is-invalid').addClass('is-valid');
+
+                $("#radio01_feedback")
+                    .removeClass("text-danger")
+                    .addClass("text-success")
+                    .text("已經選擇甜度");
+
+                flag_radio01 = true;
+
+            }
+        });
+
+
+        // =========================
+        // 7️⃣ 按鈕（最重要🔥）
+        // =========================
+        $("#ok_btn").click(function () {
+
+            // 👉 所有欄位都要通過
+            if (flag_pname && flag_pnum && flag_place && flag_chk01 && flag_chk02 && flag_radio01) {
+
+                // ===== 收集 checkbox（尺寸）=====
+                let chk01ary = [];
+
+                $("input[name='chk01']:checked").each(function () {
+                    chk01ary.push($(this).val()); // 把值放進陣列
+                });
+
+                // ===== 收集 radio（甜度）=====
+                let rdaio01 = $("input[name='radio01']:checked").val();
+
+                // ===== 顯示結果 =====
+                const strHTML = `
+                    <div class="h2">產品名稱: ${$("#pname").val()}</div>
+                    <div class="h2">產品數量: ${$("#pnum").val()}</div>
+                    <div class="h2">貨架編號: ${$("#place").val()}</div>
+                    <div class="h2">產品尺寸: ${chk01ary.join(', ')}</div>
+                    <div class="h2">產品甜度: ${rdaio01}</div>
+                `;
+
+                $("#showmsg").html(strHTML);
+
+            } else {
+
+                // ❌ 錯誤 → 跳 SweetAlert
+                Swal.fire({
+                    title: "欄位錯誤",
+                    text: "欄位錯誤請修正!",
+                    icon: "error",
+                    allowOutsideClick: false
+                });
+
+                $("#showmsg").html(``);
+            }
+        });
+
+    });
+</script>
