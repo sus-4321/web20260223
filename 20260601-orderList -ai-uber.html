@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Eats 商家後台 - 訂單管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /* 1. 全域變數定義與背景設定 */
+        :root {
+            --ue-green: #06C167;       /* Uber Eats 經典綠 */
+            --ue-black: #000000;       /* 純黑 */
+            --ue-dark: #1F1F1F;        /* 主要文字深灰 */
+            --ue-gray: #6B6B6B;        /* 次要文字中灰 */
+            --ue-light-bg: #F6F6F6;    /* 整體畫面的淺灰背景 */
+            --ue-danger: #E11900;      /* 警示紅 */
+            --ue-border: #EEEEEE;      /* 內部分隔線 */
+        }
+
+        body {
+            background-color: var(--ue-light-bg) !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            color: var(--ue-dark);
+        }
+
+        /* 2. 卡片主體與陰影美化 */
+        .card.shadow-sm {
+            border: none !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+            background-color: #ffffff !important;
+        }
+
+        /* 3. 卡片頂部標題列強行覆寫 (純黑質感) */
+        .card-header.bg-white {
+            background-color: var(--ue-black) !important;
+            color: #ffffff !important;
+            border-bottom: none !important;
+            padding: 1rem 1.25rem !important;
+        }
+
+        /* 4. 狀態標籤強行覆寫 (經典綠) */
+        .badge.text-bg-warning {
+            background-color: var(--ue-green) !important;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            padding: 0.5em 0.8em !important;
+            border-radius: 6px !important;
+            font-size: 0.85rem !important;
+        }
+
+        /* 5. 內容文字色彩層次優化 */
+        .card-body .fs-5.fw-bold {
+            color: var(--ue-black) !important;
+            font-size: 1.35rem !important; /* 放大名字 */
+        }
+
+        .text-secondary {
+            color: var(--ue-gray) !important;
+        }
+
+        .fw-bold:not(.text-danger) {
+            color: var(--ue-dark) !important;
+        }
+
+        /* 6. 分隔線優化 */
+        .border-top {
+            border-top: 1px solid var(--ue-border) !important;
+        }
+
+        /* 7. 卡片頁尾與金額覆寫 */
+        .card-footer {
+            background-color: #ffffff !important;
+            border-top: 1px solid var(--ue-border) !important;
+            padding: 1.25rem !important;
+        }
+
+        /* 強行將原本的 text-danger 紅色，修正為更具質感的 Uber 暗紅/深黑 */
+        .text-danger {
+            color: var(--ue-black) !important; 
+            font-size: 1.6rem !important; /* 放大金額 */
+        }
+
+        /* 8. 三顆按鈕風格全面重新定義 */
+        .gap-2 {
+            gap: 10px !important;
+        }
+
+        /* 按鈕 A：查看明細 (原本的 btn-outline-primary) */
+        .btn.btn-outline-primary {
+            background-color: #F6F6F6 !important;
+            color: var(--ue-black) !important;
+            border: none !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            font-size: 0.95rem !important;
+            padding: 0.6rem 0 !important;
+            transition: background 0.2s;
+        }
+        .btn.btn-outline-primary:hover {
+            background-color: #E2E2E2 !important;
+        }
+
+        /* 按鈕 B：修改訂單 (原本的 btn-success -> 變成核心綠色按鈕) */
+        .btn.btn-success {
+            background-color: var(--ue-green) !important;
+            border-color: var(--ue-green) !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            font-size: 0.95rem !important;
+            padding: 0.6rem 0 !important;
+            transition: opacity 0.2s;
+        }
+        .btn.btn-success:hover {
+            opacity: 0.9 !important;
+            background-color: var(--ue-green) !important;
+        }
+
+        /* 按鈕 C：刪除訂單 (原本的 btn-outline-danger) */
+        .btn.btn-outline-danger {
+            background-color: transparent !important;
+            color: var(--ue-danger) !important;
+            border: 1px solid #FAD4D2 !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            font-size: 0.95rem !important;
+            padding: 0.6rem 0 !important;
+            transition: all 0.2s;
+        }
+        .btn.btn-outline-danger:hover {
+            background-color: var(--ue-danger) !important;
+            color: #ffffff !important;
+            border-color: var(--ue-danger) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                        <div class="fs-5">訂單編號 #XXX</div>
+                        <span class="badge text-bg-warning">待處理</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="fs-5 fw-bold">王小名</div>
+                            <div class="text-secondary">用餐人數: 10人</div>
+                        </div>
+                        <div class="border-top pt-3">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">取餐方式</span>
+                                <span class="fw-bold">櫃台取餐</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">付款方式</span>
+                                <span class="fw-bold">現金</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">點餐數量</span>
+                                <span class="fw-bold">3項</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">備註</span>
+                                <span class="fw-bold">不用餐具</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mb-2 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">總金額</span>
+                            <span class="fw-bold fs-4 text-danger">1000元</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">查看明細</button>
+                            <button class="btn btn-success flex-fill">修改訂單</button>
+                            <button class="btn btn-outline-danger flex-fill">刪除訂單</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

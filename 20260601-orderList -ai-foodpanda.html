@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foodpanda 商家後台 - 訂單管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /* 1. 定義 foodpanda 品牌專屬色碼 */
+        :root {
+            --fp-pink: #E21B70;        /* 經典熊貓粉紅 */
+            --fp-pink-light: #FEE8F1;  /* 柔和淺粉紅（標籤與背景襯底用） */
+            --fp-dark: #222222;        /* 主要文字深灰黑 */
+            --fp-gray: #767676;        /* 次要文字中灰 */
+            --fp-bg: #FDF5F7;          /* 帶有微粉紅調的淺白背景 */
+            --fp-border: #F3E5EB;      /* 粉灰調線條 */
+        }
+
+        /* 2. 整體背景與字體風格 */
+        body {
+            background-color: var(--fp-bg) !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            color: var(--fp-dark);
+        }
+
+        /* 3. 大標題改為 foodpanda 核心粉紅 */
+        .display-3.fw-bold.text-center {
+            color: var(--fp-pink) !important;
+            font-weight: 900 !important;
+        }
+
+        /* 4. 卡片外觀：切換為圓潤、高明度的甜美視覺質感 */
+        .card.shadow-sm {
+            border: 1px solid var(--fp-border) !important;
+            border-radius: 16px !important; /* 圓潤切角符合品牌親和力 */
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(226, 27, 112, 0.04) !important; /* 帶有微粉紅的輕量陰影 */
+            background-color: #ffffff !important;
+        }
+
+        /* 5. 卡片頂部標題列 */
+        .card-header.bg-white {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid var(--fp-border) !important;
+            padding: 1.1rem 1.25rem !important;
+        }
+
+        .card-header .fs-5 {
+            color: var(--fp-dark) !important;
+            font-weight: 700 !important;
+        }
+
+        /* 6. 「待處理」狀態標籤：優雅的粉底紅字膠囊 */
+        .badge.text-bg-warning {
+            background-color: var(--fp-pink-light) !important;
+            color: var(--fp-pink) !important;
+            font-weight: 600 !important;
+            padding: 0.5em 0.85em !important;
+            border-radius: 50px !important;
+            font-size: 0.85rem !important;
+        }
+
+        /* 7. 卡片主體文字與排版 */
+        .card-body {
+            padding: 1.25rem !important;
+        }
+
+        .customer-name {
+            color: var(--fp-dark) !important;
+            font-size: 1.3rem !important;
+            font-weight: 700 !important;
+        }
+
+        .text-secondary {
+            color: var(--fp-gray) !important;
+        }
+
+        .fw-bold:not(.text-danger) {
+            color: var(--fp-dark) !important;
+        }
+
+        /* 分隔線改為溫和粉灰色 */
+        .border-top {
+            border-top: 1px solid var(--fp-border) !important;
+        }
+
+        /* 8. 卡片頁尾與總金額（收據外送小票風格） */
+        .card-footer {
+            background-color: #ffffff !important;
+            border-top: 1px dashed var(--fp-border) !important; /* 點餐收據常用的虛線 */
+            padding: 1.25rem !important;
+        }
+
+        .card-footer .fw-bold {
+            color: var(--fp-dark) !important;
+        }
+
+        /* 金額呈現霸氣粉紅大字 */
+        .text-danger {
+            color: var(--fp-pink) !important;
+            font-size: 1.6rem !important;
+            font-weight: 800 !important;
+        }
+
+        /* 9. 三顆按鈕風格完美配對 */
+        .gap-2 {
+            gap: 12px !important;
+        }
+
+        /* 按鈕 A：查看明細 (原本的 btn-outline-primary -> 改為輕柔的粉紅框鈕) */
+        .btn.btn-outline-primary {
+            background-color: transparent !important;
+            color: var(--fp-pink) !important;
+            border: 1px solid var(--fp-pink) !important;
+            font-weight: 600 !important;
+            border-radius: 10px !important;
+            font-size: 0.95rem !important;
+            padding: 0.55rem 0 !important;
+            transition: all 0.2s;
+        }
+        .btn.btn-outline-primary:hover {
+            background-color: var(--fp-pink-light) !important;
+        }
+
+        /* 按鈕 B：修改訂單 (原本的 btn-success -> 晉升為 foodpanda 核心滿版粉紅主按鈕) */
+        .btn.btn-success {
+            background-color: var(--fp-pink) !important;
+            border-color: var(--fp-pink) !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            border-radius: 10px !important;
+            font-size: 0.95rem !important;
+            padding: 0.55rem 0 !important;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+        .btn.btn-success:hover {
+            opacity: 0.9 !important;
+            background-color: var(--fp-pink) !important;
+        }
+
+        /* 按鈕 C：刪除訂單 (原本的 btn-outline-danger -> 修正為低調的灰線框) */
+        .btn.btn-outline-danger {
+            background-color: transparent !important;
+            color: var(--fp-gray) !important;
+            border: 1px solid #E0E0E0 !important;
+            font-weight: 500 !important;
+            border-radius: 10px !important;
+            font-size: 0.95rem !important;
+            padding: 0.55rem 0 !important;
+            transition: all 0.2s;
+        }
+        .btn.btn-outline-danger:hover {
+            background-color: #F5F5F5 !important;
+            color: #CC0000 !important;
+            border-color: #CC0000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4" id="app">
+        <div class="row g-4">
+            <div class="display-3 fw-bold text-center mb-4">{{ title }}</div>
+            
+            <div class="col-12 col-md-6 col-xl-4" v-for="item in orders" :key="item.id">
+                <div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                        <div class="fs-5">訂單編號 #{{ item.id }}</div>
+                        <span class="badge text-bg-warning">{{ item.status || '待處理' }}</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="customer-info mb-3">
+                            <div class="customer-name">
+                                {{ item.customerName }}
+                            </div>
+                            <div class="text-secondary">用餐人數: {{ item.people }}人</div>
+                        </div>
+                        <div class="border-top pt-3">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">取餐方式</span>
+                                <span class="fw-bold">{{ item.pickupMethod }}</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">付款方式</span>
+                                <span class="fw-bold">{{ item.paymentMethod }}</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">點餐數量</span>
+                                <span class="fw-bold">{{ item.totalItems }}項</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">備註</span>
+                                <span class="fw-bold">{{ item.note }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mb-2 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">總金額</span>
+                            <span class="fw-bold fs-4 text-danger">{{ item.totalPrice }}元</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">查看明細</button>
+                            <button class="btn btn-success flex-fill">修改訂單</button>
+                            <button class="btn btn-outline-danger flex-fill">刪除訂單</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    title: "foodpanda 訂單管理",
+                    orders: [] 
+                }
+            },
+            methods: {
+                // 核心防呆：定義一組專屬於 foodpanda 的預設模擬資料
+                setDefaultOrders() {
+                    this.orders = [
+                        {
+                            id: "FP-7712",
+                            status: "待處理",
+                            customerName: "王小名",
+                            people: 10,
+                            pickupMethod: "櫃台取餐",
+                            paymentMethod: "現金",
+                            totalItems: 3,
+                            note: "不用餐具",
+                            totalPrice: 1000
+                        }
+                    ];
+                },
+                getOrders(){
+                    const vm = this;
+                    axios.get('http://localhost:3000/orders')
+                    .then(function (response){
+                        console.log("成功由 json-server 取得實際訂單:", response.data);
+                        if (response.data && response.data.length > 0) {
+                            vm.orders = response.data;
+                        } else {
+                            vm.setDefaultOrders(); // 如果後端回傳空陣列，就用預設資料防呆
+                        }
+                    })
+                    .catch(function(error){
+                        console.log("目前未連線到 json-server，已載入 foodpanda 預設模擬資料顯示。");
+                        vm.setDefaultOrders(); // 連線失敗時強制載入模擬資料，確保畫面絕對不會空白！
+                    });
+                }
+            },
+            mounted() {
+                this.getOrders();
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

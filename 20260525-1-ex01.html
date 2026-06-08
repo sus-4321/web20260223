@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs 練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row justify-content-center">
+            <div class="display-4 text-center text-bg-success my-3 py-3 rounded-2">
+                Vuejs 練習 - 點餐
+            </div>
+
+            <div class="col-10">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="isOrder">
+                    <label for="isOrder" class="form-check-label">點餐</label>
+                </div>
+
+                <hr>
+
+                <div>
+                    <div class="h3 mb-3">填寫訂單資料</div>
+
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">訂餐人姓名(2~5字)</label>
+                        <input type="text" id="customerName" class="form-control">
+                        <div class="valid-feedback">
+                            姓名格式正確
+                        </div>
+                        <div class="invalid-feedback">
+                            姓名格式不正確
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="customerCount" class="form-label">用餐人數(1~20人)</label>
+                        <input type="number" id="customerCount" min="1" max="20" class="form-control">
+                        <div class="valid-feedback">
+                            用餐人數介於1~20人，符合規定。
+                        </div>
+                        <div class="invalid-feedback">
+                            用餐人數必須介於1~20人
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="memo" class="form-label">備註(1~20字)</label>
+                        <textarea class="form-control" id="memo" rows="3"
+                            placeholder="例如: 不要香菜，餐具多一分...."></textarea>
+
+                        <div class="form-text">
+                            目前的字數: 0 / 20
+                        </div>
+
+                        <div class="valid-feedback">
+                            備註格式正確
+                        </div>
+                        <div class="invalid-feedback">
+                            備註格式不正確
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="h3 mb-3">先選餐點</div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="大麥克套餐" id="meal01" v-model="meal101">
+                        <label for="meal01" class="form-check-label">
+                            大麥克套餐 -- 135 元
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="雙層牛肉吉事堡套餐" id="meal02" v-model="meal102">
+                        <label for="meal02" class="form-check-label">
+                            雙層牛肉吉事堡套餐 -- 125 元
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="麥香雞套餐" id="meal03" v-model="meal103">
+                        <label for="meal03" class="form-check-label">
+                            麥香雞套餐 -- 115 元
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="麥克雞塊 6 塊餐" id="meal04" v-model="meal104">
+                        <label for="meal04" class="form-check-label">
+                            麥克雞塊 6 塊餐 -- 129 元
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="嫩煎雞腿堡套餐" id="meal05" v-model="meal105">
+                        <label for="meal05" class="form-check-label">
+                            嫩煎雞腿堡套餐 -- 145 元
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="勁辣雞腿堡套餐" id="meal06" v-model="meal106">
+                        <label for="meal06" class="form-check-label">
+                            勁辣雞腿堡套餐 -- 145 元
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <div class="h3">選擇付款方式</div>
+                    <div class="mb-3">
+                        <select class="form-select" id="payType">
+                            <option value="" disabled selected>選擇付款方式</option>
+                            <option value="信用卡">信用卡</option>
+                            <option value="現金">現金</option>
+                            <option value="LINE PAY">LINE PAY</option>
+                            <option value="APPLE PAY">APPLE PAY</option>
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="h3">選擇取餐方式</div>
+
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" value="櫃台取餐" id="pickupType01"
+                            name="pickupType">
+                        <label for="pickupType01" class="form-label">櫃台取餐</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" value="送到座位" id="pickupType02"
+                            name="pickupType">
+                        <label for="pickupType02" class="form-label">送到座位</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" value="得來速" id="pickupType03"
+                            name="pickupType">
+                        <label for="pickupType03" class="form-label">得來速</label>
+                    </div>
+
+                    <hr>
+
+                    <div class="alert alert-info">
+                        <div class="h3 mb-3">訂單內容</div>
+
+                        <div class="mb-3">
+                            訂餐人:
+                            <span class="fw-bold text-danger h5">尚未填寫</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-3">
+                            用餐人數:
+                            <span class="fw-bold text-danger h5">0</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="h3 mb-3">已選餐點</div>
+
+                        <div class="mb-3">
+                            目前共選擇:
+                            <span class="fw-bold text-danger h5">0</span>
+                            個餐點
+                        </div>
+
+                        <div class="mb-3">
+                            付款方式:
+                            <span class="fw-bold text-danger h5">尚未選擇付款方式</span>
+                        </div>
+
+                        <div class="mb-3">
+                            取餐方式:
+                            <span class="fw-bold text-danger h5">尚未選擇取餐方式</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-3">
+                            備註:
+                            <span class="fw-bold text-danger h5">無</span>
+                        </div>
+
+                        <hr>
+
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>尚未選擇餐點</span>
+                                <span>0元</span>
+                            </li>
+                        </ul>
+
+                        <div class="h4 text-end mt-3 fw-bold">
+                            總金額: 0元
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.global.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    meal01: false,
+                    meal02: false,
+                    meal03: false,
+                    meal04: false,
+                    meal05: false,
+                    meal06: false
+                }
+            }
+        }).mount("#app");
+    </script>
+    
+</body>
+
+</html>

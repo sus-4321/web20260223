@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麥當勞點餐系統 - 訂單管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <style>
+        /* 麥當勞品牌核心色彩定義 */
+        :root {
+            --mcd-red: #DA291C;       /* 麥當勞經典紅 */
+            --mcd-yellow: #FFC72C;    /* 麥當勞金色拱門黃 */
+            --mcd-dark: #222222;      /* 深沉質感灰黑 */
+            --mcd-light: #F4F4F4;     /* 溫和背景灰 */
+        }
+
+        body {
+            background-color: var(--mcd-light);
+            font-family: "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+        }
+
+        /* 卡片主體美化 */
+        .mcd-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background-color: #ffffff;
+        }
+
+        .mcd-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* 頂部標題列：改為麥當勞紅底 */
+        .mcd-header {
+            background-color: var(--mcd-red) !important;
+            color: #ffffff !important;
+            padding: 1rem 1.25rem;
+            border-bottom: none;
+            font-weight: 600;
+        }
+
+        /* 狀態標籤：經典黃底黑字 */
+        .mcd-badge {
+            background-color: var(--mcd-yellow) !important;
+            color: var(--mcd-dark) !important;
+            font-weight: bold;
+            padding: 0.5em 0.8em;
+            border-radius: 6px;
+        }
+
+        /* 文字色彩調整 */
+        .mcd-text-primary {
+            color: var(--mcd-dark) !important;
+        }
+
+        .mcd-text-price {
+            color: var(--mcd-red) !important;
+        }
+
+        /* 按鈕全面美化 */
+        .btn-mcd-primary {
+            background-color: var(--mcd-yellow);
+            color: var(--mcd-dark);
+            border: 1px solid var(--mcd-yellow);
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-mcd-primary:hover {
+            background-color: #E5B324;
+            border-color: #E5B324;
+            color: var(--mcd-dark);
+        }
+
+        .btn-mcd-outline {
+            background-color: transparent;
+            color: #666666;
+            border: 1px solid #E0E0E0;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-mcd-outline:hover {
+            background-color: #EEEEEE;
+            color: var(--mcd-dark);
+            border-color: #CCCCCC;
+        }
+
+        .btn-mcd-danger {
+            background-color: transparent;
+            color: var(--mcd-red);
+            border: 1px solid #FAD4D2;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-mcd-danger:hover {
+            background-color: var(--mcd-red);
+            color: #ffffff;
+            border-color: var(--mcd-red);
+        }
+
+        /* 底部區域微調 */
+        .mcd-footer {
+            background-color: #ffffff;
+            border-top: 1px dashed #E0E0E0;
+            padding: 1.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card mcd-card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center mcd-header">
+                        <div class="fs-5">訂單編號 #XXX</div>
+                        <span class="badge mcd-badge">待處理</span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <div class="fs-4 fw-bold mcd-text-primary">王小名</div>
+                            <div class="text-secondary mt-1">用餐人數: 10人</div>
+                        </div>
+                        <div class="border-top pt-3">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">取餐方式</span>
+                                <span class="fw-bold mcd-text-primary">櫃台取餐</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">付款方式</span>
+                                <span class="fw-bold mcd-text-primary">現金</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">點餐數量</span>
+                                <span class="fw-bold mcd-text-primary">3項</span>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-secondary">備註</span>
+                                <span class="fw-bold text-muted">不用餐具</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer mcd-footer">
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold mcd-text-primary fs-5">總金額</span>
+                            <span class="fw-bold fs-3 mcd-text-price">1,000元</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-mcd-outline flex-fill">查看明細</button>
+                            <button class="btn btn-mcd-primary flex-fill">修改訂單</button>
+                            <button class="btn btn-mcd-danger flex-fill">刪除訂單</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
