@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chartjs</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 mt-5">
+                <div class="card">
+                    <div class="card-header text-bg-warning fw-bold">
+                        <div class="h4">甘特圖表</div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart01"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <div class="card">
+                    <div class="card-header text-bg-warning fw-bold">
+                        <div class="h4">折線圖表</div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart02"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <div class="card">
+                    <div class="card-header text-bg-warning fw-bold">
+                        <div class="h4">圓餅圖表</div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart03"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 甘特圖表
+        const ctx01 = document.getElementById('myChart01');
+
+        new Chart(ctx01, {
+            type: 'bar',
+            data: {
+                labels: ['待處理', '製作中', '已完成', '已取消'],
+                datasets: [{
+                    label: '# 訂單狀態統計',
+                    data: [12, 19, 3, 5],
+                    borderWidth: 2,
+                    backgroundColor: [
+                        '#facc15', // 待處理
+                        '#3b82f6', // 製作中
+                        '#22c55e', // 已完成
+                        '#ef4444'  // 已取消
+                    ],
+                    borderColor: [
+                        '#ca8a04',
+                        '#1d4ed8',
+                        '#15803d',
+                        '#b91c1c'
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 折線圖表
+        const ctx02 = document.getElementById('myChart02');
+
+        new Chart(ctx02, {
+            type: 'line',
+            data: {
+                labels: ['待處理', '製作中', '已完成', '已取消'],
+                datasets: [{
+                    label: '# 訂單狀態統計',
+                    data: [12, 19, 3, 5],
+                    borderWidth: 2,
+                    backgroundColor: [
+                        '#facc15', // 待處理
+                        '#3b82f6', // 製作中
+                        '#22c55e', // 已完成
+                        '#ef4444'  // 已取消
+                    ],
+                    borderColor: [
+                        '#ca8a04',
+                        '#1d4ed8',
+                        '#15803d',
+                        '#b91c1c'
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 圓餅圖表
+        const ctx03 = document.getElementById('myChart03');
+
+        new Chart(ctx03, {
+            type: 'pie',
+            data: {
+                labels: ['待處理', '製作中', '已完成', '已取消'],
+                datasets: [{
+                    label: '# 訂單狀態統計',
+                    data: [12, 19, 3, 5],
+                    borderWidth: 2,
+                    backgroundColor: [
+                        '#facc15', // 待處理
+                        '#3b82f6', // 製作中
+                        '#22c55e', // 已完成
+                        '#ef4444'  // 已取消
+                    ],
+                    borderColor: [
+                        '#ca8a04',
+                        '#1d4ed8',
+                        '#15803d',
+                        '#b91c1c'
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題改為你的超酷酷炫餐廳名稱 -->
+    <title>NEON BITE 霓幻饗宴</title>
+    <!-- 引入 Bootstrap 與 Font Awesome 的 CSS 檔案 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+
+<body>
+    <!-- ========================================================================= -->
+    <!-- Section 1 ｜ 社群連結 (Social Links Bar)                                  -->
+    <!-- 背景改為 bg-dark (深色)，更能襯託後續 Unsplash 提供的霓虹暗黑風格氛圍        -->
+    <!-- ========================================================================= -->
+    <section class="bg-dark" id="s01" style="border-bottom: 1px solid #333;">
+        <div class="container">
+            <!-- 靠右對齊，並在垂直方向加上內襯線 (py-2) -->
+            <div class="text-end py-2">
+                <!-- 依據 image_a4a8d9.png 的原創文案 -->
+                <span class="text-secondary small me-3">Follow the Flavor ｜ 追隨我們的美味浪潮</span>
+                
+                <!-- Facebook 連結：搭配原創文案品牌名稱 -->
+                <a href="#" title="Neon Bite 霓幻饗宴 FB" class="me-2">
+                    <i class="fa-brands fa-square-facebook text-primary"></i>
+                </a>
+                
+                <!-- Instagram 連結 -->
+                <a href="#" title="Neon Bite IG" class="me-2">
+                    <i class="fa-brands fa-instagram" style="color: rgb(225, 92, 213);"></i>
+                </a>
+                
+                <!-- LINE 官方帳號連結 -->
+                <a href="#" title="Neon Bite LINE官方帳號" class="me-2">
+                    <i class="fa-brands fa-line text-success"></i>
+                </a>
+
+                <!-- TikTok 連結 -->
+                <a href="#" title="Neon Bite TikTok">
+                    <i class="fa-brands fa-tiktok text-light"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 2 ｜ Navbar 導覽列                                                -->
+    <!-- 使用 bg-dark 與 navbar-dark，打造符合「霓幻」的暗色基底效果                  -->
+    <!-- ========================================================================= -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+        <div class="container">
+            <!-- 品牌 Logo 區塊：替換為全新的品牌名稱 NEON BITE -->
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fa-solid fa-burger me-2" style="color: #ff007f;"></i>NEON BITE
+            </a>
+            
+            <!-- 手機版 RWD 漢堡選單按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- 導覽列選單內容 -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- 使用 me-auto，將右側空間留給搜尋與按鈕 -->
+                    
+                    <!-- 1. 首頁精選 -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#s03">
+                            <i class="fa-solid fa-house me-1" style="color: #ffee00;"></i>首頁精選
+                        </a>
+                    </li>
+                    
+                    <!-- 2. 關於霓幻 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#s04">
+                            <i class="fa-solid fa-burger me-1" style="color: #ff00bf;"></i>關於霓幻
+                        </a>
+                    </li>
+                    
+                    <!-- 3. 極致美味 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#s06">
+                            <i class="fa-solid fa-utensils me-1" style="color: #ffd900;"></i>極致美味
+                        </a>
+                    </li>
+                    
+                    <!-- 4. 饕客好評 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#s08">
+                            <i class="fa-solid fa-comments me-1" style="color: #00e1ff;"></i>饕客好評
+                        </a>
+                    </li>
+                    
+                    <!-- 5. 聯絡我們 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#s11">
+                            <i class="fa-solid fa-location-dot me-1" style="color: #ff007f;"></i>聯絡我們
+                        </a>
+                    </li>
+                    
+                    <!-- 6. 行動呼籲按鈕：立即點餐 (Order Now) -->
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="20260601-orderList-ai02-uberEat.html">
+                            <i class="fa-solid fa-motorcycle me-1"></i>立即點餐 (Order Now)
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- ========================================================================= -->
+                <!-- 搜尋與登入區塊（新加入）                                                   -->
+                <!-- ========================================================================= -->
+                <!-- 使用 d-flex 讓表單和按鈕在同一行排列 -->
+                <div class="d-flex align-items-center mt-2 mt-lg-0">
+                    <!-- 搜尋輸入框：套用 Bootstrap 的 Form Control，並加入放大鏡圖示按鈕 -->
+                    <div class="input-group input-group-sm me-3" style="max-width: 200px;">
+                        <input type="text" class="form-control bg-secondary text-white border-0" placeholder="搜尋美食..." aria-label="Search">
+                        <button class="btn btn-outline-secondary border-0 text-light" type="button">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+
+                    <!-- 登入按鈕：保留老師原有的藍色 btn-primary 與 Font Awesome 圖示 -->
+                    <button class="btn btn-primary btn-sm px-3">
+                        <i class="fa-solid fa-arrow-right-to-bracket me-1"></i>登入
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================================================= -->
+    <!-- Section 3 ｜ Hero Carousel                                                -->
+    <!-- ========================================================================= -->
+    <section id="s03" class="carousel slide" data-bs-ride="carousel" style="max-height: 600px; overflow: hidden;">
+        <div class="carousel-inner">
+            
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="img/gourmet burger neon.jpg" class="d-block w-100" alt="解鎖深夜的飢餓靈魂" style="height: 600px; object-fit: cover; object-position: center;">
+                
+                <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                    <h2 class="fw-bold text-warning">解鎖深夜的飢餓靈魂</h2>
+                    <p>全新美式街頭風格，大口咬下，肉汁與醬料的完美交響樂。</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="img/grill burger patty.avif" class="d-block w-100" alt="嚴選食材，現點現做" style="height: 600px; object-fit: cover; object-position: center;">
+                
+                <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                    <h2 class="fw-bold text-warning">嚴選食材，現點現做</h2>
+                    <p>100% 純牛肉、金黃酥脆炸雞，給你最無妥協的味覺震撼。</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="img/friends eating burger neon.avif" class="d-block w-100" alt="期間限定！霓幻派對組合" style="height: 600px; object-fit: cover; object-position: center;">
+                
+                <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                    <h2 class="fw-bold text-warning">期間限定！霓幻派對組合</h2>
+                    <p>限時免運外送中，與好友一起分享這份極致的罪惡美味。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#s03" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        
+        <button class="carousel-control-next" type="button" data-bs-target="#s03" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 4 ｜ 關於我們                                                     -->
+    <!-- ========================================================================= -->
+    <section id="s04" class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="img/neon restaurant interior bar.avif" class="img-fluid rounded shadow-lg" alt="NEON BITE 餐廳內装" style="max-height: 400px; width: 100%; object-fit: cover;">
+                </div>
+                
+                <div class="col-md-6 px-lg-5">
+                    <h6 class="text-warning text-uppercase tracking-wider mb-2">ABOUT NEON BITE</h6>
+                    <h2 class="fw-bold mb-4">關於 NEON BITE <span class="text-danger">｜</span> 顛覆想像的美味基地</h2>
+                    
+                    <p class="text-secondary lh-lg mb-4">
+                        我們相信，食物不只是填飽肚子，更是一場視覺與味覺的雙重冒險。
+                        <span class="text-light">「NEON BITE 霓幻饗宴」</span>誕生於對美式高熱量美學的極致追求。
+                    </p>
+                    <p class="text-secondary lh-lg mb-4">
+                        我們打破傳統速食的框架，用霓虹般絢麗的創意醬料，搭配厚實多汁的經典肉排，在城市的角落為所有深夜飢餓的靈魂，打造一個放縱美味的霓幻基地。
+                    </p>
+                    
+                    <a href="#s06" class="btn btn-outline-light px-4 py-2 rounded-pill mt-2">
+                        探索極致美味 <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 5 ｜ 核心堅持                                                     -->
+    <!-- ========================================================================= -->
+    <section id="s05" class="bg-dark text-white py-5" style="border-top: 1px solid #222;">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <h6 class="text-warning text-uppercase tracking-wider mb-2">OUR ADVANTAGES</h6>
+                <h2 class="fw-bold">為什麼選擇 NEON BITE？</h2>
+                <p class="text-secondary small">我們對美味從不妥協，三大核心堅持打造街頭傳奇</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow">
+                        <img src="img/gourmet burger patty.avif" class="card-img-top" alt="Gourmet Burger Patty" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-warning mb-3">
+                                <i class="fa-solid fa-fire-burner me-2"></i>100% 頂級純牛肉
+                            </h5>
+                            <p class="card-text text-light small lh-base">
+                                炙烤厚肉排切面，展現飽滿肉汁。完美肥瘦比例，每一口都是原汁原味的震撼。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow">
+                        <img src="img/pouring sauce burger.jpg" class="card-img-top" alt="Exclusive Neon Sauce" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-warning mb-3">
+                                <i class="fa-solid fa-flask-vial me-2"></i>獨家秘製霓幻醬汁
+                            </h5>
+                            <p class="card-text text-light small lh-base">
+                                濃郁起司醬或獨門沾醬流淌下來的特寫。酸甜熱辣平衡，讓人上癮的致命吸引力。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow">
+                        <img src="img/crispy chicken burger.avif" class="card-img-top" alt="Fresh & Made to Order" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-warning mb-3">
+                                <i class="fa-solid fa-bolt me-2"></i>極速現點現做
+                            </h5>
+                            <p class="card-text text-light small lh-base">
+                                剛起鍋、熱氣騰騰的酥脆炸物或漢堡。拒絕預製！堅持在最完美的溫度鎖住黃金酥脆度。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 6 ｜ 精選菜單                                                     -->
+    <!-- ========================================================================= -->
+    <section id="s06" class="bg-dark text-white py-5" style="border-top: 1px solid #222;">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <h6 class="text-warning text-uppercase tracking-wider mb-2">FEATURED MENU</h6>
+                <h2 class="fw-bold">精選菜單 <span class="text-danger">｜</span> 極致美味套餐</h2>
+                <p class="text-secondary small">套餐均附現炸黃金薯條與大杯冷飲，滿足感一次到位</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/double cheeseburger.avif" class="card-img-top" alt="大麥克套餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">大麥克套餐</h5>
+                                <p class="card-text text-light small">經典雙層牛肉、秘製霓幻醬汁與融化起司的多層次完美交響樂。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 135</span>
+                                <span class="badge bg-danger">CLASSIC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/smash burger cheese.avif" class="card-img-top" alt="雙層牛肉吉事堡套餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">雙層牛肉吉事堡套餐</h5>
+                                <p class="card-text text-light small">加倍濃郁的切達起司緊緊包裹兩片純牛肉排，起司控絕對無法抗拒。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 125</span>
+                                <span class="badge bg-warning text-dark">CHEESY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/chicken sandwich burger.avif" class="card-img-top" alt="麥香雞套餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">麥香雞套餐</h5>
+                                <p class="card-text text-light small">金黃酥脆的特製雞排，搭配清爽大氣的萵苣與特調美乃滋。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 115</span>
+                                <span class="badge bg-success">FRESH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/chicken nuggets.avif" class="card-img-top" alt="麥克雞塊 6塊餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">麥克雞塊 6塊餐</h5>
+                                <p class="card-text text-light small">鮮嫩多汁的金黃黃金雞塊，沾上讓人魂牽夢縈的獨家秘製糖醋醬。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 129</span>
+                                <span class="badge bg-info text-dark">POPULAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/grilled chicken burger.avif" class="card-img-top" alt="嫩煎雞腿堡套餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">嫩煎雞腿堡套餐</h5>
+                                <p class="card-text text-light small">去骨厚切雞腿排慢火嫩煎，完美鎖住鮮美肉汁，低脂美味無負擔。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 145</span>
+                                <span class="badge bg-primary">JUICY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow-sm">
+                        <img src="img/spicy crispy chicken burger.avif" class="card-img-top" alt="勁辣雞腿堡套餐" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold mb-2">勁辣雞腿堡套餐</h5>
+                                <p class="card-text text-light small">獨家醃製勁辣去骨雞腿排，外皮香辣過癮，挑戰你舌尖的狂歡極限。</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-warning fw-bold fs-5">NT$ 145</span>
+                                <span class="badge bg-danger">SPICY!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 7 ｜ 本月主廚推薦 (Chef's Special Pick)                             -->
+    <!-- ========================================================================= -->
+    <section id="s07" class="bg-dark text-white py-5" style="border-top: 1px solid #222;">
+        <div class="container">
+            
+            <!-- 區塊大標題 -->
+            <div class="text-center mb-5">
+                <h6 class="text-warning text-uppercase tracking-wider mb-2">CHEF'S SPECIAL PICK</h6>
+                <h2 class="fw-bold">本月主廚推薦 <span class="text-danger">｜</span> 限量夢幻逸品</h2>
+                <p class="text-secondary small">主廚限時研發，極致奢華的味蕾交響樂</p>
+            </div>
+
+            <!-- 左右交錯網格排版 -->
+            <div class="row align-items-center">
+                
+                <!-- 左半邊：主廚特製浮誇漢堡大圖 -->
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="position-relative">
+                        <img src="img/neon premium burger.jpg" class="img-fluid rounded-3 shadow-lg" alt="地獄熔岩巨星堡" style="max-height: 450px; width: 100%; object-fit: cover;">
+                        <span class="position-absolute top-0 start-0 m-3 badge bg-danger fs-6 px-3 py-2 shadow">
+                            <i class="fa-solid fa-crown me-1"></i> 每月限量 50 份
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 右半邊：主廚推薦故事 -->
+                <div class="col-md-6 ps-md-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-warning text-dark fw-bold me-2">CHEF'S CHOICE</span>
+                        <h3 class="fw-bold m-0 text-white">地獄熔岩巨星堡套餐</h3>
+                    </div>
+                    
+                    <h4 class="text-danger fw-bold mb-4">NT$ 280 <span class="text-secondary fs-6 fw-normal text-decoration-line-through ms-2">原價 NT$ 350</span></h4>
+                    
+                    <p class="text-secondary lh-lg mb-4">
+                        這是主廚今年的壓軸之作！嚴選熟成 21 天的 <span class="text-light">安格斯黑牛厚切肉排</span>，重達 8 盎司，在 400 度高溫鐵板上瞬間鎖住狂暴肉汁。
+                    </p>
+                    <p class="text-secondary lh-lg mb-4">
+                        搭配手工熬煮的「三重切達黑松露起司醬」，如瀑布般從頂部流淌而下，再加上酥脆炸洋蔥圈與獨門煙燻美乃滋。這不是一般的漢堡，這是一場獻給饕客的極致縱容。
+                    </p>
+
+                    <!-- 特色小亮點標籤 -->
+                    <div class="row g-2 mb-4">
+                        <div class="col-6">
+                            <div class="p-2 bg-secondary rounded text-center small">
+                                <i class="fa-solid fa-weight-hanging text-warning me-1"></i> 8oz 狂暴黑牛排
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-2 bg-secondary rounded text-center small">
+                                <i class="fa-solid fa-cheese text-warning me-1"></i> 黑松露起司瀑布
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 呼應點餐按鈕 -->
+                    <a href="#s11" class="btn btn-warning fw-bold px-4 py-3 w-100 rounded-3">
+                        <i class="fa-solid fa-bolt me-2"></i> 立即預約搶購本月限定
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 8 ｜ 饕客好評 (Testimonials)                                      -->
+    <!-- ========================================================================= -->
+    <section id="s08" class="bg-dark text-white py-5" style="border-top: 1px solid #222;">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <h6 class="text-warning text-uppercase tracking-wider mb-2">TESTIMONIALS</h6>
+                <h2 class="fw-bold">饕客好評 <span class="text-danger">｜</span> 社群洗版推薦</h2>
+                <p class="text-secondary small">看看吃貨們大口咬下後的真實震撼與感動</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                
+                <!-- 評價 1 -->
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow p-3">
+                        <div class="card-body">
+                            <div class="text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="card-text text-light small lh-lg mb-4">
+                                「那個地獄熔岩巨星堡真的太瘋狂了！起司醬像瀑布一樣流下來，安格斯牛肉排厚到咬下去直接噴汁。雖然熱量爆表，但這絕對是深夜犒賞自己最完美的罪惡選擇！」
+                            </p>
+                            <hr class="border-secondary my-3">
+                            <div class="d-flex align-items-center">
+                                <img src="img/cyberpunk person portrait.avif" class="rounded-circle me-3 shadow" alt="Leo" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold m-0 text-warning">Leo Lin</h6>
+                                    <small class="text-secondary">知名美食部落客 / 街頭滑板玩家</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 評價 2 -->
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow p-3">
+                        <div class="card-body">
+                            <div class="text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="card-text text-light small lh-lg mb-4">
+                                「店裡裝潢的霓虹燈光超好拍，音樂也很嗨。點了雙層牛肉吉事堡套餐，麵包有用奶油煎過超級香，搭配金黃酥脆的脆薯，完全滿足了我對美式街頭漢堡的所有幻想！」
+                            </p>
+                            <hr class="border-secondary my-3">
+                            <div class="d-flex align-items-center">
+                                <img src="img/happy person eating burger.avif" class="rounded-circle me-3 shadow" alt="Emma" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold m-0 text-warning">Emma Chang</h6>
+                                    <small class="text-secondary">Threads 吃貨代表 / 甜點控</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 評價 3 -->
+                <div class="col">
+                    <div class="card h-100 bg-secondary border-0 text-white shadow p-3">
+                        <div class="card-body">
+                            <div class="text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="card-text text-light small lh-lg mb-4">
+                                「身為勁辣雞腿堡的死忠粉絲，NEON BITE 的版本直接超越了我過去吃過的所有連鎖店！外皮酥脆到咬下去有喀滋聲，裡面的雞肉卻依然嫩得不可思議，辣度很過癮！」
+                            </p>
+                            <hr class="border-secondary my-3">
+                            <div class="d-flex align-items-center">
+                                <img src="img/neon portrait woman.avif" class="rounded-circle me-3 shadow" alt="Sofia" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold m-0 text-warning">Sofia Wang</h6>
+                                    <small class="text-secondary">IG 潮流網美 / UI設計師</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- Section 9 ｜ 數據里程碑 (Counter / Milestone)                             -->
+    <!-- ========================================================================= -->
+    <section id="s09" class="position-relative text-white py-5" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('img/milestone_bg.jpg') no-repeat center center / cover; border-top: 1px solid #222;">
+        <div class="container py-4">
+            <div class="row g-4 text-center">
+                
+                <!-- 里程碑 1：狂銷漢堡 -->
+                <div class="col-6 col-md-3">
+                    <div class="p-3">
+                        <div class="display-4 text-warning mb-2">
+                            <i class="fa-solid fa-burger"></i>
+                        </div>
+                        <h2 class="fw-extrabold display-5 my-1" style="font-family: 'Impact', sans-serif; letter-spacing: 1px;">150,000+</h2>
+                        <span class="text-secondary small text-uppercase tracking-wider">累計狂銷漢堡</span>
+                    </div>
+                </div>
+
+                <!-- 里程碑 2：忠實饕客 -->
+                <div class="col-6 col-md-3">
+                    <div class="p-3">
+                        <div class="display-4 text-info mb-2">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h2 class="fw-extrabold display-5 my-1" style="font-family: 'Impact', sans-serif; letter-spacing: 1px;">45,200+</h2>
+                        <span class="text-secondary small text-uppercase tracking-wider">認證忠實饕客</span>
+                    </div>
+                </div>
+
+                <!-- 里程碑 3：Google 評論 (補充修正) -->
+                <div class="col-6 col-md-3">
+                    <div class="p-3">
+                        <div class="display-4 text-danger mb-2">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h2 class="fw-extrabold display-5 my-1" style="font-family: 'Impact', sans-serif; letter-spacing: 1px;">4.9 / 5.0</h2>
+                        <span class="text-secondary small text-uppercase tracking-wider">五星爆棚好評</span>
+                    </div>
+                </div>
+
+                <!-- 里程碑 4：合作外送員 (補充修正) -->
+                <div class="col-6 col-md-3">
+                    <div class="p-3">
+                        <div class="display-4 text-success mb-2">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <h2 class="fw-extrabold display-5 my-1" style="font-family: 'Impact', sans-serif; letter-spacing: 1px;">99%</h2>
+                        <span class="text-secondary small text-uppercase tracking-wider">深夜極速送達率</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入 Bootstrap 官方需要的 JavaScript 檔案（確保導覽列漢堡選單、幻燈片能正常運作） -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

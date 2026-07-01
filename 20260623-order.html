@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炸雞大獅 - 團購點餐登記</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+        }
+        body {
+            background-color: #fcf8f2;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #f39c12;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .main-layout {
+            display: table;
+            width: 100%;
+        }
+        .menu-section {
+            display: table-cell;
+            width: 65%;
+            padding-right: 20px;
+            vertical-align: top;
+        }
+        .cart-section {
+            display: table-cell;
+            width: 35%;
+            vertical-align: top;
+        }
+        .cart-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 20px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-top: 5px solid #e67e22;
+        }
+        .category-title {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .product-list {
+            display: table;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .product-item {
+            display: table-row;
+            border-bottom: 1px solid #eee;
+        }
+        .product-item > div {
+            display: table-cell;
+            padding: 15px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .product-name {
+            font-weight: bold;
+            width: 50%;
+        }
+        .product-name span {
+            display: block;
+            font-size: 12px;
+            color: #7f8c8d;
+            font-weight: normal;
+            margin-top: 4px;
+        }
+        .product-price {
+            color: #e74c3c;
+            font-weight: bold;
+            width: 20%;
+            text-align: right;
+        }
+        .product-action {
+            width: 30%;
+            text-align: right;
+        }
+        .qty-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .qty-btn:hover { background: #e67e22; }
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 5px;
+            padding: 4px 0;
+            border-radius: 4px;
+        }
+        .cart-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            color: #d35400;
+        }
+        .cart-item {
+            display: table;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .cart-item-row { display: table-row; }
+        .cart-item-cell { display: table-cell; padding: 4px 0; }
+        .c-name { width: 55%; }
+        .c-qty { width: 20%; text-align: center; color: #7f8c8d; }
+        .c-price { width: 25%; text-align: right; font-weight: bold; }
+        
+        .total-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed #ddd;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .total-price { color: #e74c3c; font-size: 24px; }
+        
+        .user-info {
+            margin-bottom: 15px;
+        }
+        .user-info label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #d35400;
+        }
+        .user-info input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #f39c12;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .submit-btn:hover { background-color: #219a52; }
+        .empty-text { color: #999; text-align: center; padding: 20px 0; }
+    </style>
+</head>
+<body>
+
+<header>🦁 炸雞大獅 點心/蓋飯 團購登記 🦁</header>
+
+<div class="container">
+    <div class="main-layout">
+        <div class="menu-section">
+            <div class="category-title">🛸 KINGJUN 宇宙聯萌新品系列 (套餐附脆薯+紅茶)</div>
+            <div class="product-list" id="cat-kingjun"></div>
+
+            <div class="category-title">🍱 蓋飯系列 Master Bowl</div>
+            <div class="product-list" id="cat-bowl"></div>
+
+            <div class="category-title">👑 經典組合餐系列</div>
+            <div class="product-list" id="cat-combo"></div>
+
+            <div class="category-title">🍟 🦁 臻寶炸雞 / 點心 / 飲品系列</div>
+            <div class="product-list" id="cat-snack"></div>
+        </div>
+
+        <div class="cart-section">
+            <div class="cart-sticky">
+                <div class="cart-title">🛒 填寫資料與確認</div>
+                
+                <div class="user-info">
+                    <label for="buyer-name">✍️ 請輸入您的名字/座號：</label>
+                    <input type="text" id="buyer-name" placeholder="範例：王小明 或 15號">
+                </div>
+                
+                <div id="cart-content">
+                    <div class="empty-text">尚未選擇商品</div>
+                </div>
+                
+                <div class="total-section">
+                    個人總計： <span class="total-price">$<span id="total-amount">0</span></span>
+                </div>
+                
+                <button class="submit-btn" onclick="copyOrder()">📋 複製點餐結果（傳給主揪）</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const products = [
+        // KINGJUN 聯名
+        { id: 'kj1', cat: 'kingjun', name: '梅好海苔(中)-單點', price: 115 },
+        { id: 'kj2', cat: 'kingjun', name: '梅好海苔(中)-套餐', price: 170 },
+        { id: 'kj3', cat: 'kingjun', name: '芥末美乃滋(中)-單點', price: 119 },
+        { id: 'kj4', cat: 'kingjun', name: '芥末美乃滋(中)-套餐', price: 175 },
+        { id: 'kj5', cat: 'kingjun', name: '脆雞柳捲餅-單點', price: 89 },
+        { id: 'kj6', cat: 'kingjun', name: '脆雞柳捲餅-套餐', price: 145 },
+
+        // 蓋飯系列
+        { id: 'b1', cat: 'bowl', name: '原味臻寶腿丁蓋飯', price: 95 },
+        { id: 'b2', cat: 'bowl', name: '台式椒鹽腿丁蓋飯', price: 99 },
+        { id: 'b3', cat: 'bowl', name: '泰式糖醋腿丁蓋飯', price: 99 },
+        { id: 'b4', cat: 'bowl', name: '川味麻辣腿丁蓋飯', price: 99 },
+        { id: 'b5', cat: 'bowl', name: '大獅雞柳蓋飯', price: 99 },
+        { id: 'b6', cat: 'bowl', name: '酥嫩雞胸蓋飯', price: 105 },
+        { id: 'b7', cat: 'bowl', name: '大獅雞排蓋飯(有骨)', price: 139 },
+        { id: 'b8', cat: 'bowl', name: '雞腿排蓋飯', price: 139 },
+
+        // 經典組合餐
+        { id: 'c1', cat: 'combo', name: '1號 臻寶炸雞獨享餐', price: 129 },
+        { id: 'c2', cat: 'combo', name: '2號 大獅雞柳漢堡餐', price: 129 },
+        { id: 'c3', cat: 'combo', name: '3號 大獅雞排餐(有骨)', price: 135 },
+        { id: 'c4', cat: 'combo', name: '4號 台式椒鹽蓋飯餐', price: 149 },
+        { id: 'c5', cat: 'combo', name: '5號 臻寶炸雞雙人餐', price: 339 },
+        { id: 'c6', cat: 'combo', name: '6號 大獅派對餐', price: 455 },
+
+        // 點心與飲料
+        { id: 's1', cat: 'snack', name: '臻寶炸雞(小)', price: 75 },
+        { id: 's2', cat: 'snack', name: '臻寶炸雞(中)', price: 115 },
+        { id: 's3', cat: 'snack', name: '臻寶炸雞(大)', price: 225 },
+        { id: 's4', cat: 'snack', name: '大獅雞柳', price: 55 },
+        { id: 's5', cat: 'snack', name: '酥嫩雞胸', price: 55 },
+        { id: 's6', cat: 'snack', name: '黃金脆薯', price: 39 },
+        { id: 's7', cat: 'snack', name: '椒鹽百頁', price: 39 },
+        { id: 's8', cat: 'snack', name: '波浪地瓜薯條', price: 49 },
+        { id: 's9', cat: 'snack', name: '紅茶', price: 25 },
+        { id: 's10', cat: 'snack', name: '無糖綠茶', price: 25 },
+        { id: 's11', cat: 'snack', name: '金桔檸檬', price: 40 },
+        { id: 's12', cat: 'snack', name: '青梅冬瓜爽', price: 40 }
+    ];
+
+    let orderCart = {};
+
+    function initMenu() {
+        products.forEach(p => {
+            const catContainer = document.getElementById(`cat-${p.cat}`);
+            if (catContainer) {
+                const row = document.createElement('div');
+                row.className = 'product-item';
+                row.innerHTML = `
+                    <div class="product-name">${p.name}</div>
+                    <div class="product-price">$${p.price}</div>
+                    <div class="product-action">
+                        <button class="qty-btn" onclick="updateQty('${p.id}', -1)">-</button>
+                        <input type="text" class="qty-input" id="input-${p.id}" value="0" readonly>
+                        <button class="qty-btn" onclick="updateQty('${p.id}', 1)">+</button>
+                    </div>
+                `;
+                catContainer.appendChild(row);
+            }
+        });
+    }
+
+    function updateQty(id, change) {
+        if (!orderCart[id]) orderCart[id] = 0;
+        orderCart[id] += change;
+        
+        if (orderCart[id] <= 0) {
+            delete orderCart[id];
+            document.getElementById(`input-${id}`).value = 0;
+        } else {
+            document.getElementById(`input-${id}`).value = orderCart[id];
+        }
+        renderCart();
+    }
+
+    function renderCart() {
+        const cartContent = document.getElementById('cart-content');
+        const totalAmountSpan = document.getElementById('total-amount');
+        
+        let total = 0;
+        let cartHtml = '<div class="cart-item">';
+        const keys = Object.keys(orderCart);
+        
+        if (keys.length === 0) {
+            cartContent.innerHTML = '<div class="empty-text">尚未選擇商品</div>';
+            totalAmountSpan.innerText = 0;
+            return;
+        }
+
+        keys.forEach(id => {
+            const p = products.find(prod => prod.id === id);
+            const qty = orderCart[id];
+            const subtotal = p.price * qty;
+            total += subtotal;
+
+            cartHtml += `
+                <div class="cart-item-row">
+                    <div class="cart-item-cell c-name"><strong>${p.name}</strong></div>
+                    <div class="cart-item-cell c-qty">x${qty}</div>
+                    <div class="cart-item-cell c-price">$${subtotal}</div>
+                </div>
+            `;
+        });
+
+        cartHtml += '</div>';
+        cartContent.innerHTML = cartHtml;
+        totalAmountSpan.innerText = total;
+    }
+
+    function copyOrder() {
+        const name = document.getElementById('buyer-name').value.trim();
+        if (!name) {
+            alert('請先輸入您的名字或座號，方便主揪統計喔！');
+            return;
+        }
+
+        const keys = Object.keys(orderCart);
+        if (keys.length === 0) {
+            alert('購物車還是空的，請先選擇餐點！');
+            return;
+        }
+
+        // 產生「單行格式」方便主揪集結統計
+        let itemsText = "";
+        let total = 0;
+
+        keys.forEach((id, index) => {
+            const p = products.find(prod => prod.id === id);
+            const qty = orderCart[id];
+            total += p.price * qty;
+            itemsText += `${p.name}*${qty}`;
+            if (index < keys.length - 1) itemsText += ", ";
+        });
+
+        let finalLine = `${name}: ${itemsText} (共$${total}元)`;
+
+        navigator.clipboard.writeText(finalLine).then(() => {
+            alert('🎉 點餐明細已複製到剪貼簿！\n請直接貼到 LINE 傳給主揪。');
+        }).catch(err => {
+            alert('複製失敗，請手動複製右側內容。');
+        });
+    }
+
+    window.onload = initMenu;
+</script>
+
+</body>
+</html>
