@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSM 地標地圖</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <style>
+        .leaflet-popup-content img { height: 160px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <main class="container-fluid py-3">
+        <h1 class="h3 text-center mb-3">台中地標地圖</h1>
+        <div id="map" class="rounded" style="height: calc(100vh - 100px);"></div>
+    </main>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const map = L.map('map').setView([24.172, 120.642], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        const landmarks = [
+            {
+                name: '\u901b\u7532\u591c\u5e02',
+                address: '\u53f0\u4e2d\u5e02\u897f\u5c6f\u5340\u6587\u83ef\u8def',
+                image: 'img/01.png', lat: 24.1761, lng: 120.6456
+            },
+            {
+                name: '\u53f0\u4e2d\u570b\u5bb6\u6b4c\u5287\u9662',
+                address: '\u53f0\u4e2d\u5e02\u897f\u5c6f\u5340\u60e0\u4f86\u8def\u4e8c\u6bb5101\u865f',
+                image: 'img/02.png', lat: 24.1636, lng: 120.6400
+            },
+            {
+                name: '\u79cb\u7d05\u8c37\u5ee3\u5834',
+                address: '\u53f0\u4e2d\u5e02\u897f\u5c6f\u5340\u671d\u5bcc\u8def30\u865f',
+                image: 'img/03.png', lat: 24.1667, lng: 120.6413
+            }
+        ];
+
+        landmarks.forEach((landmark) => {
+            const popupHtml = `
+                <div class="card" style="width: 18rem;">
+                    <img src="${landmark.image}" class="card-img-top" alt="${landmark.name}">
+                    <div class="card-body">
+                        <h2 class="h5 card-title">${landmark.name}</h2>
+                        <p class="card-text mb-0">${landmark.address}</p>
+                    </div>
+                </div>`;
+
+            L.marker([landmark.lat, landmark.lng])
+                .addTo(map)
+                .bindPopup(popupHtml);
+        });
+    </script>
+</body>
+</html>

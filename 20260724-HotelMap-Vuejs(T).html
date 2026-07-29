@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全國旅館地圖分布顯示 - Vuejs開發</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/20260724-HotelMap-Vuejs.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+
+    <body>
+        <div class="container-fluid hotel-app" id="app">
+            <div class="row">
+                <div class="col-md-3 vh-100 sidebar">
+                    <div class="sidebar-title">
+                        <h3>搜尋旅館</h3>
+                        <p>依縣市及鄉鎮快速查詢</p>
+                    </div>
+                    <select class="form-select form-select-lg search-select mt-3" v-model="selectedCity"
+                        @change="changeCity">
+                        <option selected disabled value="***請選擇縣市***">***請選擇縣市***</option>
+                        <option v-for="item in cityData" :value="item.CityName">
+                            {{ item.CityName }}
+                        </option>
+                    </select>
+                    <select class="form-select form-select-lg search-select mt-3" :disabled="areaList.length == 0"
+                        v-model="selectedTown" @change="changeTown">
+                        <option selected disabled>***請選擇鄉鎮區***</option>
+                        <option v-for="item in areaList" :value="item.AreaName">
+                            {{ item.AreaName }}
+                        </option>
+                    </select>
+
+                    <!-- 顯示選擇的結果 -->
+                    <div class="alert alert-info mt-3">
+                        選擇縣市:
+                        <strong class="text-danger">{{ selectedCity }}</strong>
+                        選擇鄉鎮區:
+                        <strong class="text-danger">{{ selectedTown }}</strong>
+                    </div>
+                    <ul class="list-group hotel-list mt-4">
+                        <li class="list-group-item hotel-card p-3" v-for="item in filterData"
+                            v-if="filterData.length > 0">
+                            <div class="hotel-name">
+                                {{ item.name }}
+                            </div>
+                            <div class="hotel-phone">
+                                <i class="fa-solid fa-phone"></i>
+                                電話：{{ item.tel }}
+                            </div>
+                            <div class="hotel-address">
+                                <i class="fa-solid fa-location-dot"></i>
+                                地址：{{ item.address }}
+                            </div>
+                            <div class="hotel-description">
+                                簡介：{{ item.description.substring(0, 10) }} ...
+                            </div>
+                            <img :src="item.img" class="hotel-image" alt="">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-9 map-panel">
+                    <div id="map" class="vh-100"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    test: "hello",
+                    //縣市名稱
+                    selectedCity: "***請選擇縣市***",
+                    //鄉鎮區名稱
+                    selectedTown: "***請選擇鄉鎮區***",
+                    //所有的縣市鄉鎮區資料
+                    cityData: [],
+                    //鄉鎮區資料
+                    areaList: [],
+
+                    //所有的旅館資料
+                    hotelData: [],
+
+                    //清洗過濾後的資料
+                    cleanData: [],
+
+                    //儲存篩選過後的旅館資料
+                    filterData: [],
+
+                    //leaflet 地圖
+                    map: null
+                }
+            },
+            methods: {
+                getHotelList() {
+                    //取得旅館資料
+                    const vm = this;
+                    axios.get('js/HotelList.json')
+                        .then(function (response) {
+                            console.log(response);
+                            vm.hotelData = response.data.Hotels;
+                            //過濾資料 資料清洗
+                            vm.cleanData = vm.hotelData.map(function (item, index) {
+                                return {
+                                    id: index + 1,
+                                    name: item.HotelName,
+                                    address: item.PostalAddress.CityCode + item.PostalAddress.City + item.PostalAddress.Town + item.PostalAddress.StreetAddress,
+                                    description: item.Description,
+                                    img: item.Images?.[0]?.URL ?? "images/landscape01.avif",
+                                    tel: item.Telephones[0].Tel,
+                                    lat: item.PositionLat,
+                                    lng: item.PositionLon,
+                                    city: item.PostalAddress.City,
+                                    town: item.PostalAddress.Town
+                                }
+                            });
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+                },
+                getCityData() {
+                    //取得縣市資料
+                    const vm = this;
+                    axios.get('js/CityCountyData.json')
+                        .then(function (response) {
+                            console.log(response);
+                            vm.cityData = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+                },
+                changeCity() {
+                    const vm = this;
+                    console.log("選擇的縣市: " + vm.selectedCity);
+
+                    const city = vm.cityData.find(function (item) {
+                        return item.CityName == vm.selectedCity
+                    });
+
+                    console.log(city);
+                    if (city) {
+                        vm.areaList = city.AreaList;
+                    }
+
+                    vm.selectedTown = "***請選擇鄉鎮區***";
+                },
+                changeTown() {
+                    const vm = this;
+
+                    vm.filterData = vm.cleanData.filter(function (item) {
+                        return item.city == vm.selectedCity && item.town == vm.selectedTown
+                    });
+
+                    vm.showMarker();
+                },
+                initMap() {
+                    const vm = this;
+                    vm.map = L.map('map').setView([24.171608, 120.609533], 9);
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(vm.map);
+
+                    L.marker([24.171608, 120.609533]).addTo(vm.map)
+                        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+                        .openPopup();
+                },
+                showMarker() {
+                    const vm = this;
+                    vm.removeMarker();
+
+                    vm.filterData.forEach(function (item) {
+                        L.marker([item.lat, item.lng]).addTo(vm.map)
+                            .bindPopup('A pretty CSS popup.<br> Easily customizable.');
+                    });
+                },
+                removeMarker() {
+                    const vm = this;
+                    vm.map.eachLayer(function (item) {
+                        if (item instanceof L.Marker) {
+                            vm.map.removeLayer(item)
+                        }
+                    });
+                }
+            },
+            mounted() {
+                const vm = this;
+                vm.getHotelList();
+                vm.getCityData();
+                vm.initMap();
+            }
+        }
+        Vue.createApp(App).mount("#app")
+    </script>
+</body>
+
+</html>

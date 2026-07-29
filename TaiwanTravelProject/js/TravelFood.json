@@ -1,0 +1,98 @@
+[
+  {
+    "City": "\u53f0\u5317\u5e02",
+    "Town": "\u4e2d\u6b63\u5340",
+    "Name": "\u4e2d\u6b63\u7d00\u5ff5\u5802",
+    "Address": "\u53f0\u5317\u5e02\u4e2d\u6b63\u5340\u4e2d\u5c71\u5357\u8def21\u865f",
+    "Tel": "02-2343-1100",
+    "HostWords": "\u53f0\u5317\u5e02\u4ee3\u8868\u6027\u6587\u5316\u5730\u6a19\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Chiang_Kai-shek_Memorial_Hall%2C_Taipei%2C_Taiwan.jpg/800px-Chiang_Kai-shek_Memorial_Hall%2C_Taipei%2C_Taiwan.jpg",
+    "Url": "https://www.cksmh.gov.tw/",
+    "Latitude": 25.0341,
+    "Longitude": 121.5215
+  },
+  {
+    "City": "\u53f0\u5317\u5e02",
+    "Town": "\u4fe1\u7fa9\u5340",
+    "Name": "\u53f0\u5317 101",
+    "Address": "\u53f0\u5317\u5e02\u4fe1\u7fa9\u5340\u4fe1\u7fa9\u8def\u4e94\u6bb57\u865f",
+    "Tel": "02-8101-8800",
+    "HostWords": "\u53ef\u4fef\u77b0\u53f0\u5317\u5e02\u666f\u7684\u77e5\u540d\u5730\u6a19\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Taipei_101_2009_amk.jpg/800px-Taipei_101_2009_amk.jpg",
+    "Url": "https://www.taipei-101.com.tw/",
+    "Latitude": 25.0339,
+    "Longitude": 121.5645
+  },
+  {
+    "City": "\u53f0\u5317\u5e02",
+    "Town": "\u58eb\u6797\u5340",
+    "Name": "\u570b\u7acb\u6545\u5bae\u535a\u7269\u9662",
+    "Address": "\u53f0\u5317\u5e02\u58eb\u6797\u5340\u81f3\u5584\u8def\u4e8c\u6bb5221\u865f",
+    "Tel": "02-2881-2021",
+    "HostWords": "\u5178\u85cf\u8c50\u5bcc\u4e2d\u83ef\u6587\u7269\u7684\u535a\u7269\u9928\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/National_Palace_Museum_2011.jpg/800px-National_Palace_Museum_2011.jpg",
+    "Url": "https://www.npm.gov.tw/",
+    "Latitude": 25.1024,
+    "Longitude": 121.5485
+  },
+  {
+    "City": "\u53f0\u5317\u5e02",
+    "Town": "\u842c\u83ef\u5340",
+    "Name": "\u826b\u823a\u9f8d\u5c71\u5bfa",
+    "Address": "\u53f0\u5317\u5e02\u842c\u83ef\u5340\u5ee3\u5dde\u8857211\u865f",
+    "Tel": "02-2302-5162",
+    "HostWords": "\u53f0\u5317\u6b77\u53f2\u60a0\u4e45\u7684\u50b3\u7d71\u5bfa\u5edf\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Longshan_Temple_in_Taipei_2012.jpg/800px-Longshan_Temple_in_Taipei_2012.jpg",
+    "Url": "https://www.lungshan.org.tw/",
+    "Latitude": 25.0372,
+    "Longitude": 121.4999
+  },
+  {
+    "City": "\u53f0\u5317\u5e02",
+    "Town": "\u5927\u540c\u5340",
+    "Name": "\u5927\u7a3b\u57d5\u78bc\u982d",
+    "Address": "\u53f0\u5317\u5e02\u5927\u540c\u5340\u6c11\u751f\u897f\u8def\u5e95",
+    "Tel": "",
+    "HostWords": "\u53ef\u6b23\u8cde\u6de1\u6c34\u6cb3\u666f\u8207\u5915\u967d\u7684\u6cb3\u5cb8\u5730\u6a19\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Dadaocheng_Wharf_2016.jpg/800px-Dadaocheng_Wharf_2016.jpg",
+    "Url": "https://www.travel.taipei/",
+    "Latitude": 25.0565,
+    "Longitude": 121.5093
+  },
+  {
+    "City": "\u65b0\u5317\u5e02",
+    "Town": "\u6de1\u6c34\u5340",
+    "Name": "\u6de1\u6c34\u8001\u8857",
+    "Address": "\u65b0\u5317\u5e02\u6de1\u6c34\u5340\u4e2d\u6b63\u8def",
+    "Tel": "",
+    "HostWords": "\u53ef\u6b23\u8cde\u6de1\u6c34\u6cb3\u6cb3\u666f\u8207\u8001\u8857\u98a8\u60c5\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tamsui_Old_Street.jpg/800px-Tamsui_Old_Street.jpg",
+    "Url": "https://newtaipei.travel/",
+    "Latitude": 25.1682,
+    "Longitude": 121.4445
+  },
+  {
+    "City": "\u65b0\u5317\u5e02",
+    "Town": "\u745e\u82b3\u5340",
+    "Name": "\u4e5d\u4efd\u8001\u8857",
+    "Address": "\u65b0\u5317\u5e02\u745e\u82b3\u5340\u57fa\u5c71\u8857",
+    "Tel": "",
+    "HostWords": "\u5c71\u57ce\u8001\u8857\u8207\u591c\u666f\u5730\u6a19\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Jiufen%2C_Taiwan.jpg/800px-Jiufen%2C_Taiwan.jpg",
+    "Url": "https://newtaipei.travel/",
+    "Latitude": 25.1094,
+    "Longitude": 121.8441
+  },
+  {
+    "City": "\u65b0\u5317\u5e02",
+    "Town": "\u8cfc\u5bee\u5340",
+    "Name": "\u91ce\u67f3\u5730\u8cea\u516c\u5712",
+    "Address": "\u65b0\u5317\u5e02\u842c\u91cc\u5340\u91ce\u67f3\u91cc\u6e2f\u6771181-2\u865f",
+    "Tel": "02-2492-2016",
+    "HostWords": "\u4ee5\u5973\u738b\u982d\u7b49\u5947\u7279\u5730\u8cea\u666f\u89c0\u805e\u540d\u3002",
+    "PicURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Queen%27s_Head%2C_Yehliu.jpg/800px-Queen%27s_Head%2C_Yehliu.jpg",
+    "Url": "https://www.ylgeopark.org.tw/",
+    "Latitude": 25.2067,
+    "Longitude": 121.6890
+  }
+]

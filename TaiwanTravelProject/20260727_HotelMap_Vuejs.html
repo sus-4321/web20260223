@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全國旅宿地圖資訊</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Leaflet CSS (OpenStreetMap) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    .sidebar {
+      height: 100vh;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+    }
+    .hotel-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="container-fluid">
+    <div class="row">
+      <!-- 左側/上方 控制與列表區 -->
+      <div class="col-md-4 sidebar p-3">
+        <h4 class="fw-bold mb-3">搜尋旅館</h4>
+        <p class="text-muted small">依縣市及鄉鎮快速查詢</p>
+
+        <!-- 縣市選單 -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">選擇縣市</label>
+          <select class="form-select" v-model="selectedCity" @change="onCityChange">
+            <option value="">*** 請選擇 ***</option>
+            <option v-for="city in cityList" :key="city.CityName" :value="city.CityName">
+              {{ city.CityName }}
+            </option>
+          </select>
+        </div>
+
+        <!-- 鄉鎮區選單 -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">選擇鄉鎮區</label>
+          <select class="form-select" v-model="selectedTown" :disabled="!selectedCity">
+            <option value="">*** 請選擇 ***</option>
+            <option v-for="town in areaList" :key="town.AreaName" :value="town.AreaName">
+              {{ town.AreaName }}
+            </option>
+          </select>
+        </div>
+
+        <hr />
+
+        <!-- 旅館列表與詳細資訊 -->
+        <div v-if="filteredHotels.length === 0" class="alert alert-warning text-center">
+          請選擇縣市與鄉鎮區搜尋旅館資訊
+        </div>
+
+        <div v-else>
+          <div v-for="hotel in filteredHotels" :key="hotel.id" class="card mb-3 shadow-sm">
+            <img :src="hotel.img" class="card-img-top hotel-img" alt="Hotel Image" />
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-primary">{{ hotel.name }}</h5>
+              <p class="card-text mb-1">📞 <strong>電話：</strong>{{ hotel.tel }}</p>
+              <p class="card-text mb-1">📍 <strong>地址：</strong>{{ hotel.address }}</p>
+              <p class="card-text text-muted small mt-2">
+                <strong>簡介：</strong>{{ hotel.description || '暫無簡介' }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側地圖區 -->
+      <div class="col-md-8 p-0">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue 3, Axios, Leaflet -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          map: null,
+          markers: [],
+          cityList: [],     // 縣市選單資料
+          areaList: [],     // 鄉鎮區選單資料
+          selectedCity: '', // 當前選取的縣市
+          selectedTown: '', // 當前選取的鄉鎮區
+          hotelData: [],    // 原始飯店資料
+          cleanData: []     // 清洗後的飯店資料
+        };
+      },
+      computed: {
+        // 依據選擇的縣市與鄉鎮過濾飯店
+        filteredHotels() {
+          if (!this.selectedCity || !this.selectedTown) return [];
+          return this.cleanData.filter(
+            item => item.city === this.selectedCity && item.town === this.selectedTown
+          );
+        }
+      },
+      watch: {
+        // 當過濾出來的飯店變更時，自動更新地圖 Maker
+        filteredHotels(newList) {
+          this.updateMapMarkers(newList);
+        }
+      },
+      methods: {
+        // 初始化 Leaflet 地圖
+        initMap() {
+          this.map = L.map('map').setView([23.973875, 120.982025], 7); // 預設台灣中心點
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+          }).addTo(this.map);
+        },
+
+        // 取得飯店資料 (API)
+        getHotelList() {
+          const vm = this;
+          // 請替換為您的實際 API URL 或本地 json 路徑
+          axios.get('HotelList.json')
+            .then(function (response) {
+              vm.hotelData = response.data.Hotels;
+
+              // 資料清洗 (與您的圖片程式碼相同)
+              vm.cleanData = vm.hotelData.map(function (item, index) {
+                return {
+                  id: index + 1,
+                  name: item.HotelName,
+                  address: (item.PostalAddress.CityCode || '') + 
+                           (item.PostalAddress.City || '') + 
+                           (item.PostalAddress.Town || '') + 
+                           (item.PostalAddress.StreetAddress || ''),
+                  description: item.Description,
+                  img: item.Images?.[0]?.URL ?? "images/landscape01.avif",
+                  tel: item.Telephones?.[0]?.Tel || '無',
+                  lat: item.PositionLat,
+                  lng: item.PositionLon,
+                  city: item.PostalAddress.City,
+                  town: item.PostalAddress.Town
+                };
+              });
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+            .finally(function () {
+              // always executed
+            });
+        },
+
+        // 取得縣市資料 (與您的圖片程式碼相同)
+        getCityData() {
+          const vm = this;
+          axios.get('js/CityCountyData.json')
+            .then(function (response) {
+              console.log(response);
+              vm.cityList = response.data;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+
+        // 縣市選單切換時，更新鄉鎮選單
+        onCityChange() {
+          this.selectedTown = '';
+          const target = this.cityList.find(c => c.CityName === this.selectedCity);
+          this.areaList = target ? target.AreaList : [];
+        },
+
+        // 在地圖上放置地標
+        updateMapMarkers(hotels) {
+          // 清除舊 Marker
+          this.markers.forEach(m => this.map.removeLayer(m));
+          this.markers = [];
+
+          if (hotels.length === 0) return;
+
+          // 新增新 Marker
+          hotels.forEach(hotel => {
+            if (hotel.lat && hotel.lng) {
+              const marker = L.marker([hotel.lat, hotel.lng])
+                .addTo(this.map)
+                .bindPopup(`<b>${hotel.name}</b><br>${hotel.address}`);
+              this.markers.push(marker);
+            }
+          });
+
+          // 移動地圖中心至第一個飯店位置
+          if (hotels[0].lat && hotels[0].lng) {
+            this.map.panTo([hotels[0].lat, hotels[0].lng]);
+            this.map.setZoom(13);
+          }
+        }
+      },
+      mounted() {
+        this.initMap();
+        this.getCityData();
+        this.getHotelList();
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

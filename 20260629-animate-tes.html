@@ -11,25 +11,133 @@
 </head>
 
 <body>
-    <div class="container">
+
+    <!-- Bootstrap 容器，py-5 表示上下內距 (padding-top、padding-bottom) 為 5 -->
+    <div class="container py-5">
+        <!-- ================= 第一列 ================= -->
         <div class="row">
+            <!--
+                col-12      → 滿版(12格)
+                bg-primary  → Bootstrap 藍色背景
+                vh-100      → 高度為整個瀏覽器高度(100%)
+            -->
             <div class="col-12 bg-primary vh-100"></div>
         </div>
+
+        <!-- ================= 第二列 ================= -->
         <div class="row">
-            <div class="col-3 bg-primary p-5 mt-5 wow animate__fadeInLeft" data-wow-duration="10s" data-wow-delay="0s" data-wow-iteration="2"></div>
+
+            <!--
+                col-3                 → 寬度3格
+                bg-primary            → 藍色背景
+                p-5                   → 四周內距
+                mt-5                  → 上方外距
+                wow                   → 啟用 WOW.js 動畫
+                animate__fadeInLeft   → Animate.css 左側淡入
+            -->
+
+            <!-- 動畫持續10秒 -->
+
+            <!-- 不延遲 -->
+
+            <!-- 播放2次 -->
+
+            <div class="col-3 bg-primary p-5 mt-5 wow animate__fadeInLeft"
+                
+                data-wow-duration="10s"
+                
+                data-wow-delay="0s"
+                
+                data-wow-iteration="2">
+
+            </div>
+
         </div>
+
+        <!-- ================= 第三列 ================= -->
+                <!-- 動畫持續1秒 -->
+
+                <!-- 延遲0秒 -->
+
+                 <!-- 播放3次 -->
+
         <div class="row">
-            <div class="col-3 bg-primary p-5 mt-5 animate__fadeInRight wow" data-wow-duration="1s" data-wow-delay="0s" data-wow-iteration="3"></div>
+
+            <div class="col-3 bg-primary p-5 mt-5 wow animate__fadeInRight"
+                
+                data-wow-duration="1s"
+                
+                data-wow-delay="0s"
+               
+                data-wow-iteration="3">
+
+            </div>
+
         </div>
+
+        <!-- ================= 第四列 ================= -->
         <div class="row">
-            <div class="col-3 bg-primary p-5 mt-5 animate__animated animate__fadeInUp"></div>
+
+            <!-- Animate.css 動畫(未使用 WOW) -->
+            <div class="col-3 bg-primary p-5 mt-5 animate__animated animate__fadeInUp">
+
+            </div>
+
         </div>
+
+        <!-- ================= 第五列 ================= -->
+        <div class="row justify-content-center">
+
+            <!--
+                col-md-3
+                中型以上螢幕佔3格
+            -->
+            <div class="col-md-3">
+
+                <!--
+                    Font Awesome 愛心圖示
+
+                    fa-solid        → 實心圖示
+                    fa-heart-pulse  → 跳動愛心
+                    fa-8x           → 放大8倍
+                    text-danger     → Bootstrap 紅色
+                    wow             → WOW動畫
+                    animate__heartBeat → 心跳動畫
+                -->
+                     <!-- 每次動畫0.3秒 -->
+                      <!-- 不延遲 -->
+                       <!-- 無限播放 -->
+
+
+                <i class="fa-solid fa-heart-pulse fa-8x text-danger wow animate__heartBeat"                   
+                    data-wow-duration="0.5s"
+                    
+                    data-wow-delay="0s"
+                    
+                    data-wow-iteration="infinite">
+
+                </i>
+
+            </div>
+
+        </div>
+
     </div>
+
+    <!-- Bootstrap JavaScript -->
     <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- WOW.js -->
     <script src="js/wow.min.js"></script>
+
+    <!-- 啟動 WOW -->
     <script>
+
+        // 初始化 WOW.js
         new WOW().init();
+
     </script>
+
 </body>
 
 </html>

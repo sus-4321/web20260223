@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- 宣告本文件使用 HTML5 標準。 -->
+<html lang="zh-TW">
+<!-- lang="zh-TW" 告訴瀏覽器、搜尋引擎與螢幕閱讀器：頁面主要語言是繁體中文（臺灣）。 -->
+
+<head>
+    <!-- meta charset 指定 UTF-8 字元編碼，才能正確顯示中文。 -->
+    <meta charset="UTF-8">
+    <!-- 讓手機等行動裝置依螢幕寬度呈現頁面，初始縮放比例為 1 倍。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 顯示於瀏覽器分頁標籤與書籤中的頁面名稱。 -->
+    <title>OSM 練習 - 農村地方美食小吃特色料理</title>
+    <!-- 載入 Bootstrap 的 CSS，供版面配置、表單與卡片等元件使用。 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 載入 Font Awesome 的 CSS；本頁目前未使用圖示，但可供日後加入。 -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- 載入 Leaflet 地圖函式庫的樣式表。integrity 用於驗證檔案完整性；crossorigin 支援跨網域載入。 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+        /* 限制 Leaflet 彈出視窗內的圖片尺寸，避免原圖過大造成版面失衡。 */
+        .leaflet-popup-content img {
+            /* 圖片寬度填滿彈出視窗可用寬度。 */
+            width: 100%;
+            /* 固定圖片高度，讓所有店家卡片的圖片區域一致。 */
+            height: 220px;
+            /* 保持圖片比例並裁切多餘部分，使圖片完整填滿指定範圍。 */
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- container-fluid 代表滿版容器；內部以 Bootstrap 的格線系統排列內容。 -->
+    <div class="container-fluid">
+        <!-- 第一列置中顯示縣市下拉選單。 -->
+        <div class="row justify-content-center">
+            <!-- 在中型以上螢幕佔 6/12 欄（約一半寬度）。 -->
+            <div class="col-md-6">
+                <!-- 使用者選擇縣市的下拉選單；id 供 JavaScript 找到並監聽它。 -->
+                <select name="" id="citySelect" class="form-select form-select-lg my-3">
+                    <!-- 預設提示選項；之後會由 CityCountyData.json 的資料重新建立完整選單。 -->
+                    <option value="">---請先選擇縣市名稱---</option>
+                    <!-- 以下兩項是初始範例，JavaScript 載入完成後會被清除並改成完整縣市清單。 -->
+                    <option value="臺中市">臺中市</option>
+                    <option value="臺北市">臺北市</option>
+                </select>
+            </div>
+        </div>
+        <!-- 第二列放置地圖；地圖容器必須有實際高度才能顯示 Leaflet 地圖。 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="mapStatus" class="alert alert-danger d-none mb-2" role="alert"></div>
+                <!-- id="map" 是 Leaflet 初始化地圖時所指定的目標元素；vh-100 表示高度為視窗高度的 100%。 -->
+                <div id="map" class="bg-info vh-100"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 載入 Bootstrap 的 JavaScript 元件；bundle 版本已包含 Popper。 -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- 載入 Leaflet JavaScript，提供 L.map、L.marker 等地圖 API。 -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 載入 jQuery，程式以 $() 操作 DOM 與監聽事件。 -->
+    <script src="js/jquery-4.0.0.js"></script>
+    <!-- 載入 Axios，用 AJAX 非同步讀取本機 JSON 資料檔。 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script>
+        // 儲存從 TravelFood.json 讀取的全部景點／美食資料；初始為空陣列。
+        let travelData = [];
+        // 儲存使用者目前選擇的縣市名稱，供後續篩選資料使用。
+        let selectedCity = '';
+        // 儲存 Leaflet 建立的地圖物件；稍後在網頁載入完成時指定。
+        let map;
+
+        // jQuery 的文件就緒簡寫：DOM 建立完成後才開始操作選單與地圖元素。
+        $(function () {
+            // 建立 Leaflet 地圖：放入 id="map" 的元素，中心點為經緯度 [24.171589, 120.609514]，縮放等級為 9。
+            map = L.map('map').setView([24.171589, 120.609514], 9);
+
+            // 加入 OpenStreetMap 的底圖圖磚。{z}、{x}、{y} 會由 Leaflet 自動替換成目前位置所需的圖磚座標。
+            // attribution 是 OpenStreetMap 要求的資料來源標示，最後用 addTo(map) 將底圖加到地圖上。
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 非同步讀取縣市資料，成功後動態產生下拉選單的所有選項。
+            axios.get('js/CityCountyData.json')
+                .then(function (response) {
+                    // response.data 是 JSON 檔解析後的陣列資料；開發階段可在瀏覽器主控台檢視。
+                    console.log(response);
+
+                    // 清空 HTML 內原本的範例選項，避免與 JSON 產生的正式選項重複。
+                    $("#citySelect").empty();
+                    // 加回不可選用的提示選項；selected 表示預設顯示它，disabled 防止把它當作有效縣市。
+                    $("#citySelect").append(`<option value="" selected disabled class="text-center fw-bold">---請先選擇縣市名稱---</option>`);
+                    // 逐筆走訪縣市資料，將每個 CityName 轉換成一個 option 並加入選單。
+                    response.data.forEach(function (item) {
+                        console.log(item.CityName);
+
+                        // 樣板字串 ${item.CityName} 會插入縣市名稱；value 是程式篩選資料時使用的值。
+                        let strHTML = `<option value="${item.CityName}">${item.CityName}</option>`;
+                        $("#citySelect").append(strHTML);
+                    });
+                })
+                .catch(function (error) {
+                    // 若 JSON 檔不存在、路徑錯誤或網路失敗，在主控台輸出錯誤以利除錯。
+                    console.log(error);
+                })
+                .finally(function () {
+                    // 無論讀取成功或失敗都會執行；本範例沒有額外收尾動作。
+                });
+
+
+            // 監聽下拉選單的 change 事件：使用者選擇另一個縣市時執行以下流程。
+            $("#citySelect").change(function () {
+                // $(this) 代表目前觸發事件的 select；val() 取得使用者選擇的 option value。
+                console.log($(this).val());
+                selectedCity = $(this).val();
+                $('#mapStatus').addClass('d-none').empty();
+
+                // 先清除舊縣市留下的標記，避免地圖同時顯示不同縣市的資料。
+                removeMarker();
+                // 非同步讀取所有旅遊美食資料；資料會依目前 selectedCity 篩選。
+                axios.get('js/TravelFood.json')
+                    .then(function (response) {
+                        console.log(response);
+                        // 將 JSON 陣列存入全域變數，方便需要時重複使用或檢查。
+                        travelData = response.data;
+                        let markerCoordinates = [];
+
+                        // 逐筆檢查所有美食資料，只處理 City 欄位與目前縣市相同的項目。
+                        travelData.forEach(function (item) {
+                            if (item.City == selectedCity) {
+                                // 組合要顯示在標記彈出視窗中的 Bootstrap 卡片 HTML。
+                                // 樣板字串會把圖片、名稱、地址、電話、簡介與官方連結填入對應欄位。
+                                let openHTML01 = `<div class="card">
+                                        <img src="${item.PicURL}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold text-primary">${item.Name}</h5>
+                                            <p class="card-text m-0 fs-4">地址: ${item.City}${item.Town}${item.Address}</p>
+                                            <p class="card-text m-0 fs-4">電話: ${item.Tel}</p>
+                                            <p class="card-text m-0 fs-4">簡介: ${item.HostWords}</p>
+                                            <a href="${item.Url}" target="_blank" class="btn btn-outline-primary w-100 mt-3">官網</a>
+                                        </div>
+                                    </div>`;
+                                // 以資料中的緯度與經度建立地圖標記，再加入地圖。
+                                // bindPopup 綁定點擊標記時顯示的卡片；minWidth 與 maxWidth 固定彈窗寬度為 500px。
+                                L.marker([item.Latitude, item.Longitude]).addTo(map)
+                                    .bindPopup(openHTML01, { minWidth: 500, maxWidth: 500 });
+                                markerCoordinates.push([item.Latitude, item.Longitude]);
+                            }
+                        });
+
+                        if (markerCoordinates.length) {
+                            map.fitBounds(markerCoordinates, { padding: [40, 40], maxZoom: 14 });
+                        } else {
+                            $('#mapStatus')
+                                .text(`${selectedCity} 目前沒有地標資料。`)
+                                .removeClass('d-none');
+                        }
+                    })
+                    .catch(function (error) {
+                        // 讀取 TravelFood.json 失敗時，在主控台輸出錯誤資訊。
+                        console.error('無法載入地標資料 TravelFood.json：', error);
+                        $('#mapStatus')
+                            .text('地標資料無法載入。請確認 js/TravelFood.json 檔案存在。')
+                            .removeClass('d-none');
+                    })
+                    .finally(function () {
+                        // 無論成功或失敗都會執行；本範例沒有額外收尾動作。
+                    });
+            });
+        });
+
+        // 清除地圖上所有 Leaflet 標記；切換縣市前呼叫，讓畫面只保留目前縣市的結果。
+        function removeMarker() {
+            // eachLayer 會逐一取得地圖上的每個圖層，包含底圖與標記。
+            map.eachLayer(function (item) {
+                // 只移除 Marker 類型的圖層；底圖 tileLayer 不符合條件，因此會繼續保留。
+                if (item instanceof L.Marker) {
+                    // 從地圖移除這個標記。
+                    map.removeLayer(item)
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

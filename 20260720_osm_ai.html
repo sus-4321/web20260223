@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- HTML5 -->
+<html lang="zh-TW">
+
+<head>
+    <!-- 中文編碼 -->
+    <meta charset="UTF-8">
+    <!-- RWD -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台中美食地圖</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* 地圖高度 */
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Popup圖片 */
+        .leaflet-popup-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 地圖 -->
+    <div id="map"></div>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        //----------------------------------------
+        // 建立地圖
+        //----------------------------------------
+        var map = L.map("map").setView(
+            [24.147736, 120.673648], 13);
+        //----------------------------------------
+        // OpenStreetMap
+        //----------------------------------------
+        L.tileLayer(
+            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '&copy; OpenStreetMap'
+            }
+        ).addTo(map);
+        //----------------------------------------------------
+        // 讀取 food.json
+        //----------------------------------------------------
+        fetch("js/food.json")
+            // 將 JSON 轉成 JavaScript 物件
+            .then(function (response) {
+                return response.json();
+            })
+        ///----------------------------------------------------
+        // 讀取 food.json
+        //----------------------------------------------------
+        fetch("js/food.json")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                // 顯示資料(方便除錯)
+                console.log(data);
+                // 一筆一筆建立 Marker
+                data.forEach(function (item) {
+                    L.marker([item.lat, item.lng])
+                        .addTo(map)
+                        .bindPopup(`<div class="card">
+    <img src="${item.image}"
+         class="card-img-top">
+    <div class="card-body">
+        <h5 class="text-primary">
+            ${item.name}
+        </h5>
+        <p>📍 ${item.address}</p>
+        <p>☎ ${item.tel}</p>
+        <p>${item.description}</p>
+    </div>
+</div>`, {
+           minWidth: 350,
+           maxWidth: 450
+                        });
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+    </script>
+
+</body>
+
+</html>
